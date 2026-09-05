@@ -10,7 +10,7 @@ export function Masthead() {
 
   const navItems = [
     { href: "/", label: "Beranda" },
-    { href: "/dashboard", label: "Peta & Dasbor" },
+    { href: "/dashboard", label: "Peta & Dashboard" },
     { href: "/aqua-alert", label: "AquaAlert" },
     { href: "/hydro-amdal", label: "Hydro-AMDAL" },
     { href: "/methodology", label: "Metodologi" },
@@ -48,13 +48,13 @@ export function Masthead() {
             onClick={() => setMobileOpen(false)}
             style={{ display: mobileOpen ? "inline-flex" : "none" }}
           >
-            Buka Dasbor →
+            Buka Dashboard →
           </Link>
         </nav>
 
         <div className="header-cta">
           <Link href="/dashboard" className="btn btn-primary">
-            Buka Dasbor →
+            Buka Dashboard →
           </Link>
           <button
             className="mobile-toggle"

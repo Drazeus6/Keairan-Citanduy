@@ -13,7 +13,7 @@ const pricingTiers = [
     price: "Rp 500rb",
     priceUnit: "/bulan",
     desc: "Untuk petambak kecil dengan 1–2 kolam produksi di satu lokasi.",
-    features: ["1 nomor WhatsApp", "Notifikasi Waspada & Siaga", "Laporan mingguan via email", "Akses dasbor publik gratis"],
+    features: ["1 nomor WhatsApp", "Notifikasi Waspada & Siaga", "Laporan mingguan via email", "Akses dashboard publik gratis"],
     featured: false,
     cta: "Mulai",
   },
@@ -28,7 +28,7 @@ const pricingTiers = [
       "Notifikasi Waspada & Siaga + prakiraan 24 jam",
       "Laporan harian via email & WhatsApp",
       "Rekomendasi teknis mingguan",
-      "Akses dasbor publik gratis",
+      "Akses dashboard publik gratis",
     ],
     featured: true,
     cta: "Mulai Sekarang",
@@ -114,7 +114,7 @@ export default function AquaAlertPage() {
                 <button onClick={handleStartOnboarding} className="btn btn-primary">
                   Mulai Berlangganan
                 </button>
-                <Link href="/dashboard" className="btn btn-ghost">Lihat Dasbor Publik</Link>
+                <Link href="/dashboard" className="btn btn-ghost">Lihat Dashboard Publik</Link>
               </div>
 
               {/* Onboarding Mock */}
@@ -516,7 +516,7 @@ export default function AquaAlertPage() {
               <a href="mailto:aqua-alert@keairan.id?subject=Pilot%20AquaAlert" className="btn btn-primary">
                 Daftar Pilot
               </a>
-              <Link href="/dashboard" className="btn btn-dark">Cek Dasbor Publik</Link>
+              <Link href="/dashboard" className="btn btn-dark">Cek Dashboard Publik</Link>
             </div>
 
             <div className="grid-4" style={{

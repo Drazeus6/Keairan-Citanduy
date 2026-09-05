@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dasbor Publik · UI Kit · Keairan Citanduy</title>
+<title>Dashboard Publik Â· UI Kit Â· Keairan Citanduy</title>
 <link rel="stylesheet" href="../../../colors_and_type.css" />
 <link rel="stylesheet" href="../../../assets/main.css" />
 <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
@@ -65,17 +65,17 @@
 
 <header class="masthead">
   <div class="wrap masthead-inner">
-    <a href="../index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit · Komponen · Dasbor</small></span></a>
-    <nav class="primary"><a href="../index.html">Launcher</a><a href="masthead.html">Masthead</a><a href="dasbor.html" aria-current="page">Dasbor</a></nav>
+    <a href="../index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit Â· Komponen Â· Dashboard</small></span></a>
+    <nav class="primary"><a href="../index.html">Launcher</a><a href="masthead.html">Masthead</a><a href="dashboard.html" aria-current="page">Dashboard</a></nav>
     <div class="header-cta"><a href="../../../DESIGN.md" class="btn btn-ghost">DESIGN.md</a></div>
   </div>
 </header>
 
 <section style="padding:48px 0 24px;">
   <div class="wrap">
-    <p class="eyebrow">UI Kit · Komponen · Dasbor Publik</p>
+    <p class="eyebrow">UI Kit Â· Komponen Â· Dashboard Publik</p>
     <h1 class="display" style="margin-top:14px;">Ticker, station card,<br/>tab strip, kalender.</h1>
-    <p class="lede">Empat blok paling banyak dikutip dari modul Dasbor Publik. Disusun dari gaya yang sama dengan <code>examples/dashboard.html</code> dan dirancang agar bisa dipasang ulang tanpa menulis ulang CSS.</p>
+    <p class="lede">Empat blok paling banyak dikutip dari modul Dashboard Publik. Disusun dari gaya yang sama dengan <code>examples/dashboard.html</code> dan dirancang agar bisa dipasang ulang tanpa menulis ulang CSS.</p>
   </div>
 </section>
 
@@ -83,64 +83,64 @@
   <div class="wrap">
 
     <div class="swatch-block" id="ticker">
-      <div class="head"><h4>Ticker SIAGA</h4><code>components/dasbor.html · #ticker</code></div>
+      <div class="head"><h4>Ticker SIAGA</h4><code>components/dashboard.html Â· #ticker</code></div>
       <div class="body">
         <div class="ticker-demo">
-          <span class="live">● SIAGA</span>
-          <span>Pos Banjar · TMA 312 cm · ↑12 cm/jam · Estimasi tiba Pangandaran 6–8 jam</span>
+          <span class="live">â— SIAGA</span>
+          <span>Pos Banjar Â· TMA 312 cm Â· â†‘12 cm/jam Â· Estimasi tiba Pangandaran 6â€“8 jam</span>
         </div>
 <pre class="code">&lt;div class="ticker"&gt;
   &lt;span class="live"&gt;&lt;span class="blink"&gt;&lt;/span&gt; SIAGA&lt;/span&gt;
-  &lt;span&gt;Pos Banjar · TMA 312 cm · ↑12 cm/jam&lt;/span&gt;
+  &lt;span&gt;Pos Banjar Â· TMA 312 cm Â· â†‘12 cm/jam&lt;/span&gt;
 &lt;/div&gt;</pre>
       </div>
     </div>
 
     <div class="swatch-block" id="station-card">
-      <div class="head"><h4>Station card</h4><code>components/dasbor.html · #station-card</code></div>
+      <div class="head"><h4>Station card</h4><code>components/dashboard.html Â· #station-card</code></div>
       <div class="body">
         <div class="stations-demo">
           <div class="station">
-            <div class="top"><span class="name">Banjar · SIH3-CIT-014</span><span class="badge s">SIAGA</span></div>
-            <div class="coord">7°22′ LS · 108°39′ BT</div>
+            <div class="top"><span class="name">Banjar Â· SIH3-CIT-014</span><span class="badge s">SIAGA</span></div>
+            <div class="coord">7Â°22â€² LS Â· 108Â°39â€² BT</div>
             <div class="readings" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-family:var(--mono); font-size:12px; color:var(--muted);">
-              <span>TMA · <strong style="color:var(--fg);">312 cm</strong></span><span>Q · <strong style="color:var(--fg);">24,5 m³/s</strong></span>
-              <span>Siaga · <strong style="color:var(--fg);">250 cm</strong></span><span>Update · <strong style="color:var(--fg);">14:32 WIB</strong></span>
+              <span>TMA Â· <strong style="color:var(--fg);">312 cm</strong></span><span>Q Â· <strong style="color:var(--fg);">24,5 mÂ³/s</strong></span>
+              <span>Siaga Â· <strong style="color:var(--fg);">250 cm</strong></span><span>Update Â· <strong style="color:var(--fg);">14:32 WIB</strong></span>
             </div>
           </div>
           <div class="station">
-            <div class="top"><span class="name">Pangandaran · SIH3-CIT-022</span><span class="badge w">WASPADA</span></div>
-            <div class="coord">7°41′ LS · 108°39′ BT</div>
+            <div class="top"><span class="name">Pangandaran Â· SIH3-CIT-022</span><span class="badge w">WASPADA</span></div>
+            <div class="coord">7Â°41â€² LS Â· 108Â°39â€² BT</div>
             <div class="readings" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-family:var(--mono); font-size:12px; color:var(--muted);">
-              <span>TMA · <strong style="color:var(--fg);">198 cm</strong></span><span>Q · <strong style="color:var(--fg);">11,2 m³/s</strong></span>
-              <span>Siaga · <strong style="color:var(--fg);">220 cm</strong></span><span>Update · <strong style="color:var(--fg);">14:30 WIB</strong></span>
+              <span>TMA Â· <strong style="color:var(--fg);">198 cm</strong></span><span>Q Â· <strong style="color:var(--fg);">11,2 mÂ³/s</strong></span>
+              <span>Siaga Â· <strong style="color:var(--fg);">220 cm</strong></span><span>Update Â· <strong style="color:var(--fg);">14:30 WIB</strong></span>
             </div>
           </div>
           <div class="station">
-            <div class="top"><span class="name">Ciamis · SIH3-CIT-007</span><span class="badge n">NORMAL</span></div>
-            <div class="coord">7°20′ LS · 108°21′ BT</div>
+            <div class="top"><span class="name">Ciamis Â· SIH3-CIT-007</span><span class="badge n">NORMAL</span></div>
+            <div class="coord">7Â°20â€² LS Â· 108Â°21â€² BT</div>
             <div class="readings" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-family:var(--mono); font-size:12px; color:var(--muted);">
-              <span>TMA · <strong style="color:var(--fg);">142 cm</strong></span><span>Q · <strong style="color:var(--fg);">5,8 m³/s</strong></span>
-              <span>Siaga · <strong style="color:var(--fg);">200 cm</strong></span><span>Update · <strong style="color:var(--fg);">14:28 WIB</strong></span>
+              <span>TMA Â· <strong style="color:var(--fg);">142 cm</strong></span><span>Q Â· <strong style="color:var(--fg);">5,8 mÂ³/s</strong></span>
+              <span>Siaga Â· <strong style="color:var(--fg);">200 cm</strong></span><span>Update Â· <strong style="color:var(--fg);">14:28 WIB</strong></span>
             </div>
           </div>
         </div>
 <pre class="code">&lt;div class="station"&gt;
   &lt;div class="top"&gt;
-    &lt;span class="name"&gt;Banjar · SIH3-CIT-014&lt;/span&gt;
+    &lt;span class="name"&gt;Banjar Â· SIH3-CIT-014&lt;/span&gt;
     &lt;span class="badge s"&gt;SIAGA&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="coord"&gt;7°22′ LS · 108°39′ BT&lt;/div&gt;
+  &lt;div class="coord"&gt;7Â°22â€² LS Â· 108Â°39â€² BT&lt;/div&gt;
   &lt;div class="readings"&gt;
-    &lt;span&gt;TMA · &lt;strong&gt;312 cm&lt;/strong&gt;&lt;/span&gt;
-    &lt;span&gt;Q · &lt;strong&gt;24,5 m³/s&lt;/strong&gt;&lt;/span&gt;
+    &lt;span&gt;TMA Â· &lt;strong&gt;312 cm&lt;/strong&gt;&lt;/span&gt;
+    &lt;span&gt;Q Â· &lt;strong&gt;24,5 mÂ³/s&lt;/strong&gt;&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
       </div>
     </div>
 
     <div class="swatch-block" id="tabs">
-      <div class="head"><h4>Tab strip dasbor</h4><code>components/dasbor.html · #tabs</code></div>
+      <div class="head"><h4>Tab strip Dashboard</h4><code>components/dashboard.html Â· #tabs</code></div>
       <div class="body">
         <div class="tabs-demo" role="tablist">
           <button class="tab" aria-selected="true"><span style="font-family:var(--mono); font-size:11px; margin-right:8px;">01</span>Peta Pantau Banjir</button>
@@ -151,7 +151,7 @@
     </div>
 
     <div class="swatch-block" id="calendar">
-      <div class="head"><h4>Calendar cell · 7 kolom</h4><code>components/dasbor.html · #calendar</code></div>
+      <div class="head"><h4>Calendar cell Â· 7 kolom</h4><code>components/dashboard.html Â· #calendar</code></div>
       <div class="body">
         <div class="cal-demo">
           <div class="cell dim"><span class="day">25 Agu</span></div>
@@ -174,7 +174,7 @@
       <div>
         <div class="brand" style="color:var(--bg); margin-bottom:14px;">
           <span class="brand-mark">K</span>
-          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit · Komponen · Dasbor</small></span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit Â· Komponen Â· Dashboard</small></span>
         </div>
       </div>
       <div><h5>Modul lain</h5><ul>
@@ -184,7 +184,7 @@
         <li><a href="citizen-report.html">Laporan Warga</a></li>
       </ul></div>
       <div><h5>Referensi</h5><ul>
-        <li><a href="../../../DESIGN.md">DESIGN.md §6</a></li>
+        <li><a href="../../../DESIGN.md">DESIGN.md Â§6</a></li>
         <li><a href="../../../examples/dashboard.html">examples/dashboard.html</a></li>
       </ul></div>
     </div>

@@ -1,4 +1,4 @@
-# Component Manifest · Keairan Citanduy
+﻿# Component Manifest Â· Keairan Citanduy
 
 Daftar 22 komponen yang dipakai di seluruh paket. Setiap komponen
 menunjuk ke lokasi presisi (path + baris) di source-backed artifacts.
@@ -19,7 +19,7 @@ menunjuk ke lokasi presisi (path + baris) di source-backed artifacts.
 |---|---|---|---|
 | Wrap (max 1320) | `--maxw`, `--gutter` | `assets/main.css` (`.wrap` line 66) | Semua artefak |
 | Grid 2 / 3 / 4 | `--gutter` | `assets/main.css` (`.grid-2`, `.grid-3`, `.grid-4` lines 70-72) | Semua pratinjau & modul |
-| Section head | `--border`, `--muted` | `examples/index.html` (`eyebrow → h2 → lede`) | `preview/*.html` |
+| Section head | `--border`, `--muted` | `examples/index.html` (`eyebrow â†’ h2 â†’ lede`) | `preview/*.html` |
 
 ## Navigation
 
@@ -27,7 +27,7 @@ menunjuk ke lokasi presisi (path + baris) di source-backed artifacts.
 |---|---|---|---|
 | Masthead sticky | `--bg`, `--border`, blur | `examples/index.html:14-37` | `preview/index.html`, `preview/*.html`, `ui_kits/app/components/masthead.html` |
 | Primary nav (5 item) | `--fg`, `--muted` | `examples/index.html:24-30` | Semua halaman dengan masthead |
-| Tab strip dasbor | `--accent`, `--muted` | `examples/dashboard.html` (`.tabs`) | `preview/applied-public-dashboard.html`, `ui_kits/app/components/dasbor.html` |
+| Tab strip Dashboard | `--accent`, `--muted` | `examples/dashboard.html` (`.tabs`) | `preview/applied-public-dashboard.html`, `ui_kits/app/components/dashboard.html` |
 
 ## Tombol
 
@@ -54,7 +54,7 @@ menunjuk ke lokasi presisi (path + baris) di source-backed artifacts.
 |---|---|---|---|
 | `.band-dark` | `--paper-dark`, `--bg`, `--accent` | `assets/main.css` + `examples/index.html` | `preview/components.html` |
 | `.quote` (display 500, 3 px kuning) | `--accent`, `--display` | `assets/main.css` (`.quote`) | `preview/typography-specimens.html` |
-| `.ticker` SIAGA | `--paper-dark`, `--status-siaga`, `--bg` | `examples/dashboard.html:15-33` | `preview/applied-public-dashboard.html`, `ui_kits/app/components/dasbor.html` |
+| `.ticker` SIAGA | `--paper-dark`, `--status-siaga`, `--bg` | `examples/dashboard.html:15-33` | `preview/applied-public-dashboard.html`, `ui_kits/app/components/dashboard.html` |
 | `.stat-strip` 4-up | `--border`, `--display` | `assets/main.css` | `preview/components.html` |
 | `.kicker` | `--muted`, 11px/0.18em | `examples/index.html:44` | Semua hero |
 
@@ -62,10 +62,10 @@ menunjuk ke lokasi presisi (path + baris) di source-backed artifacts.
 
 | Komponen | Token | Bukti sumber | Penggunaan paket |
 |---|---|---|---|
-| `.station` (interaktif) | `--border`, `--bg`, status | `examples/dashboard.html:36-60` | `ui_kits/app/components/dasbor.html` |
-| `.station .badge` (N/W/S) | status derived | `examples/dashboard.html:55-57` | `preview/components.html`, `ui_kits/app/components/dasbor.html` |
-| `.station-detail` | `--surface`, `--border` | `examples/dashboard.html:63-69` | `ui_kits/app/components/dasbor.html` |
-| Calendar cell | status derived | `examples/dashboard.html` (kalender tani) | `ui_kits/app/components/dasbor.html` |
+| `.station` (interaktif) | `--border`, `--bg`, status | `examples/dashboard.html:36-60` | `ui_kits/app/components/dashboard.html` |
+| `.station .badge` (N/W/S) | status derived | `examples/dashboard.html:55-57` | `preview/components.html`, `ui_kits/app/components/dashboard.html` |
+| `.station-detail` | `--surface`, `--border` | `examples/dashboard.html:63-69` | `ui_kits/app/components/dashboard.html` |
+| Calendar cell | status derived | `examples/dashboard.html` (kalender tani) | `ui_kits/app/components/dashboard.html` |
 | Spec table | `--border`, `--display` first column | `examples/methodology.html` | `preview/components.html` |
 | WhatsApp bubble | `--paper-dark`, `--accent` | `examples/aqua-alert.html:188-200` | `ui_kits/app/components/aqua-alert.html` |
 | Comparison table | `--border`, `--display` header | `examples/aqua-alert.html:216-235` | `ui_kits/app/components/aqua-alert.html` |
@@ -79,7 +79,7 @@ menunjuk ke lokasi presisi (path + baris) di source-backed artifacts.
 | `.field` input/select/textarea | `--border`, `--accent` focus | `examples/dashboard.html:82-92` | `ui_kits/app/components/citizen-report.html` |
 | Citizen report form | sama dengan di atas | `examples/dashboard.html` tab 3 | `ui_kits/app/components/citizen-report.html` |
 | Reports feed | `--border`, status badges | `examples/dashboard.html` (tab 3) | `ui_kits/app/components/citizen-report.html` |
-| Status badge `.badge.n/w/s` | status derived | `examples/dashboard.html:55-57` | `preview/components.html`, `ui_kits/app/components/dasbor.html` |
+| Status badge `.badge.n/w/s` | status derived | `examples/dashboard.html:55-57` | `preview/components.html`, `ui_kits/app/components/dashboard.html` |
 
 ## Map
 

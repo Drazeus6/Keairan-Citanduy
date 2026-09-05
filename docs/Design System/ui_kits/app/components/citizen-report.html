@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Laporan Warga · UI Kit · Keairan Citanduy</title>
+<title>Laporan Warga Â· UI Kit Â· Keairan Citanduy</title>
 <link rel="stylesheet" href="../../../colors_and_type.css" />
 <link rel="stylesheet" href="../../../assets/main.css" />
 <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
@@ -34,7 +34,7 @@
 
 <header class="masthead">
   <div class="wrap masthead-inner">
-    <a href="../index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit · Komponen · Laporan Warga</small></span></a>
+    <a href="../index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit Â· Komponen Â· Laporan Warga</small></span></a>
     <nav class="primary"><a href="../index.html">Launcher</a><a href="citizen-report.html" aria-current="page">Laporan Warga</a></nav>
     <div class="header-cta"><a href="../../../DESIGN.md" class="btn btn-ghost">DESIGN.md</a></div>
   </div>
@@ -42,9 +42,9 @@
 
 <section style="padding:48px 0 24px;">
   <div class="wrap">
-    <p class="eyebrow">UI Kit · Komponen · Laporan Warga</p>
+    <p class="eyebrow">UI Kit Â· Komponen Â· Laporan Warga</p>
     <h1 class="display" style="margin-top:14px;">Form pelaporan,<br/>umpan balik masuk,<br/>badge validasi.</h1>
-    <p class="lede">Modul citizen-science sederhana: warga mengetik laporan, sistem menandai validasi otomatis dengan stempel waktu. Tidak ada login, tidak ada CAPTCHA — fokus pada tindakan, bukan friksi.</p>
+    <p class="lede">Modul citizen-science sederhana: warga mengetik laporan, sistem menandai validasi otomatis dengan stempel waktu. Tidak ada login, tidak ada CAPTCHA â€” fokus pada tindakan, bukan friksi.</p>
   </div>
 </section>
 
@@ -52,9 +52,9 @@
   <div class="wrap">
 
     <div class="swatch-block" id="report-form">
-      <div class="head"><h4>Citizen report form</h4><code>components/citizen-report.html · #report-form</code></div>
+      <div class="head"><h4>Citizen report form</h4><code>components/citizen-report.html Â· #report-form</code></div>
       <div class="body">
-        <form class="report-card" onsubmit="event.preventDefault(); alert('Demo · laporan terkirim ke pos BBWS terdekat.')">
+        <form class="report-card" onsubmit="event.preventDefault(); alert('Demo Â· laporan terkirim ke pos BBWS terdekat.')">
           <div class="field">
             <label for="r-loc">Lokasi pengamatan</label>
             <input id="r-loc" type="text" placeholder="Cth. Desa Pataruman, Kec. Banjar" />
@@ -81,7 +81,7 @@
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;label for="kat"&gt;Kategori&lt;/label&gt;
-    &lt;select id="kat"&gt;…&lt;/select&gt;
+    &lt;select id="kat"&gt;â€¦&lt;/select&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;label for="msg"&gt;Catatan lapangan&lt;/label&gt;
@@ -93,34 +93,34 @@
     </div>
 
     <div class="swatch-block" id="feed">
-      <div class="head"><h4>Reports feed</h4><code>components/citizen-report.html · #feed</code></div>
+      <div class="head"><h4>Reports feed</h4><code>components/citizen-report.html Â· #feed</code></div>
       <div class="body">
         <div class="feed">
           <div class="feed-item">
-            <span class="who">Pak Dede · Banjar</span>
+            <span class="who">Pak Dede Â· Banjar</span>
             <span class="badge ok">DIVALIDASI</span>
-            <div class="when">14:18 WIB · 04 Sep 2026 · SIH3-CIT-014</div>
+            <div class="when">14:18 WIB Â· 04 Sep 2026 Â· SIH3-CIT-014</div>
             <div class="body-t">Air sungai naik cepat, debit deras, kayu besar tersangkut di jembatan lama.</div>
           </div>
           <div class="feed-item">
-            <span class="who">Ibu Ani · Pataruman</span>
+            <span class="who">Ibu Ani Â· Pataruman</span>
             <span class="badge review">DITINJAU</span>
-            <div class="when">13:54 WIB · 04 Sep 2026</div>
+            <div class="when">13:54 WIB Â· 04 Sep 2026</div>
             <div class="body-t">Tambak vaname mulai stress, salinitas turun dari 18 ppt ke 11 ppt dalam 3 jam.</div>
           </div>
           <div class="feed-item">
-            <span class="who">Pak Wahyu · Langensari</span>
+            <span class="who">Pak Wahyu Â· Langensari</span>
             <span class="badge ok">DIVALIDASI</span>
-            <div class="when">12:30 WIB · 04 Sep 2026 · SIH3-CIT-016</div>
+            <div class="when">12:30 WIB Â· 04 Sep 2026 Â· SIH3-CIT-016</div>
             <div class="body-t">Sampah rumah tangga menumpuk di gorong-gorong, mohon pengecekan DLH.</div>
           </div>
         </div>
 <pre class="code">&lt;div class="feed"&gt;
   &lt;div class="feed-item"&gt;
-    &lt;span class="who"&gt;Pak Dede · Banjar&lt;/span&gt;
+    &lt;span class="who"&gt;Pak Dede Â· Banjar&lt;/span&gt;
     &lt;span class="badge ok"&gt;DIVALIDASI&lt;/span&gt;
-    &lt;div class="when"&gt;14:18 WIB · SIH3-CIT-014&lt;/div&gt;
-    &lt;div class="body-t"&gt;Air sungai naik cepat…&lt;/div&gt;
+    &lt;div class="when"&gt;14:18 WIB Â· SIH3-CIT-014&lt;/div&gt;
+    &lt;div class="body-t"&gt;Air sungai naik cepatâ€¦&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
       </div>
@@ -135,17 +135,17 @@
       <div>
         <div class="brand" style="color:var(--bg); margin-bottom:14px;">
           <span class="brand-mark">K</span>
-          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit · Komponen · Laporan Warga</small></span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit Â· Komponen Â· Laporan Warga</small></span>
         </div>
       </div>
       <div><h5>Modul lain</h5><ul>
         <li><a href="masthead.html">Masthead</a></li>
-        <li><a href="dasbor.html">Dasbor</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="aqua-alert.html">AquaAlert</a></li>
         <li><a href="hydro-amdal.html">Hydro-AMDAL</a></li>
       </ul></div>
       <div><h5>Referensi</h5><ul>
-        <li><a href="../../../DESIGN.md">DESIGN.md §6</a></li>
+        <li><a href="../../../DESIGN.md">DESIGN.md Â§6</a></li>
         <li><a href="../../../examples/dashboard.html">examples/dashboard.html</a></li>
       </ul></div>
     </div>

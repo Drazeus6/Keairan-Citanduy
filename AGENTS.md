@@ -1,6 +1,6 @@
-# AGENTS.md — Keairan Citanduy
+﻿# AGENTS.md â€” Keairan Citanduy
 
-> Platform Intelijen Hidrologi Terpadu WS Citanduy (DAS Citanduy, ±3.500 km², Jabar–Jateng).
+> Platform Intelijen Hidrologi Terpadu WS Citanduy (DAS Citanduy, Â±3.500 kmÂ², Jabarâ€“Jateng).
 > Reference: *Blueprint BBWS/SIH3* (4 September 2026).
 
 ---
@@ -10,9 +10,9 @@
 - **Docs + Next.js Frontend.** Static documentation in `docs/` plus an interactive Next.js
   implementation of the five product surfaces under `src/app/`. Mock API is served in the browser
   via MSW (no real backend yet).
-- `docs/BRD_*.docx` — Business Requirements Document.
-- `docs/PRD_*.docx` — Product Requirements Document.
-- `docs/Design System/` — Reusable design-system package (visual contract, tokens, UI kit, examples).
+- `docs/BRD_*.docx` â€” Business Requirements Document.
+- `docs/PRD_*.docx` â€” Product Requirements Document.
+- `docs/Design System/` â€” Reusable design-system package (visual contract, tokens, UI kit, examples).
 
 ---
 
@@ -28,7 +28,7 @@
 
 MSW intercepts fetch requests in the browser. The worker is initialised by `MSWProvider` (mounted
 in `src/app/layout.tsx`) and must be served from `public/mockServiceWorker.js`. The current page
-will appear "blank" briefly on first load while MSW boots — this is expected.
+will appear "blank" briefly on first load while MSW boots â€” this is expected.
 
 ## Environment Variables
 
@@ -37,7 +37,7 @@ The `.env.local` file at the repo root must include (do not commit; ignored by `
 | Variable | Required | Default | Purpose |
 |---|---|---|---|
 | `NEXT_PUBLIC_MAPBOX_TOKEN` | yes (for map) | placeholder token | Mapbox GL JS public access token (awalan `pk.`) |
-| `NEXT_PUBLIC_MAPBOX_STYLE` | no | `mapbox://styles/mapbox/satellite-streets-v12` | URL gaya Mapbox untuk peta Dasbor |
+| `NEXT_PUBLIC_MAPBOX_STYLE` | no | `mapbox://styles/mapbox/satellite-streets-v12` | URL gaya Mapbox untuk peta Dashboard |
 
 When `NEXT_PUBLIC_MAPBOX_TOKEN` belum terisi, `MapboxMap` menampilkan kartu fallback yang
 mengarahkan developer menambahkan token, sehingga UI tidak crash saat demo offline.
@@ -48,7 +48,7 @@ mengarahkan developer menambahkan token, sehingga UI tidak crash saat demo offli
 
 | Path | Role |
 |---|---|
-| `docs/Design System/assets/` | Verbatim source assets (do not edit) — also copied to `public/assets/` for runtime |
+| `docs/Design System/assets/` | Verbatim source assets (do not edit) â€” also copied to `public/assets/` for runtime |
 | `docs/Design System/examples/` | Verbatim source pages (do not edit) |
 | `src/app/` | Next.js App Router pages (`/`, `/dashboard`, `/aqua-alert`, `/hydro-amdal`, `/methodology`) |
 | `src/components/chrome/` | Masthead, Footer, BandDark |
@@ -68,7 +68,7 @@ mengarahkan developer menambahkan token, sehingga UI tidak crash saat demo offli
 ### Typography
 - **Display = Bodoni Moda** (700/800, tight tracking). Never Inter for headings.
 - **Body = Inter** (400/500/600).
-- **Mono = JetBrains Mono** — for all data: coordinates, TMA, debit, T<sub>r</sub>, IDs, timestamps.
+- **Mono = JetBrains Mono** â€” for all data: coordinates, TMA, debit, T<sub>r</sub>, IDs, timestamps.
 
 ### Color
 - `--accent` (yellow NatGeo) is the **only loud color** on the page. Max two uses per viewport:
@@ -79,7 +79,7 @@ mengarahkan developer menambahkan token, sehingga UI tidak crash saat demo offli
 - No purple wash, no warm beige/cream backgrounds. Page background is warm paper (`oklch(98% 0.005 95)`).
 
 ### Layout
-- One `band-dark` (dark editorial break) per long page — editorial punctuation, not decoration.
+- One `band-dark` (dark editorial break) per long page â€” editorial punctuation, not decoration.
 - Sticky masthead: `position: sticky; top: 0; backdrop-filter: blur(8px)`.
 - 5-item nav + 1 primary CTA.
 
@@ -87,8 +87,8 @@ mengarahkan developer menambahkan token, sehingga UI tidak crash saat demo offli
 - Bahasa Indonesia formal on public surfaces. English only for small-caps labels (eyebrow/caption).
 - **Numerik-forward**: numbers are first-class citizens. Always mono.
 - Indonesian number format: **period** (`.`) = thousand separator, **comma** (`,`) = decimal.
-  - Correct: `Rp 500rb`, `312 cm`, `24,5 m³/s`, `3.500 km²`
-  - Wrong: `Rp 500,000`, `3,500 km²`
+  - Correct: `Rp 500rb`, `312 cm`, `24,5 mÂ³/s`, `3.500 kmÂ²`
+  - Wrong: `Rp 500,000`, `3,500 kmÂ²`
 - Avoid emoji as functional UI icons. Emoji inside WhatsApp bubble samples are the only exception (they are a faithful reproduction of a real message).
 
 ### Anti-patterns (do not do these)
@@ -108,10 +108,10 @@ mengarahkan developer menambahkan token, sehingga UI tidak crash saat demo offli
 | Audience | Product | Pricing |
 |---|---|---|
 | Warga DAS Citanduy (general public) | Peta Pantau Banjir + Kalender Cuaca Tani Mikro + Kanal Pelaporan Warga | **Free**, no registration barrier |
-| Petambak udang vaname & bandeng (muara Cilacap, Pangandaran) | **AquaAlert** — WhatsApp/SMS early-warning (12–24 hr lead) | Rp500rb–Rp1,5jt/bulan/lokasi |
-| Konsultan AMDAL & kawasan industri | **Hydro-AMDAL Engine** — automated IDF/Gumbel/Log-Pearson III + DOCX export | Rp20–50jt/tahun lisensi, atau Rp3–7,5jt per laporan |
+| Petambak udang vaname & bandeng (muara Cilacap, Pangandaran) | **AquaAlert** â€” WhatsApp/SMS early-warning (12â€“24 hr lead) | Rp500rbâ€“Rp1,5jt/bulan/lokasi |
+| Konsultan AMDAL & kawasan industri | **Hydro-AMDAL Engine** â€” automated IDF/Gumbel/Log-Pearson III + DOCX export | Rp20â€“50jt/tahun lisensi, atau Rp3â€“7,5jt per laporan |
 
-AquaAlert and Hydro-AMDAL currently carry a "DEMO" badge in the masthead area. No auth — all routes
+AquaAlert and Hydro-AMDAL currently carry a "DEMO" badge in the masthead area. No auth â€” all routes
 are public per the plan; full registration/payment is a backend concern.
 
 ---
@@ -121,15 +121,15 @@ are public per the plan; full registration/payment is a backend concern.
 In Next.js the tokens + `main.css` content live in a single `globals.css` file (imported once from
 `src/app/layout.tsx`). The order is:
 
-1. `:root` brand tokens (OKLch primary) — top of `globals.css`
-2. `main.css` content — below the tokens
+1. `:root` brand tokens (OKLch primary) â€” top of `globals.css`
+2. `main.css` content â€” below the tokens
 
 This preserves the source design contract "OKLch tokens win the cascade over canonical components"
 even though Next.js ships a single stylesheet.
 
 ---
 
-## Source Files That Are Verbatim — Do Not Edit
+## Source Files That Are Verbatim â€” Do Not Edit
 
 - `docs/Design System/examples/*.html` (5 files)
 - `docs/Design System/examples/Blueprint-Platform-Keairan-Citanduy.pdf`
@@ -138,7 +138,7 @@ even though Next.js ships a single stylesheet.
 - `docs/Design System/context/source-context.md`
 
 The Next.js implementation re-emits these designs in TSX but never modifies the source HTML/CSS
-files. If you need to change visual contract, edit `src/styles/globals.css` and component code —
+files. If you need to change visual contract, edit `src/styles/globals.css` and component code â€”
 not the source.
 
 ---
@@ -153,5 +153,5 @@ Start-Process -FilePath $env:OD_NODE_BIN `
   -WorkingDirectory (Get-Location)
 ```
 
-**Windows gotcha:** Bare `& $env:OD_NODE_BIN …` fails because `OD_NODE_BIN` resolves to `Open Design.exe`
+**Windows gotcha:** Bare `& $env:OD_NODE_BIN â€¦` fails because `OD_NODE_BIN` resolves to `Open Design.exe`
 (path with spaces). Always use `Start-Process` with an argument list as shown.

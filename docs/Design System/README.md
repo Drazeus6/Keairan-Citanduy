@@ -1,4 +1,4 @@
-# Keairan Citanduy — Design System Package
+﻿# Keairan Citanduy â€” Design System Package
 
 > Editorial-documentary visual language for an Indonesian hydrological
 > intelligence platform (WS Citanduy). Civic-tech with the calm
@@ -11,18 +11,18 @@
 **Keairan Citanduy** is the digital implementation of the *Platform
 Intelijen Hidrologi Terpadu WS Citanduy* blueprint (BBWS / SIH3,
 4 September 2026). It is a hydrological intelligence product for
-Indonesia's Citanduy River Basin (±3.500 km², spanning Jabar and
+Indonesia's Citanduy River Basin (Â±3.500 kmÂ², spanning Jabar and
 Jateng) and serves three distinct audiences from a single data
 pipeline:
 
-1. **Warga DAS Citanduy** — general public, mobile-first, free. They
+1. **Warga DAS Citanduy** â€” general public, mobile-first, free. They
    get the *Peta Pantau Banjir*, the *Kalender Cuaca Tani Mikro*, and
    the *Kanal Pelaporan Warga*.
-2. **Petambak udang vaname & petani** — paying commercial users of
+2. **Petambak udang vaname & petani** â€” paying commercial users of
    **AquaAlert**, the WhatsApp + SMS early-warning gateway that
-   translates upstream river discharge into 12–24 hour salinity and
+   translates upstream river discharge into 12â€“24 hour salinity and
    flood warnings per pond.
-3. **Konsultan AMDAL & kawasan industri** — paying corporate users of
+3. **Konsultan AMDAL & kawasan industri** â€” paying corporate users of
    **Hydro-AMDAL**, the document-generation product that drafts BAB
    III *Analisis Hidrologi* (IDF curves, debit rencana, T<sub>r</sub>
    tables) directly into PDF/DOCX.
@@ -38,7 +38,7 @@ editorial band per page).
 | Capability | Surface | Source |
 |---|---|---|
 | Peta pantau banjir (live station map, status N/W/S) | `examples/dashboard.html`, `preview/applied-public-dashboard.html` | `assets/main.css` ticker/station, `assets/map-das-citanduy.svg` |
-| Kalender cuaca tani mikro (72 px calendar cell, warn badge) | `examples/dashboard.html`, `ui_kits/app/components/dasbor.html` | `assets/main.css` calendar-cell |
+| Kalender cuaca tani mikro (72 px calendar cell, warn badge) | `examples/dashboard.html`, `ui_kits/app/components/dashboard.html` | `assets/main.css` calendar-cell |
 | Laporan warga (form + feed) | `examples/dashboard.html`, `ui_kits/app/components/citizen-report.html` | `assets/main.css` report-form |
 | AquaAlert WhatsApp / SMS warning | `examples/aqua-alert.html`, `ui_kits/app/components/aqua-alert.html` | `assets/icon-warning.svg` |
 | Hydro-AMDAL BAB III doc + IDF curve | `examples/hydro-amdal.html`, `ui_kits/app/components/hydro-amdal.html` | `assets/main.css` doc-preview |
@@ -55,7 +55,7 @@ workspace and re-emits them under a documented visual contract.
 
 | Need | Where it is satisfied |
 |---|---|
-| One source of truth for tokens & components | `DESIGN.md` §0–§7 |
+| One source of truth for tokens & components | `DESIGN.md` Â§0â€“Â§7 |
 | A reusable Claude Design skill | `SKILL.md` (frontmatter + sections) |
 | Reviewer walk-through | `preview/index.html` + 8 focused preview cards + 3 applied screens |
 | Drop-in kit for new surfaces | `ui_kits/app/` |
@@ -69,13 +69,13 @@ workspace and re-emits them under a documented visual contract.
 | File | Role |
 |---|---|
 | `context/source-context.md` | Verbatim metadata from the source project (`kind: prototype`, `intent: web-clone`, `skipDiscoveryBrief: true`, `websiteCloneFrom: https://keairan-citanduy.example`, `themePaletteHint: warm-paper + yellow-accent`) |
-| `context/provenance.md` | Per-file map of source → package output (preserved vs derived) |
+| `context/provenance.md` | Per-file map of source â†’ package output (preserved vs derived) |
 | `context/component-manifest.md` | 22-component catalog with file + line pointers |
-| `DESIGN.md` §0 | Source-backed evidence table mapping every copied file to the tokens/components it seeded |
+| `DESIGN.md` Â§0 | Source-backed evidence table mapping every copied file to the tokens/components it seeded |
 | `examples/Blueprint-Platform-Keairan-Citanduy.pdf` | Reference blueprint (BBWS / SIH3, 4 September 2026) |
 | `brand-spec.md` | Verbatim brand spec from source |
 | `examples/index.html` | Source: Beranda (hero, pillars, stat strip, band-dark) |
-| `examples/dashboard.html` | Source: Peta & Dasbor Publik (ticker, tabs, station, calendar, report form) |
+| `examples/dashboard.html` | Source: Peta & Dashboard Publik (ticker, tabs, station, calendar, report form) |
 | `examples/aqua-alert.html` | Source: AquaAlert (WA bubble, comparison table, pricing) |
 | `examples/hydro-amdal.html` | Source: Hydro-AMDAL (doc preview, IDF curve, pricing) |
 | `examples/methodology.html` | Source: Metodologi (spec table, pipeline diagram, citations) |
@@ -86,37 +86,37 @@ workspace and re-emits them under a documented visual contract.
 
 ```
 keairan-citanduy/
-├── DESIGN.md                       Source of truth (visual contract, tokens, components, motion, voice, anti-patterns)
-├── SKILL.md                        Claude Design skill manifest (frontmatter + workflow)
-├── README.md                       This file
-├── colors_and_type.css             OKLch tokens + hex fallbacks + font stacks + helper classes
-├── brand-spec.md                   Verbatim brand spec from source
-│
-├── assets/                         Brand & runtime assets
-│   ├── main.css                    Verbatim shared stylesheet (24 KB) — load after colors_and_type.css
-│   ├── logo-mark.svg               Yellow square + black "K" wordmark
-│   ├── wordmark.svg                Full horizontal lockup
-│   ├── favicon.svg                 32 px favicon (source-derived)
-│   ├── pattern-topo.svg            Editorial topographic pattern
-│   ├── map-das-citanduy.svg        DAS Citanduy base map
-│   ├── marker-status-normal.svg    Map marker (Normal)
-│   ├── marker-status-waspada.svg   Map marker (Waspada)
-│   ├── marker-status-siaga.svg     Map marker (Siaga, with pulse)
-│   ├── icon-warning.svg            Triangular warning glyph
-│   └── sih3-stations.json          8-station coordinate set
-│
-├── build/                          Runtime icons
-│   ├── icon-32.svg                 PWA / favicon 32 px
-│   ├── apple-touch-icon.svg        Apple touch 180 px
-│   └── og-cover.svg                Open Graph 1920 × 480
-│
-├── preview/                        Reviewer landing + 8 focused preview cards + 3 applied screens
-│
-├── ui_kits/app/                    Applied interface kit (loadable)
-│
-├── examples/                       Preserved source pages (verbatim)
-│
-└── context/                        Notes & provenance
+â”œâ”€â”€ DESIGN.md                       Source of truth (visual contract, tokens, components, motion, voice, anti-patterns)
+â”œâ”€â”€ SKILL.md                        Claude Design skill manifest (frontmatter + workflow)
+â”œâ”€â”€ README.md                       This file
+â”œâ”€â”€ colors_and_type.css             OKLch tokens + hex fallbacks + font stacks + helper classes
+â”œâ”€â”€ brand-spec.md                   Verbatim brand spec from source
+â”‚
+â”œâ”€â”€ assets/                         Brand & runtime assets
+â”‚   â”œâ”€â”€ main.css                    Verbatim shared stylesheet (24 KB) â€” load after colors_and_type.css
+â”‚   â”œâ”€â”€ logo-mark.svg               Yellow square + black "K" wordmark
+â”‚   â”œâ”€â”€ wordmark.svg                Full horizontal lockup
+â”‚   â”œâ”€â”€ favicon.svg                 32 px favicon (source-derived)
+â”‚   â”œâ”€â”€ pattern-topo.svg            Editorial topographic pattern
+â”‚   â”œâ”€â”€ map-das-citanduy.svg        DAS Citanduy base map
+â”‚   â”œâ”€â”€ marker-status-normal.svg    Map marker (Normal)
+â”‚   â”œâ”€â”€ marker-status-waspada.svg   Map marker (Waspada)
+â”‚   â”œâ”€â”€ marker-status-siaga.svg     Map marker (Siaga, with pulse)
+â”‚   â”œâ”€â”€ icon-warning.svg            Triangular warning glyph
+â”‚   â””â”€â”€ sih3-stations.json          8-station coordinate set
+â”‚
+â”œâ”€â”€ build/                          Runtime icons
+â”‚   â”œâ”€â”€ icon-32.svg                 PWA / favicon 32 px
+â”‚   â”œâ”€â”€ apple-touch-icon.svg        Apple touch 180 px
+â”‚   â””â”€â”€ og-cover.svg                Open Graph 1920 Ã— 480
+â”‚
+â”œâ”€â”€ preview/                        Reviewer landing + 8 focused preview cards + 3 applied screens
+â”‚
+â”œâ”€â”€ ui_kits/app/                    Applied interface kit (loadable)
+â”‚
+â”œâ”€â”€ examples/                       Preserved source pages (verbatim)
+â”‚
+â””â”€â”€ context/                        Notes & provenance
 ```
 
 ### Preserved assets, fonts, build artifacts, source examples
@@ -135,14 +135,14 @@ keairan-citanduy/
 
 ```
 ui_kits/app/
-├── index.html                  Launcher — kartu modul + daftar komponen
-├── README.md                   Reuse guide (this skill's UI kit doc)
-└── components/
-    ├── masthead.html           Sticky masthead + hero 4:5
-    ├── dasbor.html             Ticker / station card / tabs / calendar
-    ├── aqua-alert.html         WhatsApp bubble / comparison table / pricing
-    ├── hydro-amdal.html        Doc preview card / IDF curve SVG
-    └── citizen-report.html     Citizen-science form + reports feed
+â”œâ”€â”€ index.html                  Launcher â€” kartu modul + daftar komponen
+â”œâ”€â”€ README.md                   Reuse guide (this skill's UI kit doc)
+â””â”€â”€ components/
+    â”œâ”€â”€ masthead.html           Sticky masthead + hero 4:5
+    â”œâ”€â”€ dashboard.html             Ticker / station card / tabs / calendar
+    â”œâ”€â”€ aqua-alert.html         WhatsApp bubble / comparison table / pricing
+    â”œâ”€â”€ hydro-amdal.html        Doc preview card / IDF curve SVG
+    â””â”€â”€ citizen-report.html     Citizen-science form + reports feed
 ```
 
 ---
@@ -159,12 +159,12 @@ discipline.
 | 2 | `preview/applied-public-dashboard.html` | The most complex applied screen (map + ticker + stations + live toast) | ticker, station card, badge N/W/S, calendar, map, legend |
 | 3 | `preview/colors.html` | Full color surface: brand + status + contrast pairs | all `--bg-*`, `--fg-*`, `--status-*` tokens |
 | 4 | `preview/colors-primary.html` | Focused: 6 primary tokens + 4 contrast pairs with ratios | `--bg`, `--surface`, `--fg`, `--muted`, `--border`, `--accent` |
-| 5 | `preview/typography.html` | Type scale ringkas (display, body, mono) | `--display`, `--body`, `--mono`, `--h1`–`--h4` |
+| 5 | `preview/typography.html` | Type scale ringkas (display, body, mono) | `--display`, `--body`, `--mono`, `--h1`â€“`--h4` |
 | 6 | `preview/typography-specimens.html` | Focused: full specimens + fluid scale + dark quote | `--display`/`--body`/`--mono`/`--lede`/`--eyebrow` |
 | 7 | `preview/spacing.html` | Spacing & shape ringkas | `--gutter`, `--section-pad`, `--radius-*`, `--shadow-*` |
 | 8 | `preview/spacing-tokens.html` | Focused: gutter, section pad, 8-step scale, 3 radius, 3 shadow | same as above + card anatomy |
 | 9 | `preview/components.html` | All components in one place | btn, card, pillar, band-dark, quote, table, tab, ticker, station, badge |
-| 10 | `preview/components-buttons.html` | Focused: 4 button variants × 6 interaction states | `.btn`, `.btn-primary`, `.btn-ghost`, `.btn-dark`, `.btn-link` |
+| 10 | `preview/components-buttons.html` | Focused: 4 button variants Ã— 6 interaction states | `.btn`, `.btn-primary`, `.btn-ghost`, `.btn-dark`, `.btn-link` |
 | 11 | `preview/brand-assets.html` | Logo, wordmark, favicon, markers, icon-warning | all `assets/*.svg`, all `build/*.svg` |
 | 12 | `preview/applied-aqua-alert.html` | Applied: WhatsApp + comparison table + pricing | WA bubble, comparison, pricing |
 | 13 | `preview/applied-hydro-amdal.html` | Applied: doc preview + IDF curve + pricing | doc card, IDF SVG, pricing |
@@ -177,7 +177,7 @@ card visibly references `assets/*.svg` and `build/*.svg` files.
 
 ## Package Reuse Guide
 
-### Step 1 — Bind tokens
+### Step 1 â€” Bind tokens
 
 Paste `colors_and_type.css` into the first `<style>` block of the new
 artifact, then include `assets/main.css` after it. Order matters:
@@ -190,23 +190,23 @@ the OKLch tokens must win the cascade over the canonical components.
 <link rel="stylesheet" href="assets/main.css">
 ```
 
-### Step 2 — Reuse the masthead
+### Step 2 â€” Reuse the masthead
 
 Copy the structure from `ui_kits/app/components/masthead.html`. Keep
 it sticky. Keep it blurred. Brand mark left, five nav items middle,
 one primary CTA right.
 
-### Step 3 — Reuse the module kit
+### Step 3 â€” Reuse the module kit
 
 | Need | Use |
 |---|---|
 | Sticky masthead + hero | `ui_kits/app/components/masthead.html` |
-| Dasbor (ticker, station, tab, kalender) | `ui_kits/app/components/dasbor.html` |
+| Dashboard (ticker, station, tab, kalender) | `ui_kits/app/components/dashboard.html` |
 | AquaAlert (WA + tabel + harga) | `ui_kits/app/components/aqua-alert.html` |
 | Hydro-AMDAL (doc + IDF + harga) | `ui_kits/app/components/hydro-amdal.html` |
 | Citizen report (form + feed) | `ui_kits/app/components/citizen-report.html` |
 
-### Step 4 — Honor the rules
+### Step 4 â€” Honor the rules
 
 | Rule | Why |
 |---|---|
@@ -217,9 +217,9 @@ one primary CTA right.
 | No emoji as UI icons | Document / press convention |
 | Bahasa Indonesia formal, numerik-forward | Public-service voice |
 | Coordinate, TMA, debit, T<sub>r</sub>, IDs, timestamps in mono | Number legibility |
-| Currency: Indonesian format (`Rp 500rb`, `24,5 m³/s`) | Localized, not generic SaaS |
+| Currency: Indonesian format (`Rp 500rb`, `24,5 mÂ³/s`) | Localized, not generic SaaS |
 
-### Step 5 — Audit before delivering
+### Step 5 â€” Audit before delivering
 
 ```powershell
 Start-Process -FilePath $env:OD_NODE_BIN `
@@ -229,24 +229,24 @@ Start-Process -FilePath $env:OD_NODE_BIN `
   -WorkingDirectory (Get-Location)
 ```
 
-(Bare `& $env:OD_NODE_BIN …` fails on Windows because `$OD_NODE_BIN`
-resolves to `Open Design.exe` — a path with spaces. Use
+(Bare `& $env:OD_NODE_BIN â€¦` fails on Windows because `$OD_NODE_BIN`
+resolves to `Open Design.exe` â€” a path with spaces. Use
 `Start-Process` as shown.)
 
 ---
 
 ## Reviewer Walk-Through
 
-1. Open `preview/index.html` → jump to any card.
-2. Start at `preview/applied-public-dashboard.html` — the most
+1. Open `preview/index.html` â†’ jump to any card.
+2. Start at `preview/applied-public-dashboard.html` â€” the most
    information-dense screen.
 3. Walk discipline by discipline:
-   `colors-primary.html` → `typography-specimens.html` →
-   `spacing-tokens.html` → `components-buttons.html` →
+   `colors-primary.html` â†’ `typography-specimens.html` â†’
+   `spacing-tokens.html` â†’ `components-buttons.html` â†’
    `brand-assets.html`.
 4. Re-enter the applied screens: `applied-aqua-alert.html`,
    `applied-hydro-amdal.html`.
-5. Drop into the kit: `ui_kits/app/index.html` → each `components/*.html`.
+5. Drop into the kit: `ui_kits/app/index.html` â†’ each `components/*.html`.
 6. Compare to the source pages in `examples/` (verbatim) to verify
    the package preserved the source's editorial voice.
 
@@ -271,7 +271,7 @@ See `context/provenance.md` for the file-by-file mapping and
 
 ## Quick Reference
 
-| Want to… | Open this |
+| Want toâ€¦ | Open this |
 |---|---|
 | Internalize the visual contract | `DESIGN.md` |
 | See tokens | `colors_and_type.css` |

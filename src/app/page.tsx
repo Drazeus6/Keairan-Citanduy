@@ -7,7 +7,7 @@ const statItems = [
   { num: "12", label: "Jam sebelumnya (peringatan salinitas)" },
   { num: "5", label: "Parameter SIH3 terintegrasi" },
   { num: "27", label: "Pos duga air di DAS" },
-  { num: "Rp 0", label: "Untuk dasbor publik" },
+  { num: "Rp 0", label: "Untuk dashboard publik" },
 ];
 
 const pillars = [
@@ -77,7 +77,7 @@ const storyCards = [
     category: "Pertanian",
     readTime: "5 menit",
     title: "Kalender tani yang memahami bahasa wereng.",
-    body: "Kelembapan relatif di atas 85% ditambah fluktuasi temperatur memicu ledakan hama. Dasbor publik menerjemahkan parameter teknis menjadi saran tebar benih dan penjemuran gabah.",
+    body: "Kelembapan relatif di atas 85% ditambah fluktuasi temperatur memicu ledakan hama. Dashboard publik menerjemahkan parameter teknis menjadi saran tebar benih dan penjemuran gabah.",
     href: "/dashboard?tab=tani",
     label: "Buka Kalender Tani",
     img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
@@ -101,7 +101,7 @@ const roadmapSteps = [
   },
   {
     badge: "Fase 2 · Bulan 3–4",
-    title: "Rilis Dasbor & Pilot Tambak",
+    title: "Rilis Dashboard & Pilot Tambak",
     desc: "Peluncuran peta terpadu 3-in-1 gratis dan pilot WhatsApp ke 5–10 petambak intensif pesisir Cilacap & Pangandaran.",
   },
   {
@@ -292,13 +292,13 @@ export default function HomePage() {
         }
       >
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>
-          <Link href="/dashboard" className="btn btn-primary">Buka Dasbor</Link>
+          <Link href="/dashboard" className="btn btn-primary">Buka Dashboard</Link>
           <Link href="/dashboard?tab=tani" className="btn btn-dark">Lihat Kalender Tani</Link>
         </div>
 
         {/* Mini-map preview SVG */}
         <div style={{ marginTop: 48, borderRadius: "var(--radius)", overflow: "hidden", border: "1px solid oklch(28% 0.01 250)" }}>
-          <svg viewBox="0 0 600 360" style={{ width: "100%", height: "auto", display: "block" }} role="img" aria-label="Pratinjau dasbor publik WS Citanduy">
+          <svg viewBox="0 0 600 360" style={{ width: "100%", height: "auto", display: "block" }} role="img" aria-label="Pratinjau dashboard publik WS Citanduy">
             <defs>
               <linearGradient id="mapBg" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%" stopColor="#1d2e2a" />
@@ -485,11 +485,11 @@ export default function HomePage() {
                 Cek status sungai di dekat Anda hari ini.
               </h3>
               <p style={{ color: "var(--muted)", marginTop: 10, fontSize: 14, maxWidth: 600 }}>
-                Tanpa registrasi. Buka dasbor publik, lihat peta, dan laporkan genangan dari ponsel Anda.
+                Tanpa registrasi. Buka dashboard publik, lihat peta, dan laporkan genangan dari ponsel Anda.
               </p>
             </div>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="/dashboard" className="btn btn-primary">Buka Dasbor Publik</Link>
+              <Link href="/dashboard" className="btn btn-primary">Buka Dashboard Publik</Link>
               <Link href="/dashboard?tab=lapor" className="btn btn-ghost">Kirim Laporan Warga</Link>
             </div>
           </div>

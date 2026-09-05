@@ -1,4 +1,4 @@
-# UI Kit · App · Keairan Citanduy
+﻿# UI Kit Â· App Â· Keairan Citanduy
 
 > Applied interface kit untuk **Keairan Citanduy**, hydrological
 > intelligence platform untuk WS Citanduy.
@@ -13,7 +13,7 @@ dipakai ulang.
 ## When to use
 
 Use this kit when you need to compose a new product surface for the
-Keairan Citanduy visual contract — specifically a surface that
+Keairan Citanduy visual contract â€” specifically a surface that
 combines one or more of: a sticky editorial masthead, the public
 flood dashboard, an AquaAlert WhatsApp preview, a Hydro-AMDAL doc
 preview, or a citizen-science report form. Every module already binds
@@ -24,14 +24,14 @@ the tokens from `colors_and_type.css` and the canonical classes from
 
 ```
 ui_kits/app/
-├── index.html                 Launcher — kartu modul + daftar komponen
-├── README.md                  File ini (reuse guide)
-└── components/
-    ├── masthead.html          Masthead sticky + hero asimetris 1.05fr / 1fr
-    ├── dasbor.html            Ticker SIAGA, station card, tab strip, kalender
-    ├── aqua-alert.html        WhatsApp bubble, tabel perbandingan, harga
-    ├── hydro-amdal.html       Doc preview card, kurva IDF SVG
-    └── citizen-report.html    Form pelaporan warga, feed umpan balik
+â”œâ”€â”€ index.html                 Launcher â€” kartu modul + daftar komponen
+â”œâ”€â”€ README.md                  File ini (reuse guide)
+â””â”€â”€ components/
+    â”œâ”€â”€ masthead.html          Masthead sticky + hero asimetris 1.05fr / 1fr
+    â”œâ”€â”€ dashboard.html            Ticker SIAGA, station card, tab strip, kalender
+    â”œâ”€â”€ aqua-alert.html        WhatsApp bubble, tabel perbandingan, harga
+    â”œâ”€â”€ hydro-amdal.html       Doc preview card, kurva IDF SVG
+    â””â”€â”€ citizen-report.html    Form pelaporan warga, feed umpan balik
 ```
 
 ## Component files
@@ -40,16 +40,16 @@ ui_kits/app/
 |---|---|---|
 | `index.html` | Launcher listing 4 module cards + 12 component links + "Cara pakai ulang" workflow section | masthead, card, pillar, code-block classes |
 | `components/masthead.html` | Sticky masthead + asymmetric hero 1.05fr / 1fr with 4:5 portrait photo and copy-paste `<pre class="code">` block | `examples/index.html` hero-grid + masthead |
-| `components/dasbor.html` | Ticker SIAGA (live blink), 3-variant station card (Normal/Waspada/Siaga), tab strip, 7-column calendar | `examples/dashboard.html` ticker + station + tab + calendar |
-| `components/aqua-alert.html` | WhatsApp bubble with `⚠ PERINGATAN DINI`, 2-column comparison table (sebelum/sesudah), 3-tier pricing | `examples/aqua-alert.html` WA + tabel + harga |
+| `components/dashboard.html` | Ticker SIAGA (live blink), 3-variant station card (Normal/Waspada/Siaga), tab strip, 7-column calendar | `examples/dashboard.html` ticker + station + tab + calendar |
+| `components/aqua-alert.html` | WhatsApp bubble with `âš  PERINGATAN DINI`, 2-column comparison table (sebelum/sesudah), 3-tier pricing | `examples/aqua-alert.html` WA + tabel + harga |
 | `components/hydro-amdal.html` | Doc preview card (BAB III) + inline IDF curve SVG with T<sub>r</sub> 2/10/25 paths | `examples/hydro-amdal.html` doc + IDF |
 | `components/citizen-report.html` | Citizen report form (focus ring `oklch(82% 0.18 95 / 0.4)`) + 3-item reports feed with `DIVALIDASI` / `DITINJAU` badges | `examples/dashboard.html` form + feed |
 
 ## Usage Workflow
 
-1. Buka `index.html` kit ini di peramban — di sinilah semua modul
+1. Buka `index.html` kit ini di peramban â€” di sinilah semua modul
    dan komponen terdaftar sebagai kartu.
-2. Klik kartu modul (Dasbor, AquaAlert, dll) untuk membuka contoh
+2. Klik kartu modul (Dashboard, AquaAlert, dll) untuk membuka contoh
    komponen dengan markup siap salin.
 3. Salin blok markup yang Anda butuhkan ke artefak baru. Kelas yang
    digunakan (`masthead`, `ticker`, `station`, `wa-bubble`, `pillar`,
@@ -62,7 +62,7 @@ ui_kits/app/
    must win the cascade over the canonical components.
 2. Copy the masthead markup from `components/masthead.html` and paste
    it at the top of the body. It is `position: sticky; top: 0` with a
-   backdrop blur — keep those properties intact.
+   backdrop blur â€” keep those properties intact.
 3. Compose the page body by stacking any subset of the 4 modules in
    `components/`. Each module is self-contained: it carries its own
    `data-od-id`, semantic markup, and token references.
@@ -86,9 +86,9 @@ Each component in this kit follows the same rules as `DESIGN.md`:
 
 - **One primary button per viewport.** `btn-primary` is the only loud
   fill; other entries are ghost, dark, or text-link.
-- **No emoji as UI icons.** The `⚠` and `ℹ` glyphs inside the WhatsApp
+- **No emoji as UI icons.** The `âš ` and `â„¹` glyphs inside the WhatsApp
   bubble are the only acceptable place, because they are inside a
-  screenshot reproduction of a real message — not UI chrome.
+  screenshot reproduction of a real message â€” not UI chrome.
 - **No page-chrome gradients.** Gradients live only inside the river
   map and the IDF curve fill.
 - **Numbers use mono; status uses BBWS colors.** Coordinates, TMA,
@@ -109,21 +109,21 @@ Setiap perubahan pada kit ini harus lulus:
 ```
 
 Use the `Start-Process` PowerShell wrapper shown in the root
-`README.md`; bare `& $env:OD_NODE_BIN …` fails on Windows because the
+`README.md`; bare `& $env:OD_NODE_BIN â€¦` fails on Windows because the
 binary lives at a path with spaces.
 
 ## Source Basis
 
 Each card in the launcher re-emits markup from a source file preserved
-under `examples/`. Pemetaan sumber → modul:
+under `examples/`. Pemetaan sumber â†’ modul:
 
 | Modul UI kit | File sumber |
 |---|---|
 | `components/masthead.html` | `examples/index.html` (hero + masthead) |
-| `components/dasbor.html` | `examples/dashboard.html` (ticker, station, tab, kalender) |
+| `components/dashboard.html` | `examples/dashboard.html` (ticker, station, tab, kalender) |
 | `components/aqua-alert.html` | `examples/aqua-alert.html` (WA, tabel, harga) |
 | `components/hydro-amdal.html` | `examples/hydro-amdal.html` (doc preview, IDF) |
 | `components/citizen-report.html` | `examples/dashboard.html` (form + feed tab laporan) |
 
 For deeper evidence (which lines seeded which tokens), see
-`DESIGN.md` §0 and `context/provenance.md`.
+`DESIGN.md` Â§0 and `context/provenance.md`.

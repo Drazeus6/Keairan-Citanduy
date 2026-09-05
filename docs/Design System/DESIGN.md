@@ -1,4 +1,4 @@
-# Keairan Citanduy — Design System
+﻿# Keairan Citanduy â€” Design System
 
 > Source project: **Website Clone** (`34f5303a-4fc3-4e6f-ac12-e392cdffb01c`)
 > Surface: web
@@ -11,16 +11,16 @@
 **Keairan Citanduy** is the digital implementation of the *Platform Intelijen
 Hidrologi Terpadu WS Citanduy* blueprint (BBWS / SIH3, 4 September 2026). It is
 a hydrological intelligence product for Indonesia's Citanduy River Basin
-(±3.500 km², spanning Jabar and Jateng) and serves three distinct audiences
+(Â±3.500 kmÂ², spanning Jabar and Jateng) and serves three distinct audiences
 from a single data pipeline:
 
-1. **Warga DAS Citanduy** — general public, mobile-first, free. They get the
+1. **Warga DAS Citanduy** â€” general public, mobile-first, free. They get the
    *Peta Pantau Banjir*, the *Kalender Cuaca Tani Mikro*, and the *Kanal
    Pelaporan Warga*.
-2. **Petambak udang vaname & petani** — paying commercial users of **AquaAlert**,
+2. **Petambak udang vaname & petani** â€” paying commercial users of **AquaAlert**,
    the WhatsApp + SMS early-warning gateway that translates upstream river
-   discharge into 12–24 hour salinity and flood warnings per pond.
-3. **Konsultan AMDAL & kawasan industri** — paying corporate users of
+   discharge into 12â€“24 hour salinity and flood warnings per pond.
+3. **Konsultan AMDAL & kawasan industri** â€” paying corporate users of
    **Hydro-AMDAL**, the document-generation product that drafts BAB III Analisis
    Hidrologi (IDF curves, debit rencana, T<sub>r</sub> tables) directly into
    PDF/DOCX.
@@ -35,7 +35,7 @@ outside (one yellow accent, one dark editorial band per page).
 | Surface | Audience | Source evidence |
 |---|---|---|
 | `index.html` (Beranda) | All three | Hero + 3 pillars + spec table |
-| `dashboard.html` (Peta & Dasbor Publik) | Warga + observers | Tabs: peta / kalender / laporan warga |
+| `dashboard.html` (Peta & Dashboard Publik) | Warga + observers | Tabs: peta / kalender / laporan warga |
 | `aqua-alert.html` (AquaAlert) | Petambak | Hero + WhatsApp message sample + before/after table + pricing |
 | `hydro-amdal.html` (Hydro-AMDAL) | Konsultan | Doc preview + IDF curve + paket harga |
 | `methodology.html` (Metodologi) | Researchers, press | Spec tables, pipeline diagram, references |
@@ -47,7 +47,7 @@ outside (one yellow accent, one dark editorial band per page).
 | `assets/main.css` (24 KB, verbatim) | `assets/main.css` | All OKLch tokens, masthead, card, pillar, band-dark, quote, ticker, stat-strip, btn classes |
 | `brand-spec.md` (verbatim) | `brand-spec.md` | Visual style direction and brand token list |
 | `index.html` (Beranda, source) | `examples/index.html` | Hero pattern, kicker eyebrow, 3-pillar pricing layout, stat strip |
-| `dashboard.html` (Peta & Dasbor Publik) | `examples/dashboard.html` | Tabbed shell, ticker pattern, station card, citizen-report form, mini chart |
+| `dashboard.html` (Peta & Dashboard Publik) | `examples/dashboard.html` | Tabbed shell, ticker pattern, station card, citizen-report form, mini chart |
 | `aqua-alert.html` | `examples/aqua-alert.html` | WhatsApp message sample, comparison table, tiered pricing |
 | `hydro-amdal.html` | `examples/hydro-amdal.html` | Doc-preview card, IDF curve SVG, paket harga |
 | `methodology.html` | `examples/methodology.html` | Spec table rhythm, source citations, pipeline diagram |
@@ -70,15 +70,15 @@ Citanduy River Basin (WS Citanduy). The visual language is an editorial-document
 hybrid: **National Geographic cover energy on the surface, Indonesian public-service
 clarity underneath**.
 
-- **Genre cue:** long-form magazine — kicker labels, serif display headlines, natural
+- **Genre cue:** long-form magazine â€” kicker labels, serif display headlines, natural
   photography, dense data tables, restrained accents.
 - **Tone cue:** serious, transparent, expert. Bahasa Indonesia formal, but numerik
-  (numbers are first-class citizens — they get mono fonts and uppercase captions).
+  (numbers are first-class citizens â€” they get mono fonts and uppercase captions).
 - **Audience span:** three groups must feel addressed at once:
   1. Warga DAS Citanduy (general public, mobile-first, free);
   2. Petambak udang & petani (paying commercial users of AquaAlert);
   3. Konsultan AMDAL & kawasan industri (paying corporate users of Hydro-AMDAL).
-- **Single decisive flourish:** the **yellow NatGeo accent** on a paper-warm canvas —
+- **Single decisive flourish:** the **yellow NatGeo accent** on a paper-warm canvas â€”
   appearing only on CTAs, small caps tags, and currency figures. Nothing else is
   yellow. Nothing else is allowed to be that loud.
 
@@ -89,7 +89,7 @@ rhythm and tells the reader "you are looking at a serious platform".
 
 All tokens are OKLch-derived to keep perceived lightness stable across the warm
 paper / cool ink / status palettes. Brand paper is warm; ink is cool; status colors
-sit on the green→yellow→red gradient familiar to Indonesian public warnings.
+sit on the greenâ†’yellowâ†’red gradient familiar to Indonesian public warnings.
 
 ### Brand tokens
 
@@ -97,7 +97,7 @@ sit on the green→yellow→red gradient familiar to Indonesian public warnings.
 |---|---|---|
 | `--bg` | `oklch(98% 0.005 95)` | Page background, warm paper |
 | `--surface` | `oklch(94% 0.012 90)` | Panel editorial / table header |
-| `--fg` | `oklch(16% 0.01 250)` | Primary ink — display, body |
+| `--fg` | `oklch(16% 0.01 250)` | Primary ink â€” display, body |
 | `--muted` | `oklch(45% 0.015 250)` | Secondary text, captions |
 | `--border` | `oklch(86% 0.01 90)` | Hairline rules, table dividers |
 | `--accent` | `oklch(82% 0.18 95)` | CTA fill, kicker labels, status high |
@@ -117,14 +117,14 @@ sit on the green→yellow→red gradient familiar to Indonesian public warnings.
 
 ### Color usage rules
 
-1. **One accent per screen** — `--accent` may appear twice per viewport maximum
+1. **One accent per screen** â€” `--accent` may appear twice per viewport maximum
    (once as a CTA fill, once as a kicker/label or a currency figure).
-2. **No gradients on the page chrome** — gradients live only inside the river map
+2. **No gradients on the page chrome** â€” gradients live only inside the river map
    (`mapBg`, `riverGrad`) and inside chart fills (`#cg` in the sparkline). The page
    itself is solid warm paper.
-3. **Status dots are the only place three colors stack** — never decorate other
+3. **Status dots are the only place three colors stack** â€” never decorate other
    components with red/yellow/green.
-4. **Dark band is mandatory once per long page** — it is the editorial punctuation
+4. **Dark band is mandatory once per long page** â€” it is the editorial punctuation
    that makes the page feel like a magazine spread.
 5. **Text on `--accent` is always `--accent-ink`**. Never `--fg`. The contrast pair
    is intentional; reversing them breaks readability.
@@ -135,13 +135,13 @@ Three families, three jobs, three weights.
 
 | Role | Family | Weight | Use |
 |---|---|---|---|
-| Display | `"Bodoni Moda", "Playfair Display", "Times New Roman", serif` | 700 / 800 | H1–H4, hero numbers, currency |
+| Display | `"Bodoni Moda", "Playfair Display", "Times New Roman", serif` | 700 / 800 | H1â€“H4, hero numbers, currency |
 | Body | `"Inter", "Helvetica Neue", Arial, sans-serif` | 400 / 500 / 600 | Paragraphs, UI controls, captions |
 | Mono | `"JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace` | 400 / 500 | Coordinates, TMA, debit, IDs, codes |
 
 ### Type scale
 
-Fluid and mobile-first. H1 grows from 34px → 68px; body stays 16–17px.
+Fluid and mobile-first. H1 grows from 34px â†’ 68px; body stays 16â€“17px.
 
 | Token | Min | Max | Where |
 |---|---|---|---|
@@ -159,7 +159,7 @@ Fluid and mobile-first. H1 grows from 34px → 68px; body stays 16–17px.
 2. Currency, TMA, debit, and IDs always use the **mono** family. They are facts,
    not prose.
 3. Eyebrow labels are 11px / letter-spacing 0.18em / uppercase / `--muted`.
-4. The "Rendah — informasi" / "Sedang — perlu tindak lanjut" inline range labels in
+4. The "Rendah â€” informasi" / "Sedang â€” perlu tindak lanjut" inline range labels in
    select fields also follow the eyebrow pattern.
 5. Quote text is display, weight 500, set with a 3px yellow left border and an
    italic cite line in 13px uppercase mono.
@@ -187,18 +187,18 @@ clamped gutter and an 8-step scale.
 
 ### Shadow
 
-Two editorial shadows — both soft, both anchored low.
+Two editorial shadows â€” both soft, both anchored low.
 
 - Card hover: `0 18px 40px -22px oklch(10% 0.01 250 / 0.4)`
 - Hero photo: `0 30px 80px -30px oklch(10% 0.01 250 / 0.45)`
 
 ## 5. Layout & Composition
 
-- **Grid:** `grid-2`, `grid-3`, `grid-4` collapse to 2 columns at ≤1024px and to
-  single column at ≤720px.
+- **Grid:** `grid-2`, `grid-3`, `grid-4` collapse to 2 columns at â‰¤1024px and to
+  single column at â‰¤720px.
 - **Hero:** asymmetric 1.05fr / 1fr two-column with a 4:5 portrait photo on the
   right; eyebrow + display H1 + lede + CTA pair + meta DL on the left.
-- **Section head:** eyebrow → horizontal rule → display H2 → optional lede. The
+- **Section head:** eyebrow â†’ horizontal rule â†’ display H2 â†’ optional lede. The
   eyebrow is paired with a 1px hairline that runs to the column edge.
 - **Dark band:** `band-dark` is the editorial punctuation. Use it once per long
   page. Inside, use `--bg` for text and `--accent` for the small caption tag.
@@ -209,46 +209,46 @@ Two editorial shadows — both soft, both anchored low.
 
 Catalogued in `context/component-manifest.md`. The canonical set:
 
-- **Masthead** — brand mark + wordmark + 5-item nav + primary CTA + mobile menu
+- **Masthead** â€” brand mark + wordmark + 5-item nav + primary CTA + mobile menu
   toggle. Sticky, blurred.
-- **Brand mark** — yellow square (4px radius) with a black **K** in Bodoni Moda 800.
-- **Button** — pill, 14px padding, primary (yellow), ghost (outline), dark
+- **Brand mark** â€” yellow square (4px radius) with a black **K** in Bodoni Moda 800.
+- **Button** â€” pill, 14px padding, primary (yellow), ghost (outline), dark
   (paper-dark fill), link (text underline).
-- **Kicker / Eyebrow** — 11px uppercase mono-letterspaced, optionally on yellow pill.
-- **Display heading** — Bodoni Moda 700/800, tight tracking, color `--fg`.
-- **Lede paragraph** — Inter 17–21px, line-height 1.55, max-width 60ch.
-- **Hero photo** — 4:5 aspect, 10px radius, drop shadow, caption + corner pin.
-- **Card** — 1px border, 10px radius, hover lift -2px / 18px shadow.
-- **Pillar card** — same shell as card but a dark `--paper-dark` variant signals
+- **Kicker / Eyebrow** â€” 11px uppercase mono-letterspaced, optionally on yellow pill.
+- **Display heading** â€” Bodoni Moda 700/800, tight tracking, color `--fg`.
+- **Lede paragraph** â€” Inter 17â€“21px, line-height 1.55, max-width 60ch.
+- **Hero photo** â€” 4:5 aspect, 10px radius, drop shadow, caption + corner pin.
+- **Card** â€” 1px border, 10px radius, hover lift -2px / 18px shadow.
+- **Pillar card** â€” same shell as card but a dark `--paper-dark` variant signals
   "commercial / paid" while the light variant signals "public / free".
-- **Stat strip** — 4-up grid with 1px dividers, display numerals + uppercase caption.
-- **Band-dark** — dark editorial break: yellow accent tag, display H2 in `--bg`,
+- **Stat strip** â€” 4-up grid with 1px dividers, display numerals + uppercase caption.
+- **Band-dark** â€” dark editorial break: yellow accent tag, display H2 in `--bg`,
   body copy in `oklch(85% 0.02 95)`.
-- **Quote** — display 500, 22–36px, 3px yellow left border, italic cite.
-- **Timeline** — 3-step horizontal grid with a 2px hairline and yellow badge pins.
-- **Tab** — 14px / 600, accent underline on selected.
-- **Ticker** — dark bar with red live tag and white-blink dot.
-- **Map shell** — SVG canvas with stations layer, legend, toast, status dots.
-- **Calendar cell** — 72px min height, dim / ok / warn / alert variants.
-- **Chip** — pill, optional active fill.
-- **Spec table** — minimal lines, no zebra; first column bold.
-- **Footer** — dark `--paper-dark`, 4-column, h5 mono uppercase.
-- **Report form** — input/select/textarea with yellow focus ring.
+- **Quote** â€” display 500, 22â€“36px, 3px yellow left border, italic cite.
+- **Timeline** â€” 3-step horizontal grid with a 2px hairline and yellow badge pins.
+- **Tab** â€” 14px / 600, accent underline on selected.
+- **Ticker** â€” dark bar with red live tag and white-blink dot.
+- **Map shell** â€” SVG canvas with stations layer, legend, toast, status dots.
+- **Calendar cell** â€” 72px min height, dim / ok / warn / alert variants.
+- **Chip** â€” pill, optional active fill.
+- **Spec table** â€” minimal lines, no zebra; first column bold.
+- **Footer** â€” dark `--paper-dark`, 4-column, h5 mono uppercase.
+- **Report form** â€” input/select/textarea with yellow focus ring.
 
 ## 7. Motion & Interaction
 
 Motion is restrained and editorial.
 
-- **Hover (cards):** `transform: translateY(-2px)` + soft shadow — 250ms ease.
-- **Hover (image inside card):** `transform: scale(1.04)` — 600ms ease.
+- **Hover (cards):** `transform: translateY(-2px)` + soft shadow â€” 250ms ease.
+- **Hover (image inside card):** `transform: scale(1.04)` â€” 600ms ease.
 - **Hover (nav link):** underline scales from `scaleX(0)` to `scaleX(1)` over 200ms
   from the left.
 - **Hover (btn-primary):** lighten `--accent` by +4 on L channel
   (`oklch(86% 0.18 95)`).
-- **Hover (btn-ghost):** invert — `--fg` background, `--bg` text.
+- **Hover (btn-ghost):** invert â€” `--fg` background, `--bg` text.
 - **Focus-visible:** 2px solid `--accent` outline + 3px offset. Universal.
 - **Live blink:** `ticker .blink` and `flood-toast::before` pulse 1.2s infinite.
-- **Siaga pulse on map:** SVG `<animate>` ring grows r=14→26, opacity 0.25→0,
+- **Siaga pulse on map:** SVG `<animate>` ring grows r=14â†’26, opacity 0.25â†’0,
   repeats.
 - **Reduced motion:** keep the blink (accessibility), suppress hover transforms
   by `@media (prefers-reduced-motion: reduce)` if added.
@@ -261,11 +261,11 @@ Motion is restrained and editorial.
 - Headlines break deliberately across 3 short lines to feel editorial.
 - Eyebrows use English uppercase but Bahasa Indonesia captions.
 - Numbers are written with the Indonesian format (titik sebagai pemisah ribuan,
-  koma desimal): `Rp 500rb`, `312 cm`, `24,5 m³/s`.
+  koma desimal): `Rp 500rb`, `312 cm`, `24,5 mÂ³/s`.
 - Avoid em dashes mid-sentence; prefer en dashes or commas.
-- Avoid emoji as functional UI icons. The `⚠` and `ℹ` glyphs in the WhatsApp sample
+- Avoid emoji as functional UI icons. The `âš ` and `â„¹` glyphs in the WhatsApp sample
   bubble are the only acceptable place, because they are inside a screenshot
-  reproduction of a real message — not UI chrome.
+  reproduction of a real message â€” not UI chrome.
 
 ## 9. Anti-patterns
 
@@ -274,7 +274,7 @@ Hard "do not"s that protect the editorial feel.
 1. **No purple gradient wash.** No background gradients. The only gradients live
    inside the river map and the chart fill.
 2. **No Inter as display type.** Display must be Bodoni Moda. Inter is body only.
-3. **No emoji icons.** No 📊, 📈, 🚨, etc. as functional UI. Use status dots, mono
+3. **No emoji icons.** No ðŸ“Š, ðŸ“ˆ, ðŸš¨, etc. as functional UI. Use status dots, mono
    numerals, and SVG.
 4. **No "card with colored left bar" pattern.** It is not editorial; it is
    template-marketing. Use the full card with a `--surface` price panel instead.
@@ -282,11 +282,11 @@ Hard "do not"s that protect the editorial feel.
    invert the button, or move the underline. Never reduce contrast.
 6. **No three-button primary group.** At most one `--accent` button per viewport.
    Other entries are ghost / text link.
-7. **No warm beige by accident.** Background is warm but barely tinted — `oklch(98%
+7. **No warm beige by accident.** Background is warm but barely tinted â€” `oklch(98%
    0.005 95)`. If a deeper warm is needed, use `--surface` (94% L), not cream.
 8. **No invented metrics.** Every number on a public surface cites a real source
    (SIH3, BBWS, BMKG, APBD) or is labelled as a placeholder.
-9. **No control panel for the designer.** The product artifact is the surface —
+9. **No control panel for the designer.** The product artifact is the surface â€”
    there is no inspector / settings strip floating on top of the design.
 10. **No hover text-color change to `--muted`.** Muted is for static secondary
     text. Hover must keep contrast equal or higher than default.

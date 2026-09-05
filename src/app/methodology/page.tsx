@@ -45,7 +45,7 @@ const stackLayers = [
 const functionalSpecs = [
   { category: "Penyerapan Data", component: "Ekstraktor Data Otomatis", desc: "Skrip periodik untuk mengumpulkan dan memvalidasi rekaman curah hujan, TMA, dan debit dari portal SIH3." },
   { category: "Manajemen Spasial", component: "Lapisan PostGIS", desc: "Menyimpan titik koordinat stasiun duga air, poligon DAS, dan pin laporan masyarakat." },
-  { category: "Antarmuka Publik", component: "Dasbor Terpadu Bebas Registrasi", desc: "Memuat visualisasi peta penanda status sungai, ringkasan cuaca tani, dan modul pelaporan genangan." },
+  { category: "Antarmuka Publik", component: "Dashboard Terpadu Bebas Registrasi", desc: "Memuat visualisasi peta penanda status sungai, ringkasan cuaca tani, dan modul pelaporan genangan." },
   { category: "Mesin Rekomendasi", component: "Agen Pemrosesan Logika Tani", desc: "Mesin inferensi aturan berbasis ambang batas kelembapan dan presipitasi harian untuk saran pertanian." },
   { category: "Sistem Peringatan", component: "Mesin Pesan Pesisir", desc: "Pengiriman peringatan otomatis ke nomor WhatsApp pelanggan tambak saat debit sungai melewati ambang batas kritis." },
   { category: "Pelaporan B2B", component: "Generator Dokumen Teknik", desc: "Penghitungan otomatis analisis frekuensi distribusi Gumbel/Log-Pearson III serta ekspor format laporan .docx." },
@@ -64,7 +64,7 @@ const roadmapSteps = [
   },
   {
     badge: "Fase 2 · Bulan 3–4",
-    title: "Rilis Dasbor & Pilot Tambak",
+    title: "Rilis Dashboard & Pilot Tambak",
     desc: "Peluncuran peta terpadu 3-in-1 untuk publik secara gratis—membangun visibilitas merek dan kepercayaan komunitas lokal.",
     points: [
       "Kemitraan percontohan dengan 5–10 petambak udang intensif.",

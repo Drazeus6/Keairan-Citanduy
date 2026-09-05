@@ -1,10 +1,10 @@
----
+﻿---
 name: keairan-citanduy-design-system
 description: Editorial-documentary visual language for an Indonesian hydrological intelligence platform (WS Citanduy). Use when the user asks for a public-service / civic-tech product on a serious topic, a long-form editorial cover, a data dashboard that must present technical information with calm authority, or any artifact that should feel like a magazine rather than a SaaS landing page. Source-backed by `assets/main.css`, `brand-spec.md`, and five preserved `examples/*.html` pages.
 user-invocable: true
 ---
 
-# Keairan Citanduy — Design System Skill
+# Keairan Citanduy â€” Design System Skill
 
 A reusable Claude Design skill package extracted from the source project
 **Website Clone** (`34f5303a-4fc3-4e6f-ac12-e392cdffb01c`).
@@ -13,52 +13,52 @@ A reusable Claude Design skill package extracted from the source project
 
 ```
 keairan-citanduy/
-├── DESIGN.md                       Source of truth: visual foundations, tokens, components, motion, voice, anti-patterns
-├── SKILL.md                        This file (skill manifest)
-├── README.md                       Package guide (product context, file map, preview manifest, reuse workflow)
-├── colors_and_type.css             OKLch tokens + hex fallbacks + font stacks + helper classes
-├── brand-spec.md                   Verbatim brand spec from source
-│
-├── assets/                         Brand & runtime assets (logo, wordmark, favicon, map markers, station JSON, topo pattern, icon-warning)
-├── build/                          Runtime icons (PWA, Apple touch, OG cover)
-│
-├── preview/                        Reviewer landing + 8 focused preview cards
-│   ├── index.html                  Landing linking every preview card
-│   ├── colors.html                 All colors + status + contrast pairs
-│   ├── colors-primary.html         Focused: 6 primary tokens + 4 contrast pairs
-│   ├── typography.html             Type scale ringkas
-│   ├── typography-specimens.html   Focused: display/body/mono/eyebrow/quote specimens
-│   ├── spacing.html                Spacing & shape ringkas
-│   ├── spacing-tokens.html         Focused: gutter, section pad, 8-step scale, radius, shadow, card anatomy
-│   ├── components.html             All components
-│   ├── components-buttons.html     Focused: 4 button variants × 6 interaction states
-│   ├── brand-assets.html           Logo, wordmark, favicon, markers, icons
-│   ├── applied-public-dashboard.html
-│   ├── applied-aqua-alert.html
-│   └── applied-hydro-amdal.html
-│
-├── ui_kits/app/                    Applied interface kit (loadable)
-│   ├── index.html                  Launcher listing modules + components
-│   ├── README.md                   Reuse guide
-│   └── components/                 Modular files
-│       ├── masthead.html           Sticky masthead + hero 4:5
-│       ├── dasbor.html             Ticker / station card / tabs / calendar
-│       ├── aqua-alert.html         WhatsApp bubble / comparison table / pricing
-│       ├── hydro-amdal.html        Doc preview card / IDF curve SVG
-│       └── citizen-report.html     Citizen-science form + reports feed
-│
-├── examples/                       Preserved source pages (verbatim)
-│   ├── index.html                  Source: Beranda
-│   ├── dashboard.html              Source: Peta & Dasbor Publik
-│   ├── aqua-alert.html             Source: AquaAlert
-│   ├── hydro-amdal.html            Source: Hydro-AMDAL
-│   ├── methodology.html            Source: Metodologi
-│   └── Blueprint-Platform-Keairan-Citanduy.pdf
-│
-└── context/                        Notes & provenance
-    ├── source-context.md           Verbatim source project handoff
-    ├── provenance.md               Source → package file map
-    └── component-manifest.md       22-component catalog with file pointers
+â”œâ”€â”€ DESIGN.md                       Source of truth: visual foundations, tokens, components, motion, voice, anti-patterns
+â”œâ”€â”€ SKILL.md                        This file (skill manifest)
+â”œâ”€â”€ README.md                       Package guide (product context, file map, preview manifest, reuse workflow)
+â”œâ”€â”€ colors_and_type.css             OKLch tokens + hex fallbacks + font stacks + helper classes
+â”œâ”€â”€ brand-spec.md                   Verbatim brand spec from source
+â”‚
+â”œâ”€â”€ assets/                         Brand & runtime assets (logo, wordmark, favicon, map markers, station JSON, topo pattern, icon-warning)
+â”œâ”€â”€ build/                          Runtime icons (PWA, Apple touch, OG cover)
+â”‚
+â”œâ”€â”€ preview/                        Reviewer landing + 8 focused preview cards
+â”‚   â”œâ”€â”€ index.html                  Landing linking every preview card
+â”‚   â”œâ”€â”€ colors.html                 All colors + status + contrast pairs
+â”‚   â”œâ”€â”€ colors-primary.html         Focused: 6 primary tokens + 4 contrast pairs
+â”‚   â”œâ”€â”€ typography.html             Type scale ringkas
+â”‚   â”œâ”€â”€ typography-specimens.html   Focused: display/body/mono/eyebrow/quote specimens
+â”‚   â”œâ”€â”€ spacing.html                Spacing & shape ringkas
+â”‚   â”œâ”€â”€ spacing-tokens.html         Focused: gutter, section pad, 8-step scale, radius, shadow, card anatomy
+â”‚   â”œâ”€â”€ components.html             All components
+â”‚   â”œâ”€â”€ components-buttons.html     Focused: 4 button variants Ã— 6 interaction states
+â”‚   â”œâ”€â”€ brand-assets.html           Logo, wordmark, favicon, markers, icons
+â”‚   â”œâ”€â”€ applied-public-dashboard.html
+â”‚   â”œâ”€â”€ applied-aqua-alert.html
+â”‚   â””â”€â”€ applied-hydro-amdal.html
+â”‚
+â”œâ”€â”€ ui_kits/app/                    Applied interface kit (loadable)
+â”‚   â”œâ”€â”€ index.html                  Launcher listing modules + components
+â”‚   â”œâ”€â”€ README.md                   Reuse guide
+â”‚   â””â”€â”€ components/                 Modular files
+â”‚       â”œâ”€â”€ masthead.html           Sticky masthead + hero 4:5
+â”‚       â”œâ”€â”€ dashboard.html             Ticker / station card / tabs / calendar
+â”‚       â”œâ”€â”€ aqua-alert.html         WhatsApp bubble / comparison table / pricing
+â”‚       â”œâ”€â”€ hydro-amdal.html        Doc preview card / IDF curve SVG
+â”‚       â””â”€â”€ citizen-report.html     Citizen-science form + reports feed
+â”‚
+â”œâ”€â”€ examples/                       Preserved source pages (verbatim)
+â”‚   â”œâ”€â”€ index.html                  Source: Beranda
+â”‚   â”œâ”€â”€ dashboard.html              Source: Peta & Dashboard Publik
+â”‚   â”œâ”€â”€ aqua-alert.html             Source: AquaAlert
+â”‚   â”œâ”€â”€ hydro-amdal.html            Source: Hydro-AMDAL
+â”‚   â”œâ”€â”€ methodology.html            Source: Metodologi
+â”‚   â””â”€â”€ Blueprint-Platform-Keairan-Citanduy.pdf
+â”‚
+â””â”€â”€ context/                        Notes & provenance
+    â”œâ”€â”€ source-context.md           Verbatim source project handoff
+    â”œâ”€â”€ provenance.md               Source â†’ package file map
+    â””â”€â”€ component-manifest.md       22-component catalog with file pointers
 ```
 
 ## Source context
@@ -114,7 +114,7 @@ artifact that needs bright primary colors and emoji-as-icons.
 
 5. **Number rules.** Coordinates, TMA, debit, T<sub>r</sub>, IDs, and
    timestamps go in mono. Currency uses Indonesian format
-   (`Rp 500rb`, `24,5 m³/s`). Status goes in uppercase mono on a small
+   (`Rp 500rb`, `24,5 mÂ³/s`). Status goes in uppercase mono on a small
    badge.
 
 6. **Status colors are reserved.** Normal / Waspada / Siaga belong on
@@ -159,7 +159,7 @@ artifact that needs bright primary colors and emoji-as-icons.
 Every artifact produced with this skill must:
 - include the masthead structure from `ui_kits/app/components/masthead.html`;
 - bind tokens via `colors_and_type.css`;
-- expose semantic `data-od-id="…"` attributes on its key regions;
+- expose semantic `data-od-id="â€¦"` attributes on its key regions;
 - render without horizontal scroll at 360 px width;
 - include at most one `--accent` button per viewport;
 - include at least one dark editorial band if the page is long;

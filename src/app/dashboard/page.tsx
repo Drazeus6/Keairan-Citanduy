@@ -310,7 +310,7 @@ function DashboardContent() {
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, flexWrap: "wrap", marginTop: 12 }}>
             <div>
               <h1 className="display" style={{ fontSize: "clamp(34px, 4.8vw, 64px)" }}>
-                Dasbor Citanduy.<br />Tiga modul, satu layar.
+                Dashboard Citanduy.<br />Tiga modul, satu layar.
               </h1>
             </div>
             <div style={{ maxWidth: 420 }}>
@@ -869,7 +869,7 @@ function DashboardContent() {
 function DashboardLoading() {
   return (
     <div style={{ padding: "80px 0", textAlign: "center" }}>
-      <span className="mono" style={{ color: "var(--muted)", fontSize: 13 }}>Memuat dasbor...</span>
+      <span className="mono" style={{ color: "var(--muted)", fontSize: 13 }}>Memuat dashboard...</span>
     </div>
   );
 }
