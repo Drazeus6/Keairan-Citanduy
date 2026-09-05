@@ -90,6 +90,7 @@ export interface MapboxMapProps {
 export function MapboxMap({ selectedStationId, onStationSelect }: MapboxMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
+  const mapInstanceRef = useRef<mapboxgl.Map | null>(null);
   const popupRef = useRef<mapboxgl.Popup | null>(null);
   const [tokenMissing, setTokenMissing] = useState(false);
   const [ready, setReady] = useState(false);
@@ -303,78 +304,96 @@ export function MapboxMap({ selectedStationId, onStationSelect }: MapboxMapProps
 
   // Init map once
   useEffect(() => {
-    // Resolve token from .env.local only
-    const rawEnvToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
-    const token = cleanToken(rawEnvToken);
+    // Resolve token via secure server-side endpoint (config API).
+    // Browser HANYA melihat token publik (pk.eyJ...) yang aman untuk klien.
+    // Token rahasia (sk.eyJ...) tetap berada di server Vercel.
+    let cancelled = false;
 
-    const isPlaceholder =
-      !token ||
-      token.includes("placeholder") ||
-      token === "your_mapbox_public_token_here" ||
-      !token.startsWith("pk.");
+    async function fetchConfigAndInit() {
+      try {
+        const res = await fetch("/api/mapbox/config", { cache: "no-store" });
+        if (!res.ok) throw new Error("config endpoint unavailable");
+        const cfg: {
+          configured: boolean;
+          hasSecretToken: boolean;
+          publicToken: string;
+          defaultStyle: string;
+          bounds: [[number, number], [number, number]];
+          center: [number, number];
+        } = await res.json();
 
-    if (isPlaceholder) {
-      setTokenMissing(true);
-      if (typeof window !== "undefined") {
+        if (cancelled) return;
+
+        if (!cfg.configured || !cfg.publicToken || !cfg.publicToken.startsWith("pk.")) {
+          setTokenMissing(true);
+          return;
+        }
+
+        mapboxgl.accessToken = cfg.publicToken;
+
+        // Baca style URL dari env (client boleh)
+        const envStyle = process.env.NEXT_PUBLIC_MAPBOX_STYLE || "";
+        const matched = MAP_STYLES.find((s) => s.url === envStyle);
+        const initialKey = matched ? matched.key : "light";
+        setCurrentStyle(initialKey);
+        const initialUrl = matched ? matched.url : cfg.defaultStyle;
+
+        if (!containerRef.current || mapRef.current) return;
+
+        const map = new mapboxgl.Map({
+          container: containerRef.current,
+          style: initialUrl,
+          center: CITANDUY_CENTER,
+          zoom: 9.2,
+          pitch: 0,
+          bearing: 0,
+          minZoom: 7,
+          maxZoom: 18,
+          attributionControl: true,
+          cooperativeGestures: false,
+        });
+
+        mapRef.current = map;
+
+        map.addControl(new mapboxgl.NavigationControl({ showCompass: true, visualizePitch: false }), "top-right");
+        map.addControl(new mapboxgl.ScaleControl({ unit: "metric", maxWidth: 120 }), "bottom-left");
+
+        // Event listener whenever a style loads (initial & on switch)
+        map.on("style.load", () => {
+          injectLayers(map);
+          injectStationLayers(map);
+          setReady(true);
+        });
+
+        map.on("load", () => {
+          map.fitBounds(CITANDUY_BOUNDS, {
+            padding: { top: 40, bottom: 40, left: 40, right: 40 },
+            duration: 0,
+          });
+        });
+
+        // Store map instance for cleanup
+        mapInstanceRef.current = map;
+      } catch (err) {
+        if (cancelled) return;
         // eslint-disable-next-line no-console
-        console.warn(
-          "[Mapbox] Token tidak terbaca atau placeholder. Env token (cleaned):",
-          token.slice(0, 12) + "...",
-        );
+        console.error("[Mapbox] Gagal memuat konfigurasi server:", err);
+        setTokenMissing(true);
       }
-      return;
     }
-    if (!containerRef.current || mapRef.current) return;
 
-    mapboxgl.accessToken = token;
-
-    // Detect initial style from environment or default to Light v11
-    const envStyle = process.env.NEXT_PUBLIC_MAPBOX_STYLE || "";
-    const matched = MAP_STYLES.find((s) => s.url === envStyle);
-    const initialKey = matched ? matched.key : "light";
-    setCurrentStyle(initialKey);
-
-    const initialUrl = matched ? matched.url : "mapbox://styles/mapbox/light-v11";
-
-    const map = new mapboxgl.Map({
-      container: containerRef.current,
-      style: initialUrl,
-      center: CITANDUY_CENTER,
-      zoom: 9.2,
-      pitch: 0,
-      bearing: 0,
-      minZoom: 7,
-      maxZoom: 18,
-      attributionControl: true,
-      cooperativeGestures: false,
-    });
-
-    mapRef.current = map;
-
-    // Toolbar peta lengkap (default Mapbox)
-    map.addControl(new mapboxgl.NavigationControl({ showCompass: true, visualizePitch: false }), "top-right");
-    map.addControl(new mapboxgl.ScaleControl({ unit: "metric", maxWidth: 120 }), "bottom-left");
-
-    // Event listener whenever a style loads (initial & on switch)
-    map.on("style.load", () => {
-      injectLayers(map);
-      injectStationLayers(map);
-      setReady(true);
-    });
-
-    map.on("load", () => {
-      map.fitBounds(CITANDUY_BOUNDS, {
-        padding: { top: 40, bottom: 40, left: 40, right: 40 },
-        duration: 0,
-      });
-    });
+    fetchConfigAndInit();
 
     return () => {
+      cancelled = true;
       if (popupRef.current) {
         popupRef.current.remove();
         popupRef.current = null;
       }
-      map.remove();
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
       mapRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

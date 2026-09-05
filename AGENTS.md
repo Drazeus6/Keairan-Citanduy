@@ -32,15 +32,98 @@ will appear "blank" briefly on first load while MSW boots â€” this is expec
 
 ## Environment Variables
 
-The `.env.local` file at the repo root must include (do not commit; ignored by `.gitignore`):
+The `.env.local` file at the repo root contains placeholders only. **Do not commit secrets**; ignored by `.gitignore`.
 
-| Variable | Required | Default | Purpose |
-|---|---|---|---|
-| `NEXT_PUBLIC_MAPBOX_TOKEN` | yes (for map) | placeholder token | Mapbox GL JS public access token (awalan `pk.`) |
-| `NEXT_PUBLIC_MAPBOX_STYLE` | no | `mapbox://styles/mapbox/satellite-streets-v12` | URL gaya Mapbox untuk peta Dashboard |
+| Variable | Scope | Required | Default | Purpose |
+|---|---|---|---|---|
+| `MAPBOX_SECRET_TOKEN` | **Server-only** (no `NEXT_PUBLIC_` prefix) | yes (server endpoints) | placeholder | Token rahasia Mapbox (`sk.eyJ...`) yang TIDAK PERNAH masuk ke bundle browser — hanya dipakai oleh Next.js API Routes |
+| `NEXT_PUBLIC_MAPBOX_TOKEN` | Client (injected ke bundle) | yes | placeholder | Token publik Mapbox (`pk.eyJ...`) **URL-restricted** ke domain Vercel Anda |
+| `NEXT_PUBLIC_MAPBOX_STYLE` | Client | no | `mapbox://styles/mapbox/light-v11` | URL gaya Mapbox default untuk peta Dashboard |
 
 When `NEXT_PUBLIC_MAPBOX_TOKEN` belum terisi, `MapboxMap` menampilkan kartu fallback yang
 mengarahkan developer menambahkan token, sehingga UI tidak crash saat demo offline.
+
+### Arsitektur Token (Server vs Client)
+
+```
++-----------------------------+         +----------------------------+
+|  Vercel Server (Serverless)  |         |   Browser (Client Bundle) |
++-----------------------------+         +----------------------------+
+| MAPBOX_SECRET_TOKEN=sk.eyJ  |  --->   | NEXT_PUBLIC_MAPBOX_TOKEN  |
+| (hanya ada di server)        |  /api   | = pk.eyJ (URL-restricted) |
+|                             |  /mapbox|                             |
++-----------------------------+  /config+----------------------------+
+              ^                          ^
+              |                          |
+       Aman, tidak pernah              Aman karena
+       dibundle ke client             URL-restricted ke
+                                      domain Vercel saja
+```
+
+**Cara kerja**:
+1. Client `MapboxMap.tsx` melakukan `fetch('/api/mapbox/config')` ke server.
+2. Server (`/api/mapbox/config/route.ts`) membaca `MAPBOX_SECRET_TOKEN` dan `NEXT_PUBLIC_MAPBOX_TOKEN` dari `process.env`.
+3. Server mengembalikan **hanya** token publik (`pk.eyJ...`) yang aman untuk browser.
+4. Token rahasia (`sk.eyJ...`) TIDAK PERNAH sampai ke client.
+
+---
+
+## Deployment ke Vercel
+
+### Persiapan Token Mapbox (Penting!)
+
+1. Login ke [account.mapbox.com](https://account.mapbox.com/access-tokens/).
+2. Buat **dua token** terpisah:
+   - **Secret Token** (`sk.eyJ...`): untuk `MAPBOX_SECRET_TOKEN` (server-only).
+   - **Public Token** (`pk.eyJ...`): untuk `NEXT_PUBLIC_MAPBOX_TOKEN`. **PENTING** — saat membuat, tambahkan **URL Restrictions**:
+     - `http://localhost:3000/*` (untuk development lokal)
+     - `https://keairan-citanduy-*.vercel.app/*` (untuk domain Vercel)
+     - Atau domain produksi Anda sendiri.
+
+### Konfigurasi Vercel Environment Variables
+
+1. Buka Vercel Project → **Settings** → **Environment Variables**.
+2. Tambahkan tiga variabel berikut:
+
+| Name | Value | Environments |
+|---|---|---|
+| `MAPBOX_SECRET_TOKEN` | `sk.eyJ1...` (token rahasia Anda) | Production, Preview, Development |
+| `NEXT_PUBLIC_MAPBOX_TOKEN` | `pk.eyJ1...` (token publik URL-restricted) | Production, Preview, Development |
+| `NEXT_PUBLIC_MAPBOX_STYLE` | `mapbox://styles/mapbox/light-v11` | Production, Preview, Development |
+
+3. **Penting**: Centang semua environment (Production, Preview, Development) agar variabel tersedia di semua lingkungan.
+4. Klik **Save**.
+
+### Langkah Deploy
+
+```powershell
+# Pastikan sudah push ke GitHub
+git add .
+git commit -m "feat: secure mapbox token architecture with server proxy"
+git push origin main
+
+# Vercel otomatis detect dan deploy dari branch main
+# Atau gunakan Vercel CLI:
+npm i -g vercel
+vercel login
+vercel --prod
+```
+
+### File Penting untuk Deployment
+
+| File | Fungsi |
+|---|---|
+| `vercel.json` | Konfigurasi deployment (region, headers cache) |
+| `next.config.mjs` | Optimasi gambar Next.js (format WebP/AVIF) |
+| `src/app/api/mapbox/config/route.ts` | Server endpoint konfigurasi publik |
+| `src/app/api/mapbox/style/route.ts` | Server endpoint proxy style (sk. mode) |
+
+### Verifikasi Pasca-Deploy
+
+1. Buka URL Vercel aplikasi Anda.
+2. Buka DevTools Console, jalankan: `console.log(Object.keys(window))` — pastikan TIDAK ada `process` atau `MAPBOX_SECRET_TOKEN` yang bocor.
+3. Buka tab **Network** — saat peta dimuat, harus ada request ke `/api/mapbox/config` (server-side fetch, bukan langsung ke Mapbox).
+4. Cek Vercel **Logs** — pastikan `MAPBOX_SECRET_TOKEN` hanya muncul di server function logs (tidak pernah di client bundle).
 
 ---
 
