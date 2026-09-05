@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BandDark } from "@/components/chrome/BandDark";
 
 const dataCatalog = [
@@ -112,14 +113,17 @@ export default function MethodologyPage() {
 
             {/* Hero Photo */}
             <figure className="hero-photo" style={{ position: "relative" }}>
-              <img
-                alt="Peta topografi dan bentang alam DAS Citanduy"
-                src="https://images.unsplash.com/photo-1542223616-7408ec4b3a26?auto=format&fit=crop&w=1400&q=80"
+              <Image
+                src="/assets/images/topografi-galunggung-srtm.webp"
+                alt="Peta topografi dan model elevasi digital SRTM-1 bentang alam hulu DAS Citanduy di kawasan Gunung Galunggung (Tasikmalaya, Jawa Barat)."
+                width={1600}
+                height={1200}
+                priority
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
               <span className="pin">±3.500 KM²</span>
               <figcaption className="caption">
-                Bentang DAS Citanduy dari hulu Priangan hingga muara Cilacap—±3.500 km², dua provinsi.
+                Peta topografi SRTM-1 bentang DAS Citanduy dari hulu Galunggung hingga muara Cilacap—±3.500 km², dua provinsi. Sumber: NASA / USGS / Wikimedia.
               </figcaption>
             </figure>
           </div>
