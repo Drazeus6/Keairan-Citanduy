@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Masthead &amp; Hero · UI Kit · Keairan Citanduy</title>
+<link rel="stylesheet" href="../../../colors_and_type.css" />
+<link rel="stylesheet" href="../../../assets/main.css" />
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .swatch-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+    margin-bottom: 18px;
+  }
+  .swatch-block .head {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  .swatch-block .head h4 { font-family: var(--display); font-size: 18px; margin: 0; }
+  .swatch-block .head code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .swatch-block .body { padding: 20px; }
+  pre.code {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--fg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    overflow: auto;
+    white-space: pre;
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="../index.html" class="brand" aria-label="Kembali ke launcher"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit · Komponen · Masthead</small></span></a>
+    <nav class="primary"><a href="../index.html">Launcher</a><a href="masthead.html" aria-current="page">Masthead</a><a href="dasbor.html">Dasbor</a></nav>
+    <div class="header-cta"><a href="../../../DESIGN.md" class="btn btn-ghost">DESIGN.md</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">UI Kit · Komponen · Masthead</p>
+    <h1 class="display" style="margin-top:14px;">Masthead sticky,<br/>hero 4:5,<br/>tombol tunggal.</h1>
+    <p class="lede">Cangkang paling atas dari setiap halaman publik. Mark kuning, lima tautan nav, satu CTA primer, dan toggle menu untuk mobile. Hero adalah kolom asimetris 1.05fr / 1fr dengan foto 4:5 bertaut pada pin koordinat.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+
+    <div class="swatch-block" id="masthead">
+      <div class="head"><h4>Masthead sticky</h4><code>components/masthead.html · #masthead</code></div>
+      <div class="body">
+
+        <header class="masthead" style="position:relative; top:auto; backdrop-filter:none;">
+          <div class="wrap masthead-inner">
+            <a href="#" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Inteljen Hidrologi · WS Citanduy</small></span></a>
+            <nav class="primary"><a href="#" aria-current="page">Beranda</a><a href="#">Peta</a><a href="#">AquaAlert</a><a href="#">Hydro-AMDAL</a><a href="#">Metodologi</a></nav>
+            <div class="header-cta"><a href="#" class="btn btn-primary">Buka Dasbor →</a></div>
+          </div>
+        </header>
+
+<pre class="code">&lt;header class="masthead"&gt;
+  &lt;div class="wrap masthead-inner"&gt;
+    &lt;a href="/" class="brand"&gt;
+      &lt;span class="brand-mark"&gt;K&lt;/span&gt;
+      &lt;span&gt;KEAIRAN CITANDUY&lt;small&gt;Inteljen Hidrologi · WS Citanduy&lt;/small&gt;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;nav class="primary"&gt;
+      &lt;a href="index.html" aria-current="page"&gt;Beranda&lt;/a&gt;
+      &lt;a href="dashboard.html"&gt;Peta&lt;/a&gt;
+      &lt;a href="aqua-alert.html"&gt;AquaAlert&lt;/a&gt;
+      &lt;a href="hydro-amdal.html"&gt;Hydro-AMDAL&lt;/a&gt;
+      &lt;a href="methodology.html"&gt;Metodologi&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;div class="header-cta"&gt;
+      &lt;a href="dashboard.html" class="btn btn-primary"&gt;Buka Dasbor →&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+      </div>
+    </div>
+
+    <div class="swatch-block" id="hero-photo">
+      <div class="head"><h4>Hero asimetris dengan foto 4:5</h4><code>components/masthead.html · #hero-photo</code></div>
+      <div class="body">
+
+        <section style="padding:24px 0; border:1px dashed var(--border); border-radius:var(--radius);">
+          <div class="wrap">
+            <div class="hero-grid" style="display:grid; grid-template-columns: 1.05fr 1fr; gap: clamp(20px, 3vw, 40px); align-items:end;">
+              <div>
+                <span class="kicker">Edisi September 2026 · Wilayah Sungai Citanduy</span>
+                <h1 class="display">Sungai yang<br/><em>bicara</em>,<br/>kini punya<br/>penerjemah.</h1>
+                <p class="lede" style="margin-top:14px;">Keairan Citanduy menerjemahkan data hidrologi mentah dari pos duga SIH3 BBWS Citanduy menjadi peringatan dini, rekomendasi tani, dan intelijen korporat.</p>
+                <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+                  <a class="btn btn-primary" href="#">Lihat Peta Banjir</a>
+                  <a class="btn btn-ghost" href="#">Baca Metodologi</a>
+                </div>
+              </div>
+              <figure class="hero-photo" style="border-radius:var(--radius); aspect-ratio:4/5; overflow:hidden; background:linear-gradient(135deg, var(--water), var(--water-soft)); position:relative;">
+                <span class="pin">7°22′ LS · 108°39′ BT</span>
+                <figcaption class="caption">Hulu Sungai Citanduy, DAS Priangan Timur — pos duga air SIH3.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+<pre class="code">&lt;section class="hero"&gt;
+  &lt;div class="wrap"&gt;
+    &lt;div class="hero-grid"&gt;
+      &lt;div class="deck"&gt;
+        &lt;span class="kicker"&gt;Edisi September 2026 · WS Citanduy&lt;/span&gt;
+        &lt;h1 class="display"&gt;Sungai yang&lt;br/&gt;&lt;em&gt;bicara&lt;/em&gt;,&lt;br/&gt;punya&lt;br/&gt;penerjemah.&lt;/h1&gt;
+        &lt;p class="lede"&gt;…&lt;/p&gt;
+        &lt;a class="btn btn-primary" href="dashboard.html"&gt;Lihat Peta Banjir&lt;/a&gt;
+        &lt;a class="btn btn-ghost" href="methodology.html"&gt;Baca Metodologi&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;figure class="hero-photo"&gt;
+        &lt;img alt="Sungai Citanduy" src="…" /&gt;
+        &lt;span class="pin"&gt;7°22′ LS · 108°39′ BT&lt;/span&gt;
+        &lt;figcaption class="caption"&gt;Hulu Sungai Citanduy, DAS Priangan Timur.&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit · Komponen · Masthead</small></span>
+        </div>
+      </div>
+      <div><h5>Modul lain</h5><ul>
+        <li><a href="dasbor.html">Dasbor</a></li>
+        <li><a href="aqua-alert.html">AquaAlert</a></li>
+        <li><a href="hydro-amdal.html">Hydro-AMDAL</a></li>
+        <li><a href="citizen-report.html">Laporan Warga</a></li>
+      </ul></div>
+      <div><h5>Referensi</h5><ul>
+        <li><a href="../../../DESIGN.md">DESIGN.md §5–§6</a></li>
+        <li><a href="../../../colors_and_type.css">colors_and_type.css</a></li>
+      </ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AquaAlert · UI Kit · Keairan Citanduy</title>
+<link rel="stylesheet" href="../../../colors_and_type.css" />
+<link rel="stylesheet" href="../../../assets/main.css" />
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .swatch-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+    margin-bottom: 18px;
+  }
+  .swatch-block .head {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  .swatch-block .head h4 { font-family: var(--display); font-size: 18px; margin: 0; }
+  .swatch-block .head code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .swatch-block .body { padding: 20px; }
+  pre.code {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--fg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    overflow: auto;
+    white-space: pre;
+  }
+  .wa-bubble {
+    max-width: 360px;
+    background: oklch(12% 0.01 250);
+    color: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .wa-bubble .header { display:flex; align-items:center; gap:8px; margin-bottom:8px; font-weight:700; font-size:13px; }
+  .wa-bubble .body-msg { background: oklch(20% 0.01 250); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
+  .wa-bubble .body-msg .warn { color: oklch(82% 0.18 95); font-weight:700; font-size:12px; letter-spacing:.06em; }
+  .wa-bubble .meta { font-size:11px; color:oklch(75% 0.02 95); font-family:var(--mono); }
+  .compare-tbl { width:100%; border-collapse:collapse; font-family:var(--body); font-size:14px; }
+  .compare-tbl th, .compare-tbl td { padding:12px 14px; border-bottom:1px solid var(--border); text-align:left; }
+  .compare-tbl th { font-family:var(--display); font-weight:700; font-size:14px; color:var(--fg); }
+  .compare-tbl tr:last-child td { border-bottom: 0; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="../index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit · Komponen · AquaAlert</small></span></a>
+    <nav class="primary"><a href="../index.html">Launcher</a><a href="aqua-alert.html" aria-current="page">AquaAlert</a></nav>
+    <div class="header-cta"><a href="../../../DESIGN.md" class="btn btn-ghost">DESIGN.md</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">UI Kit · Komponen · AquaAlert</p>
+    <h1 class="display" style="margin-top:14px;">Pesan WhatsApp,<br/>tabel perbandingan,<br/>harga per kolam.</h1>
+    <p class="lede">Tiga blok yang membuat modul AquaAlert terasa seperti produk komersial, bukan bulletin pemerintah: pesan WhatsApp yang bisa diuji, tabel sebelum/sesudah, dan satu paket harga yang tenang.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+
+    <div class="swatch-block" id="whatsapp">
+      <div class="head"><h4>WhatsApp message bubble</h4><code>components/aqua-alert.html · #whatsapp</code></div>
+      <div class="body">
+        <div class="wa-bubble">
+          <div class="header">AquaAlert · Keairan Citanduy</div>
+          <div class="body-msg">
+            <div class="warn">⚠ PERINGATAN DINI · SIAGA</div>
+            <div>Pos Banjar: TMA 312 cm · ↑12 cm/jam</div>
+            <div>Estimasi tiba hilir Pangandaran: 6–8 jam</div>
+            <div>Rekomendasi: tunda panen 12 jam, naikkan pompa sirkulasi.</div>
+          </div>
+          <div class="meta">14:32 WIB · 04 Sep 2026 · SIH3-CIT-014</div>
+        </div>
+<pre class="code">&lt;div class="wa-bubble"&gt;
+  &lt;div class="header"&gt;AquaAlert · Keairan Citanduy&lt;/div&gt;
+  &lt;div class="body-msg"&gt;
+    &lt;div class="warn"&gt;⚠ PERINGATAN DINI · SIAGA&lt;/div&gt;
+    &lt;div&gt;Pos Banjar: TMA 312 cm · ↑12 cm/jam&lt;/div&gt;
+    &lt;div&gt;Estimasi tiba hilir Pangandaran: 6–8 jam&lt;/div&gt;
+    &lt;div&gt;Rekomendasi: tunda panen 12 jam, naikkan pompa sirkulasi.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="meta"&gt;14:32 WIB · 04 Sep 2026 · SIH3-CIT-014&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="swatch-block" id="comparison">
+      <div class="head"><h4>Tabel perbandingan sebelum/sesudah</h4><code>components/aqua-alert.html · #comparison</code></div>
+      <div class="body">
+        <table class="compare-tbl">
+          <thead><tr><th>Skenario</th><th>Sebelum AquaAlert</th><th>Sesudah AquaAlert</th></tr></thead>
+          <tbody>
+            <tr><td>Salinitas runtuh</td><td>Diketahui saat udang stres</td><td>Peringatan 12–24 jam sebelumnya</td></tr>
+            <tr><td>Waktu respons</td><td>Reaktif, rata-rata 8 jam</td><td>Proaktif, rata-rata 4 menit</td></tr>
+            <tr><td>Kerugian panen</td><td>20–40% stok sekali kejadian</td><td>&lt; 5% dengan protokol pompa</td></tr>
+          </tbody>
+        </table>
+<pre class="code">&lt;table class="compare-tbl"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Skenario&lt;/th&gt;&lt;th&gt;Sebelum&lt;/th&gt;&lt;th&gt;Sesudah&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Salinitas runtuh&lt;/td&gt;&lt;td&gt;Diketahui saat udang stres&lt;/td&gt;&lt;td&gt;Peringatan 12–24 jam&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+      </div>
+    </div>
+
+    <div class="swatch-block" id="pricing">
+      <div class="head"><h4>Harga per kolam</h4><code>components/aqua-alert.html · #pricing</code></div>
+      <div class="body">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
+          <article class="pillar" style="padding:18px;">
+            <span class="tag" style="background:var(--paper-dark); color:var(--accent); padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;">Pilot</span>
+            <div class="price" style="font-family:var(--display); font-weight:800; font-size:32px; margin:8px 0 4px;">Rp 500rb<small style="font-size:12px; color:var(--muted); margin-left:4px;">/bulan/kolam</small></div>
+            <p style="color:var(--muted); font-size:13px; margin:0;">Hingga 5 kolam. Dukungan WhatsApp respons 4 menit.</p>
+          </article>
+          <article class="pillar dark" style="padding:18px; background:var(--paper-dark); color:var(--bg); border-radius:var(--radius);">
+            <span class="tag" style="background:var(--accent); color:var(--accent-ink); padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;">Standar</span>
+            <div class="price" style="font-family:var(--display); font-weight:800; font-size:32px; margin:8px 0 4px;">Rp 1jt<small style="font-size:12px; color:oklch(75% 0.02 95); margin-left:4px;">/bulan/kolam</small></div>
+            <p style="color:oklch(85% 0.02 95); font-size:13px; margin:0;">Hingga 25 kolam. Hot-line hidrolog BBWS saat Siaga.</p>
+          </article>
+          <article class="pillar" style="padding:18px;">
+            <span class="tag" style="background:var(--paper-dark); color:var(--accent); padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;">Korporat</span>
+            <div class="price" style="font-family:var(--display); font-weight:800; font-size:32px; margin:8px 0 4px;">Rp 1,5jt<small style="font-size:12px; color:var(--muted); margin-left:4px;">/bulan/kolam</small></div>
+            <p style="color:var(--muted); font-size:13px; margin:0;">&gt; 25 kolam. SLA 99,9% + laporan bulanan PDF.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit · Komponen · AquaAlert</small></span>
+        </div>
+      </div>
+      <div><h5>Modul lain</h5><ul>
+        <li><a href="masthead.html">Masthead</a></li>
+        <li><a href="dasbor.html">Dasbor</a></li>
+        <li><a href="hydro-amdal.html">Hydro-AMDAL</a></li>
+        <li><a href="citizen-report.html">Laporan Warga</a></li>
+      </ul></div>
+      <div><h5>Referensi</h5><ul>
+        <li><a href="../../../DESIGN.md">DESIGN.md §6 &amp; §8</a></li>
+        <li><a href="../../../examples/aqua-alert.html">examples/aqua-alert.html</a></li>
+      </ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

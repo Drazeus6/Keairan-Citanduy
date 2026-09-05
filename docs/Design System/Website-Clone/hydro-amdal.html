@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hydro-AMDAL Engine · Otomatisasi Hidrologi untuk Konsultan · Keairan Citanduy</title>
+<meta name="description" content="Hydro-AMDAL Engine: otomatisasi analisis frekuensi, kurva IDF, dan neraca air untuk konsultan lingkungan hidup, konsultan sipil, dan kawasan industri." />
+<link rel="stylesheet" href="assets/main.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ffcc00'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Bodoni Moda, serif' font-weight='800' font-size='18' fill='%231a1a1a'%3EK%3C/text%3E%3C/svg%3E" />
+<style>
+  .doc-shell {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 30px 80px -40px oklch(10% 0.01 250 / 0.4);
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .doc-shell .page { overflow-x: auto; }
+  .doc-shell .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+  }
+  .doc-shell .topbar .dots { display: flex; gap: 6px; }
+  .doc-shell .topbar .dots span { width: 10px; height: 10px; border-radius: 50%; background: oklch(80% 0.02 95); }
+  .doc-shell .topbar .dots span:first-child { background: oklch(70% 0.16 25); }
+  .doc-shell .topbar .dots span:nth-child(2) { background: oklch(80% 0.16 80); }
+  .doc-shell .topbar .dots span:nth-child(3) { background: oklch(70% 0.16 145); }
+  .doc-shell .page {
+    padding: clamp(20px, 3vw, 28px) clamp(20px, 4vw, 36px);
+    font-family: "Times New Roman", serif;
+    color: var(--fg);
+  }
+  .doc-shell .page h2 {
+    font-family: "Times New Roman", serif;
+    font-size: 18px;
+    margin: 18px 0 6px;
+    font-weight: 700;
+  }
+  .doc-shell .page p { font-size: 13px; line-height: 1.6; margin: 8px 0; color: oklch(25% 0.01 250); }
+  .doc-shell .page table { width: 100%; border-collapse: collapse; margin: 12px 0; font-family: var(--body); font-size: 12px; }
+  .doc-shell .page table th, .doc-shell .page table td {
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    text-align: center;
+  }
+  .doc-shell .page table th { background: var(--surface); font-weight: 600; }
+  .doc-shell .page .formula {
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
+    background: var(--surface);
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  /* Curve mock */
+  .curve-svg { width: 100%; height: auto; aspect-ratio: 600/280; background: white; border: 1px solid var(--border); border-radius: var(--radius); }
+
+  /* Pricing */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .pricing-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .pricing-card .price { font-family: var(--display); font-size: 40px; font-weight: 700; }
+  .pricing-card .price small { font-family: var(--body); font-size: 13px; font-weight: 500; color: var(--muted); }
+  .pricing-card ul { padding-left: 18px; margin: 0; color: var(--muted); font-size: 14px; display: flex; flex-direction: column; gap: 8px; }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">K</span>
+      <span>KEAIRAN CITANDUY<small>Intelijen Hidrologi · WS Citanduy</small></span>
+    </a>
+    <nav class="primary" id="primary-nav" aria-label="Navigasi utama">
+      <a href="index.html">Beranda</a>
+      <a href="dashboard.html">Peta &amp; Dasbor Publik</a>
+      <a href="aqua-alert.html">AquaAlert</a>
+      <a href="hydro-amdal.html" aria-current="page">Hydro-AMDAL</a>
+      <a href="methodology.html">Metodologi</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#pricing" class="btn btn-primary">Lihat Harga</a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" onclick="document.getElementById('primary-nav').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');">Menu</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="deck">
+        <span class="kicker">Pilar 2 · Komersial</span>
+        <h1 class="display">30 jam analisis<span class="br-only"><br/></span>hidrologi menjadi<span class="br-only"><br/></span><em>30 menit</em>.<span class="br-only"><br/></span>Siap ekspor.</h1>
+        <p class="lede">
+          Hydro-AMDAL Engine mengotomasi pengolahan seri data historis SIH3 menjadi draf bab
+          hidrologi dan neraca air terstandarisasi—lengkap dengan kurva IDF, formula matematis,
+          dan tabel analisis frekuensi. Untuk konsultan lingkungan hidup, konsultan rekayasa
+          sipil, dan divisi HSE kawasan industri.
+        </p>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+          <a class="btn btn-primary" href="#pricing">Bandingkan Paket</a>
+          <a class="btn btn-ghost" href="#preview">Lihat Pratinjau Laporan</a>
+        </div>
+
+        <dl class="hero-meta">
+          <div><dt>Penghematan waktu</dt><dd>~95%</dd></div>
+          <div><dt>Distribusi</dt><dd>Gumbel · Log-Pearson III</dd></div>
+          <div><dt>Output</dt><dd>.docx · .xlsx · .pdf</dd></div>
+          <div><dt>Lisensi</dt><dd>Tahunan / per proyek</dd></div>
+        </dl>
+      </div>
+
+      <figure class="hero-photo">
+        <img alt="Dokumen teknis hidrologi" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80" />
+        <span class="pin">DRAFT OTOMATIS · .DOCX</span>
+        <figcaption class="caption">Draf bab hidrologi terstandarisasi—siap review oleh konsultan senior sebelum dikirim ke klien.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <p class="eyebrow">Masalah klasik</p>
+        <h2 class="display" style="margin-top:14px;">Uji konsistensi,<span class="br-only"><br/></span>analisis frekuensi,<span class="br-only"><br/></span>kurva IDF—<span class="br-only"><br/></span>semua manual.</h2>
+      </div>
+      <div class="col" style="gap:18px;">
+        <p class="lede">
+          Proses pengolahan data mentah hidrologi—uji konsistensi data, analisis frekuensi dengan
+          metode Gumbel atau Log-Pearson III, dan perancangan kurva IDF—memakan waktu analisis
+          manual hingga puluhan jam kerja teknisi. Untuk satu proyek AMDAL kawasan industri,
+          satu teknisi bisa terikat 1–2 minggu penuh hanya untuk bab hidrologi.
+        </p>
+        <p style="color:var(--muted);">
+          Hydro-AMDAL Engine tidak menggantikan penilaian profesional—ia mempercepat pekerjaan
+          rutin sehingga teknisi dapat fokus pada interpretasi dan justifikasi teknis.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Otomatisasi</span><span class="line"></span></div>
+      <h2 class="display">Apa yang di-<em>generate</em><span class="br-only"><br/></span>otomatis.</h2>
+      <p class="lede">Setiap laporan Hydro-AMDAL memuat blok-blok standar berikut, yang dihasilkan dari seri data historis SIH3 yang Anda pilih.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="feature-card">
+        <span class="num">BAB · 01</span>
+        <h4 class="display" style="font-size:22px;">Konsistensi Data</h4>
+        <p style="color:var(--muted); font-size:14px;">Uji outlier, uji tren, dan uji lompatan dengan kurva massa ganda (double mass curve) otomatis.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">BAB · 02</span>
+        <h4 class="display" style="font-size:22px;">Analisis Frekuensi</h4>
+        <p style="color:var(--muted); font-size:14px;">Distribusi Gumbel, Log-Pearson III, dan Log-Normal dengan uji kecocokan Chi-Kuadrat &amp; Smirnov-Kolmogorov.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">BAB · 03</span>
+        <h4 class="display" style="font-size:22px;">Kurva IDF</h4>
+        <p style="color:var(--muted); font-size:14px;">Intensity-Duration-Frequency otomatis dengan formula Talbot, Sherman, dan Ishiguro—siap plot di AutoCAD.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">BAB · 04</span>
+        <h4 class="display" style="font-size:22px;">Neraca Air</h4>
+        <p style="color:var(--muted); font-size:14px;">Perhitungan ketersediaan air baku (R80%) dan kebutuhan air proyek dalam format neraca bulanan.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">BAB · 05</span>
+        <h4 class="display" style="font-size:22px;">Penyaluran Banjir</h4>
+        <p style="color:var(--muted); font-size:14px;">Hidrograf satuan sintetik Nakayasu atau Snyder berdasarkan parameter DAS yang Anda masukkan.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">Lampiran</span>
+        <h4 class="display" style="font-size:22px;">Tabel &amp; Grafik</h4>
+        <p style="color:var(--muted); font-size:14px;">Tabel rekapitulasi lengkap, grafik kurva, dan ringkasan metode—siap tempel ke laporan akhir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREVIEW ============ -->
+<section id="preview">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Pratinjau laporan</span><span class="line"></span></div>
+      <h2 class="display">Begini tampilan<span class="br-only"><br/></span>draf otomatisnya.</h2>
+    </div>
+
+    <div class="grid-2" style="align-items:start; gap:48px;">
+      <div class="doc-shell" data-od-id="doc-preview">
+        <div class="topbar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div>BAB_III_HIDROLOGI.docx · Hasil generate · 14:22 WIB</div>
+          <div>Hydro-AMDAL v1.0</div>
+        </div>
+        <div class="page">
+          <p style="text-align:center; font-weight:700; font-size:14px; letter-spacing:.1em;">BAB III<br/>ANALISIS HIDROLOGI</p>
+
+          <h2>3.1 Uji Konsistensi Data</h2>
+          <p>Data curah hujan harian dari pos penakar P001 (Ciamis), P014 (Tasikmalaya), dan P027 (Banjar) selama periode 2015–2024 diuji menggunakan metode <em>double mass curve</em>. Hasil menunjukkan indeks konsistensi konsisten untuk seluruh seri data dengan korelasi R² = 0,991.</p>
+
+          <div class="formula">Y = 1,024 · X + 12,4 &nbsp; ·&nbsp; R² = 0,991</div>
+
+          <h2>3.2 Analisis Frekuensi</h2>
+          <p>Analisis frekuensi debit puncak menggunakan dua distribusi: <strong>Gumbel</strong> dan <strong>Log-Pearson III</strong>. Uji kecocokan menggunakan Smirnov-Kolmogorov pada taraf signifikansi 5%.</p>
+
+          <table>
+            <tr><th>T<sub>r</sub> (th)</th><th>Gumbel (m³/s)</th><th>Log-Pearson III (m³/s)</th><th>Δ<sub>kritik</sub></th></tr>
+            <tr><td>2</td><td>312</td><td>298</td><td>0,082</td></tr>
+            <tr><td>5</td><td>498</td><td>472</td><td>0,091</td></tr>
+            <tr><td>10</td><td>624</td><td>602</td><td>0,074</td></tr>
+            <tr><td>25</td><td>812</td><td>794</td><td>0,068</td></tr>
+            <tr><td>50</td><td>954</td><td>941</td><td>0,062</td></tr>
+            <tr><td>100</td><td>1.087</td><td>1.082</td><td>0,058</td></tr>
+          </table>
+          <p>Kedua distribusi memenuhi uji kecocokan (Δ &lt; Δ<sub>kritik</sub> = 0,138). Distribusi <strong>Log-Pearson III</strong> dipilih sebagai distribusi terpilih karena menghasilkan debit lebih konservatif untuk desain struktur.</p>
+
+          <h2>3.3 Kurva IDF</h2>
+          <p>Kurva Intensity-Duration-Frequency diturunkan dengan metode <em>Talbot</em>:</p>
+          <div class="formula">I = a · (t + b) ⁻¹ &nbsp; dengan a = 1280, b = 18</div>
+          <p>Hasil selengkapnya tersedia pada Lampiran C dan dapat di-ekspor ke format AutoCAD (.dxf).</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow">Kurva IDF otomatis</p>
+        <h3 class="display" style="margin-top:10px; font-size:24px;">Intensity-Duration-Frequency</h3>
+        <p style="color:var(--muted); font-size:14px;">Salah satu keluaran utama Hydro-AMDAL: kurva IDF untuk berbagai kala ulang, siap plot ulang atau ekspor sebagai gambar beresolusi cetak.</p>
+
+        <svg class="curve-svg" viewBox="0 0 600 280" style="margin-top:14px;" role="img" aria-label="Kurva IDF otomatis">
+          <defs>
+            <pattern id="grid" width="40" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 20" fill="none" stroke="#eee" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="280" fill="url(#grid)"/>
+          <!-- Axes -->
+          <line x1="50" y1="240" x2="570" y2="240" stroke="#333" stroke-width="1.5"/>
+          <line x1="50" y1="20" x2="50" y2="240" stroke="#333" stroke-width="1.5"/>
+          <!-- Axis labels -->
+          <text x="300" y="265" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#555">Durasi (menit)</text>
+          <text x="20" y="130" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#555" transform="rotate(-90 20 130)">Intensitas (mm/jam)</text>
+          <!-- X ticks -->
+          <g font-family="JetBrains Mono" font-size="10" fill="#666">
+            <text x="60" y="255" text-anchor="middle">5</text>
+            <text x="140" y="255" text-anchor="middle">15</text>
+            <text x="220" y="255" text-anchor="middle">30</text>
+            <text x="300" y="255" text-anchor="middle">60</text>
+            <text x="380" y="255" text-anchor="middle">120</text>
+            <text x="460" y="255" text-anchor="middle">240</text>
+            <text x="540" y="255" text-anchor="middle">480</text>
+          </g>
+          <!-- Y ticks -->
+          <g font-family="JetBrains Mono" font-size="10" fill="#666" text-anchor="end">
+            <text x="46" y="244">0</text>
+            <text x="46" y="195">50</text>
+            <text x="46" y="145">100</text>
+            <text x="46" y="95">150</text>
+            <text x="46" y="45">200</text>
+          </g>
+          <!-- Curves: Tr=2, 5, 10, 25, 50, 100 -->
+          <path d="M60,30 C100,40 140,55 220,80 C300,110 380,150 460,180 C500,195 540,210 570,215" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <path d="M60,40 C100,52 140,72 220,100 C300,135 380,170 460,200 C500,212 540,222 570,225" fill="none" stroke="#cba135" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <path d="M60,55 C100,68 140,90 220,125 C300,160 380,190 460,215 C500,222 540,228 570,232" fill="none" stroke="#e89338" stroke-width="2"/>
+          <path d="M60,75 C100,90 140,115 220,150 C300,180 380,205 460,225 C500,230 540,234 570,236" fill="none" stroke="#e85a3c" stroke-width="2.5"/>
+          <path d="M60,90 C100,108 140,135 220,170 C300,195 380,215 460,230 C500,234 540,237 570,238" fill="none" stroke="#c73e1d" stroke-width="2.5"/>
+          <path d="M60,105 C100,125 140,150 220,185 C300,205 380,222 460,233 C500,236 540,238 570,239" fill="none" stroke="#9c2e15" stroke-width="3"/>
+
+          <!-- Legend -->
+          <g transform="translate(360,30)" font-family="JetBrains Mono" font-size="10" fill="#333">
+            <text font-weight="700">Kala ulang (tahun)</text>
+            <line x1="0" y1="14" x2="20" y2="14" stroke="#999" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <text x="26" y="17">Tr = 2</text>
+            <line x1="0" y1="28" x2="20" y2="28" stroke="#cba135" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <text x="26" y="31">Tr = 5</text>
+            <line x1="0" y1="42" x2="20" y2="42" stroke="#e89338" stroke-width="2"/>
+            <text x="26" y="45">Tr = 10</text>
+            <line x1="0" y1="56" x2="20" y2="56" stroke="#e85a3c" stroke-width="2.5"/>
+            <text x="26" y="59">Tr = 25</text>
+            <line x1="0" y1="70" x2="20" y2="70" stroke="#c73e1d" stroke-width="2.5"/>
+            <text x="26" y="73">Tr = 50</text>
+            <line x1="0" y1="84" x2="20" y2="84" stroke="#9c2e15" stroke-width="3"/>
+            <text x="26" y="87">Tr = 100</text>
+          </g>
+        </svg>
+
+        <p class="small" style="margin-top:10px;">Kurva dihasilkan dari seri data historis SIH3 sesuai kala ulang dan lokasi pos pantau yang Anda pilih.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKFLOW ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Alur kerja</span><span class="line"></span></div>
+      <h2 class="display">Empat langkah,<span class="br-only"><br/></span>satu draf teknis.</h2>
+    </div>
+
+    <div class="grid-4">
+      <div class="feature-card">
+        <span class="num">01</span>
+        <h4 class="display" style="font-size:18px;">Pilih seri data</h4>
+        <p style="color:var(--muted); font-size:14px;">Pilih pos pantau dan rentang tahun dari katalog SIH3.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">02</span>
+        <h4 class="display" style="font-size:18px;">Atur parameter</h4>
+        <p style="color:var(--muted); font-size:14px;">Tentukan kala ulang, distribusi, dan metode kurva IDF.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">03</span>
+        <h4 class="display" style="font-size:18px;">Generate draf</h4>
+        <p style="color:var(--muted); font-size:14px;">Engine menghasilkan draf bab + tabel + grafik dalam 3–8 menit.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">04</span>
+        <h4 class="display" style="font-size:18px;">Review &amp; ekspor</h4>
+        <p style="color:var(--muted); font-size:14px;">Review oleh teknisi senior, lalu ekspor ke .docx/.xlsx/.pdf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Skema harga</span><span class="line"></span></div>
+      <h2 class="display">Lisensi tahunan<span class="br-only"><br/></span>atau bayar per<span class="br-only"><br/></span>laporan.</h2>
+      <p class="lede">Pilih lisensi korporat untuk pemakaian rutin, atau model <em>pay-per-project</em> untuk konsultan independen.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <span class="eyebrow">Lisensi Tahunan</span>
+        <h3 class="display" style="font-size:24px;">Korporat</h3>
+        <div class="price">Rp 20–50jt<small> /tahun</small></div>
+        <p style="color:var(--muted); font-size:14px;">Untuk biro konsultan dengan 3–20 teknisi. Termasuk pelatihan dan pembaruan metode.</p>
+        <ul>
+          <li>Pengguna tidak terbatas (perusahaan)</li>
+          <li>Generate laporan tidak terbatas</li>
+          <li>Akses ke semua seri data historis</li>
+          <li>Pelatihan teknis untuk staf baru</li>
+          <li>Dukungan email &amp; WhatsApp</li>
+        </ul>
+        <a class="btn btn-ghost" href="mailto:hydro-amdal@keairan.id" style="align-self:flex-start;">Minta Penawaran</a>
+      </div>
+
+      <div class="pricing-card">
+        <span class="eyebrow accent">Per Proyek</span>
+        <h3 class="display" style="font-size:24px;">Pay-per-Project</h3>
+        <div class="price">Rp 3–7,5jt<small> /laporan</small></div>
+        <p style="color:var(--muted); font-size:14px;">Cocok untuk konsultan independen atau proyek AMDAL satu kali.</p>
+        <ul>
+          <li>1 laporan lengkap terstandarisasi</li>
+          <li>Ekspor .docx + .xlsx + grafik</li>
+          <li>1 revisi gratis</li>
+          <li>Akses katalog seri data SIH3</li>
+          <li>Berlaku 30 hari setelah pembelian</li>
+        </ul>
+        <a class="btn btn-primary" href="#" style="align-self:flex-start;">Coba Bayar-per-Proyek</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIENCE ============ -->
+<section>
+  <div class="wrap">
+    <div class="band-dark">
+      <div class="grid-2" style="align-items:center;">
+        <div class="col" style="gap:14px;">
+          <span class="accent-tag">Siapa yang menggunakan</span>
+          <h2 class="display" style="color:var(--bg);">Tiga klien,<span class="br-only"><br/></span>satu engine.</h2>
+          <p style="color:oklch(85% 0.02 95); max-width:46ch;">Hydro-AMDAL Engine dirancang untuk tiga segmen profesional yang bergulat dengan volume data hidrologi serupa.</p>
+        </div>
+        <div class="col" style="gap:14px;">
+          <div style="border:1px solid oklch(28% 0.01 250); border-radius:8px; padding:18px;">
+            <strong style="color:var(--accent); font-family:var(--mono); font-size:12px; letter-spacing:.1em;">KONSULTAN LINGKUNGAN</strong>
+            <h4 class="display" style="color:var(--bg); font-size:18px; margin:8px 0 4px;">Penyusun AMDAL &amp; UKL-UPL</h4>
+            <p style="color:oklch(80% 0.02 95); font-size:13px; margin:0;">Mempercepat penyusunan bab hidrologi yang biasanya menyita 1–2 minggu teknisi.</p>
+          </div>
+          <div style="border:1px solid oklch(28% 0.01 250); border-radius:8px; padding:18px;">
+            <strong style="color:var(--accent); font-family:var(--mono); font-size:12px; letter-spacing:.1em;">KONSULTAN REKAYASA SIPIL</strong>
+            <h4 class="display" style="color:var(--bg); font-size:18px; margin:8px 0 4px;">Desain drainase &amp; jembatan</h4>
+            <p style="color:oklch(80% 0.02 95); font-size:13px; margin:0;">Kurva IDF dan debit banjir rancangan siap pakai untuk desain struktur.</p>
+          </div>
+          <div style="border:1px solid oklch(28% 0.01 250); border-radius:8px; padding:18px;">
+            <strong style="color:var(--accent); font-family:var(--mono); font-size:12px; letter-spacing:.1em;">DIVISI HSE KAWASAN INDUSTRI</strong>
+            <h4 class="display" style="color:var(--bg); font-size:18px; margin:8px 0 4px;">Kepatuhan &amp; due diligence</h4>
+            <p style="color:oklch(80% 0.02 95); font-size:13px; margin:0;">Verifikasi cepat baku mutu air dan analisis dampak lingkungan rutin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>Intelijen Hidrologi · WS Citanduy</small></span>
+        </div>
+        <p style="color:oklch(80% 0.02 95); max-width:36ch; font-size:14px;">
+          Cetak biru platform intelijen hidrologi terpadu untuk Wilayah Sungai Citanduy—solusi
+          hibrida untuk mitigasi risiko korporat dan layanan ketahanan masyarakat.
+        </p>
+      </div>
+      <div>
+        <h5>Layanan</h5>
+        <ul>
+          <li><a href="dashboard.html">Dasbor Publik</a></li>
+          <li><a href="aqua-alert.html">AquaAlert</a></li>
+          <li><a href="hydro-amdal.html">Hydro-AMDAL</a></li>
+          <li><a href="dashboard.html#report">Pelaporan Warga</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Sumber Data</h5>
+        <ul>
+          <li>SIH3 BBWS Citanduy</li>
+          <li>Pos Duga Air DAS</li>
+          <li>BMKG (klimatologi)</li>
+          <li>BPBD setempat</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Cetak Biru</h5>
+        <ul>
+          <li><a href="methodology.html">Metodologi</a></li>
+          <li><a href="methodology.html#stack">Tumpukan Teknologi</a></li>
+          <li><a href="methodology.html#roadmap">Peta Jalan</a></li>
+          <li><a href="Blueprint-Platform-Keairan-Citanduy.pdf">Dokumen PDF</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <div>© 2026 Keairan Citanduy · Cetak biru pengembangan sistem · 4 September 2026</div>
+      <div>WS Citanduy · ±3.500 km² · 27 pos pantau</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

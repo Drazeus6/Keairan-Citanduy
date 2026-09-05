@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Komponen · Pratinjau · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 900px) { .panel-grid { grid-template-columns: 1fr; } }
+  .panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .panel h3 { font-family: var(--display); font-size: 20px; margin: 0; }
+  .panel.dark {
+    background: var(--paper-dark);
+    color: var(--bg);
+    border-color: var(--paper-dark);
+  }
+  .panel.dark h3 { color: var(--bg); }
+  .panel.dark .k { color: oklch(75% 0.02 95); }
+  .panel .k { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .panel .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .panel .col { display: flex; flex-direction: column; gap: 8px; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Sistem Desain · 04 · Komponen</small></span></a>
+    <nav class="primary"><a href="colors.html">Warna</a><a href="typography.html">Tipografi</a><a href="spacing.html">Spasi</a><a href="components.html" aria-current="page">Komponen</a><a href="brand-assets.html">Merek</a></nav>
+    <div class="header-cta"><a href="index.html" class="btn btn-ghost">Semua Kartu</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">04 · Komponen</p>
+    <h1 class="display" style="margin-top:14px;">Katalog komponen utama</h1>
+    <p class="lede">Setiap panel di bawah adalah komponen yang digunakan di permukaan produk. Versi produksi lengkapnya ada di <code>ui_kits/app/</code>.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="panel-grid">
+
+      <div class="panel">
+        <span class="k">Tombol</span>
+        <h3>Empat varian tombol</h3>
+        <div class="row">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-ghost">Ghost</button>
+          <button class="btn btn-dark">Dark</button>
+        </div>
+        <a class="btn-link" href="#">Teks link dengan panah</a>
+        <p class="small" style="margin:0;">Hanya satu tombol primary per viewport. Ghost membalik warna saat hover; tidak pernah memudar.</p>
+      </div>
+
+      <div class="panel">
+        <span class="k">Kartu editorial</span>
+        <h3>Kartu dengan foto</h3>
+        <article class="card">
+          <div class="photo" style="aspect-ratio:4/3; background:linear-gradient(135deg, oklch(45% 0.09 220), oklch(80% 0.05 220));"></div>
+          <div class="body">
+            <div class="meta"><span class="pill" style="background:var(--surface); padding:4px 8px; border-radius:999px; font-weight:600; font-size:12px;">Akuakultur</span><span>4 menit baca</span></div>
+            <h3 style="font-family:var(--display); font-size:20px; margin:0;">Saat air tawar hulu menerjang tambak.</h3>
+            <p style="color:var(--muted); font-size:14px; margin:0;">Salinitas runtuh dalam hitungan jam. AquaAlert menerjemahkan ambang batas menjadi saran 12–24 jam sebelumnya.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="panel dark">
+        <span class="k">Band editorial</span>
+        <span class="accent-tag">Pilar komersial</span>
+        <h3>AquaAlert · peringatan dini</h3>
+        <p style="color:oklch(85% 0.02 95); margin:0;">Notifikasi WhatsApp &amp; SMS gateway 12–24 jam sebelum penurunan salinitas. Berlangganan Rp 500rb–1,5jt per bulan per kolam.</p>
+        <div class="row">
+          <a class="btn btn-primary" href="#">Mulai Berlangganan</a>
+          <a class="btn btn-ghost" href="#">Lihat Dasbor Publik</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="k">Status · standar BBWS</span>
+        <h3>Tiga status sungai</h3>
+        <div class="row" style="gap:18px;">
+          <span class="station" style="display:inline-flex; gap:6px; align-items:center;"><span class="badge n" style="display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; background: oklch(94% 0.06 145); color: oklch(35% 0.16 145);">NORMAL</span></span>
+          <span class="badge w" style="display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; background: oklch(96% 0.07 80); color: oklch(40% 0.15 80);">WASPADA</span>
+          <span class="badge s" style="display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; background: oklch(94% 0.06 25); color: oklch(40% 0.2 25);">SIAGA</span>
+        </div>
+        <div class="row" style="gap:14px;">
+          <span style="display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:12px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--status-normal);"></span>Normal</span>
+          <span style="display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:12px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--status-waspada);"></span>Waspada</span>
+          <span style="display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:12px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--status-siaga);"></span>Siaga</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="k">Pillars</span>
+        <h3>Pilar terang &amp; gelap</h3>
+        <div class="row" style="gap:14px; align-items:stretch;">
+          <article class="pillar" style="flex:1;">
+            <div class="top">
+              <span class="tag" style="background:var(--paper-dark); color:var(--accent); padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;">Pilar 3 · Publik</span>
+              <h3 class="display" style="font-size:20px; margin:0;">Layanan 3-in-1</h3>
+              <p style="margin:0; color:var(--muted); font-size:13px;">Mobile-first, tanpa registrasi.</p>
+            </div>
+          </article>
+          <article class="pillar dark" style="flex:1;">
+            <div class="top">
+              <span class="tag" style="background:var(--accent); color:var(--accent-ink); padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;">Pilar 1 · Komersial</span>
+              <h3 class="display" style="font-size:20px; margin:0; color:var(--bg);">AquaAlert</h3>
+              <p style="margin:0; color:oklch(85% 0.02 95); font-size:13px;">Berlangganan per kolam.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="k">Kutipan</span>
+        <h3>Pull-quote editorial</h3>
+        <div class="quote">“Air tidak pernah menunggu izin bicara. Tugas kami hanya menerjemahkan apa yang ia katakan.”</div>
+        <p class="small" style="margin:0;">cite line menggunakan 13px uppercase mono.</p>
+      </div>
+
+      <div class="panel">
+        <span class="k">Stat strip</span>
+        <h3>Empat bilangan, satu strip</h3>
+        <div class="stat-strip" style="grid-template-columns: repeat(4, 1fr); border:1px solid var(--border); border-radius:8px;">
+          <div style="padding:14px 16px; border-right:1px solid var(--border);"><div class="v" style="font-family:var(--display); font-weight:700; font-size:28px; line-height:1;">12<small style="font-family:var(--body); font-size:12px; color:var(--muted); margin-left:6px;">jam</small></div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:6px;">Peringatan AquaAlert</div></div>
+          <div style="padding:14px 16px; border-right:1px solid var(--border);"><div class="v" style="font-family:var(--display); font-weight:700; font-size:28px; line-height:1;">5</div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:6px;">Parameter SIH3</div></div>
+          <div style="padding:14px 16px; border-right:1px solid var(--border);"><div class="v" style="font-family:var(--display); font-weight:700; font-size:28px; line-height:1;">27</div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:6px;">Pos pantau aktif</div></div>
+          <div style="padding:14px 16px;"><div class="v" style="font-family:var(--display); font-weight:700; font-size:28px; line-height:1;">0<small style="font-family:var(--body); font-size:12px; color:var(--muted); margin-left:6px;">biaya</small></div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:6px;">Untuk dasbor publik</div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="k">Tab</span>
+        <h3>Tab dasbor</h3>
+        <div class="tabs" role="tablist" style="border-bottom:1px solid var(--border); margin-bottom:0;">
+          <button class="tab" aria-selected="true"><span class="num" style="font-family:var(--mono); font-size:11px; margin-right:8px;">01</span>Peta Pantau Banjir</button>
+          <button class="tab" aria-selected="false"><span class="num" style="font-family:var(--mono); font-size:11px; margin-right:8px;">02</span>Kalender Cuaca Tani</button>
+          <button class="tab" aria-selected="false"><span class="num" style="font-family:var(--mono); font-size:11px; margin-right:8px;">03</span>Kanal Pelaporan Warga</button>
+        </div>
+        <p class="small" style="margin:0;">Aksen kuning menjadi underline 2px pada tab yang dipilih.</p>
+      </div>
+
+      <div class="panel dark">
+        <span class="k">Ticker</span>
+        <h3 style="color:var(--bg);">Ticker SIAGA</h3>
+        <div class="ticker" style="background:var(--paper-dark-2); border-radius:8px; padding:12px 16px; color:white; font-family:var(--mono); font-size:13px; display:flex; align-items:center; gap:14px;">
+          <span class="live" style="display:inline-flex; align-items:center; gap:6px; background:var(--status-siaga); color:white; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; flex-shrink:0;">● SIAGA</span>
+          <span>Pos Banjar · TMA 312 cm · ↑12 cm/jam · Estimasi tiba Pangandaran 6–8 jam</span>
+        </div>
+        <p class="small" style="margin:0; color:oklch(80% 0.02 95);">Ticker hanya muncul di halaman dasbor publik saat status siaga aktif.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div><div class="brand" style="color:var(--bg); margin-bottom:14px;"><span class="brand-mark">K</span><span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau · 04 · Komponen</small></span></div></div>
+      <div><h5>Versi lengkap</h5><ul><li><a href="../ui_kits/app/index.html">ui_kits/app/</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

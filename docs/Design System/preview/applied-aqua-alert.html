@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AquaAlert · Pratinjau terapan · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .alert-hero { background: var(--status-siaga); color: white; padding: 56px 0 48px; position: relative; overflow: hidden; }
+  .alert-hero::after { content: ""; position: absolute; right: -80px; bottom: -120px; width: 320px; height: 320px; border-radius: 50%; border: 80px solid oklch(45% 0.22 25); }
+  .alert-hero h1 { color: white; font-size: clamp(40px, 6vw, 76px); }
+  .alert-hero .eyebrow { color: oklch(88% 0.08 25); }
+  .alert-hero p.lede { color: oklch(92% 0.03 95); }
+  .stat-alert { background: oklch(35% 0.18 25); padding: 14px 16px; border-radius: 6px; min-width: 140px; }
+  .stat-alert .v { font-family: var(--display); font-weight: 700; font-size: 28px; }
+  .stat-alert .k { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; margin-top: 4px; }
+  .timeline-track { position: relative; padding: 24px 0 12px; }
+  .timeline-track::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: oklch(82% 0.02 95); }
+  .t-event { position: relative; padding-left: 44px; margin-bottom: 28px; }
+  .t-event::before { content: ""; position: absolute; left: 6px; top: 6px; width: 18px; height: 18px; border-radius: 50%; background: var(--bg); border: 4px solid var(--muted); box-shadow: 0 0 0 4px var(--bg); }
+  .t-event.c::before { border-color: var(--status-normal); }
+  .t-event.w::before { border-color: var(--status-waspada); }
+  .t-event.s::before { border-color: var(--status-siaga); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 4px var(--bg); } 50% { box-shadow: 0 0 0 10px oklch(82% 0.02 95 / 0.45); } }
+  .t-event .when { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .t-event .what { font-family: var(--display); font-size: 18px; margin: 6px 0 4px; }
+  .t-event .who { color: var(--muted); font-size: 13px; }
+  .receipt { border: 1px solid var(--border); background: var(--bg); border-radius: var(--radius); padding: 28px; font-family: var(--mono); font-size: 13px; position: relative; }
+  .receipt::before, .receipt::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: repeating-linear-gradient(to right, transparent 0 6px, var(--border) 6px 12px); }
+  .receipt::before { top: 14px; }
+  .receipt::after { bottom: 14px; }
+  .receipt .row { display: grid; grid-template-columns: 140px 1fr; gap: 12px; padding: 5px 0; border-bottom: 1px dashed var(--border); }
+  .receipt .row:last-child { border-bottom: 0; }
+  .receipt .row .l { color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: .14em; }
+  .receipt .stamp { display: inline-block; border: 2px solid var(--status-siaga); color: var(--status-siaga); padding: 6px 12px; font-weight: 700; letter-spacing: .2em; transform: rotate(-4deg); }
+  .progress { height: 6px; background: var(--paper-dark); border-radius: 999px; overflow: hidden; }
+  .progress > span { display: block; height: 100%; background: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Pratinjau terapan · AquaAlert</small></span></a>
+    <nav class="primary"><a href="colors.html">Warna</a><a href="typography.html">Tipografi</a><a href="components.html">Komponen</a><a href="applied-aqua-alert.html" aria-current="page">Terapan</a></nav>
+    <div class="header-cta"><a href="applied-public-dashboard.html" class="btn btn-ghost">Dasbor Publik</a></div>
+  </div>
+</header>
+
+<section class="alert-hero">
+  <div class="wrap" style="position:relative; z-index:2;">
+    <p class="eyebrow">Bulletin AquaAlert · edisi 14:32 WIB</p>
+    <h1 class="display" style="margin:14px 0 18px;">Siaga Banjir DAS Citanduy.<br/>Estimasi tiba: 6–8 jam.</h1>
+    <p class="lede" style="max-width:54ch;">Sungai Citanduy segmen tengah (Banjar, Pataruman, Langensari) diprediksi melewati ambang Siaga 300 cm dalam 6–8 jam. Hulu hujan kategori sedang merata—hilir diminta evakuasi tahap satu.</p>
+    <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+      <a class="btn btn-primary" href="#">Kirim ke WhatsApp RT</a>
+      <a class="btn btn-ghost" href="#">Unduh Bulletin PDF</a>
+    </div>
+    <div style="display:flex; gap:12px; margin-top:36px; flex-wrap:wrap;">
+      <div class="stat-alert"><div class="v">312 cm</div><div class="k">TMA Banjar (S03)</div></div>
+      <div class="stat-alert"><div class="v">+12 cm/jam</div><div class="k">Tren kenaikan</div></div>
+      <div class="stat-alert"><div class="v">6–8 jam</div><div class="k">Waktu evakuasi</div></div>
+      <div class="stat-alert"><div class="v">5.420</div><div class="k">KK terdampak</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:48px 0;">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <p class="eyebrow">Linimasa peringatan</p>
+        <h2 class="display" style="font-size:clamp(28px,3vw,42px); margin-top:12px;">12 jam, empat eskalasi.</h2>
+        <p style="color:var(--muted); max-width:46ch;">Bulletin otomatis AquaAlert mengikuti standar BBWS: Normal, Waspada, Siaga. Setiap eskalasi dicatat dengan stempel waktu, pos pelapor, dan parameter pemicu.</p>
+
+        <div class="timeline-track" style="margin-top:24px;">
+          <div class="t-event c"><div class="when">02:18 WIB · Pos Ciamis Hulu</div><div class="what">TMA 182 cm · status Normal</div><div class="who">Hujan ringan terdeteksi di hulu DAS Citanduy (15 mm/jam). Debit stabil.</div></div>
+          <div class="t-event w"><div class="when">05:42 WIB · Pos Tasik Tengah</div><div class="what">Eskalasi ke Waspada</div><div class="who">TMA 248 cm, melintasi ambang Waspada 240 cm. Debit meningkat 22% dalam 3 jam.</div></div>
+          <div class="t-event s"><div class="when">11:08 WIB · Pos Banjar Kota</div><div class="what">Eskalasi ke Siaga</div><div class="who">TMA sentuh 312 cm, ambang Siaga 300 cm terlewati 12 cm. Puncak diproyeksi +8 jam.</div></div>
+          <div class="t-event s"><div class="when">14:32 WIB · AquaAlert Edisi 14:32</div><div class="what">Bulletin otomatis terkirim</div><div class="who">Distribusi ke 17 RT di Banjar, Pataruman, Langensari; tembusan ke BPBD dan BBWS Citanduy.</div></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow">Bulletin terkunci · edisi 14:32</p>
+        <h3 class="display" style="margin-top:10px; font-size:22px;">Tanda terima digital</h3>
+        <div class="receipt" style="margin-top:16px;">
+          <div class="row"><span class="l">Nomor bulletin</span><span>AQA-2026-0314-1432-S03</span></div>
+          <div class="row"><span class="l">Tingkat</span><span style="color:var(--status-siaga); font-weight:700;">SIAGA · BANJIR</span></div>
+          <div class="row"><span class="l">Segmen DAS</span><span>Citanduy Tengah · hulu–hilir ±72 km</span></div>
+          <div class="row"><span class="l">Pos pemicu</span><span>S03 Banjar Kota (−7,37 108,54)</span></div>
+          <div class="row"><span class="l">TMA saat rilis</span><span>312 cm · +12 cm/jam (3 jam terakhir)</span></div>
+          <div class="row"><span class="l">Debit saat rilis</span><span>78,6 m³/s</span></div>
+          <div class="row"><span class="l">Ambang Siaga</span><span>300 cm · terlewati +12 cm</span></div>
+          <div class="row"><span class="l">Estimasi puncak</span><span>±358 cm pada 22:15 WIB (±8 jam)</span></div>
+          <div class="row"><span class="l">KK terdampak</span><span>±5.420 (Banjar, Pataruman, Langensari)</span></div>
+          <div class="row"><span class="l">Tembusan</span><span>BPBD Kab. Ciamis · BBWS Citanduy · 17 RT</span></div>
+          <div class="row" style="padding-top:14px;"><span class="l">Validasi</span><span><span class="stamp">AQUA · OFFICIAL · 14:32</span></span></div>
+        </div>
+
+        <div style="margin-top:20px; padding:18px; border:1px solid var(--border); border-radius:8px; background:oklch(98% 0.01 95);">
+          <p class="eyebrow" style="color:var(--status-siaga);">Konfirmasi pembacaan</p>
+          <p style="margin:8px 0 12px;">Tanda terima otomatis tercatat setiap kali Bulletin AquaAlert dibaca oleh penerima WhatsApp. Beri tahu tim—satu pesan, satu kehidupan.</p>
+          <div class="progress" aria-label="Distribusi bulletin"><span style="width:78%;"></span></div>
+          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:6px;"><span>13 dari 17 RT terkonfirmasi</span><span>78%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:48px 0 64px;">
+  <div class="wrap">
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-body">
+          <span class="eyebrow">Berlangganan</span>
+          <h3 class="card-title" style="font-size:22px;">Peringatan langsung ke ponsel.</h3>
+          <p class="card-text">Daftar nomor Anda—kami kirim setiap eskalasi melalui WhatsApp resmi AquaAlert dan SMS fallback untuk jaringan terbatas.</p>
+          <a class="btn btn-primary" href="#">Daftar nomor</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <span class="eyebrow">Konfirmasi pembacaan</span>
+          <h3 class="card-title" style="font-size:22px;">Sudah dibaca semua orang.</h3>
+          <p class="card-text">Bulletin otomatis terkunci sampai penerima mengetuk tombol "Sudah dibaca". Stempel waktu tercatat pada tanda terima digital.</p>
+          <a class="btn btn-ghost" href="#">Lihat dasbor distribusi</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <span class="eyebrow">Saluran krisis</span>
+          <h3 class="card-title" style="font-size:22px;">Bicara dengan hidrolog.</h3>
+          <p class="card-text">Selama status Siaga, hotline AquaAlert tersambung langsung ke hidrolog BBWS Citanduy. Respon rata-rata 4 menit.</p>
+          <a class="btn btn-ghost" href="#">Hubungi 0800-AQUA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div><div class="brand" style="color:var(--bg); margin-bottom:14px;"><span class="brand-mark">K</span><span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau terapan · AquaAlert</small></span></div></div>
+      <div><h5>Pratinjau</h5><ul><li><a href="applied-public-dashboard.html">Dasbor Publik</a></li><li><a href="applied-hydro-amdal.html">Hydro-AMDAL</a></li></ul></div>
+      <div><h5>Token</h5><ul><li><a href="../colors_and_type.css">colors_and_type.css</a></li><li><a href="../DESIGN.md">DESIGN.md</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

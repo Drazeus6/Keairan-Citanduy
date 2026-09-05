@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Laporan Warga · UI Kit · Keairan Citanduy</title>
+<link rel="stylesheet" href="../../../colors_and_type.css" />
+<link rel="stylesheet" href="../../../assets/main.css" />
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .swatch-block { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg); margin-bottom: 18px; }
+  .swatch-block .head { padding: 12px 18px; border-bottom: 1px solid var(--border); background: var(--surface); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .swatch-block .head h4 { font-family: var(--display); font-size: 18px; margin: 0; }
+  .swatch-block .head code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .swatch-block .body { padding: 20px; }
+  pre.code { font-family: var(--mono); font-size: 12px; line-height: 1.55; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; overflow: auto; white-space: pre; }
+  .report-card { border:1px solid var(--border); border-radius:var(--radius); padding:24px; background:var(--bg); max-width:520px; }
+  .field { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+  .field label { font-size:12px; font-weight:600; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
+  .field input, .field select, .field textarea { font-family:var(--body); font-size:14px; padding:10px 12px; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--fg); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px oklch(82% 0.18 95 / 0.4); }
+  .field textarea { min-height:80px; resize:vertical; }
+  .feed { display:flex; flex-direction:column; gap:12px; }
+  .feed-item { border:1px solid var(--border); border-radius:8px; padding:14px 16px; display:grid; grid-template-columns:1fr auto; gap:8px; background:var(--bg); }
+  .feed-item .who { font-weight:600; font-size:14px; }
+  .feed-item .when { font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .feed-item .body-t { grid-column:1/-1; font-size:13px; color:var(--fg); margin-top:6px; }
+  .feed-item .badge { font-family:var(--mono); font-size:11px; padding:3px 8px; border-radius:4px; font-weight:700; letter-spacing:.06em; }
+  .feed-item .badge.ok { background:oklch(94% 0.06 145); color:oklch(35% 0.16 145); }
+  .feed-item .badge.review { background:oklch(96% 0.07 80); color:oklch(40% 0.15 80); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="../index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit · Komponen · Laporan Warga</small></span></a>
+    <nav class="primary"><a href="../index.html">Launcher</a><a href="citizen-report.html" aria-current="page">Laporan Warga</a></nav>
+    <div class="header-cta"><a href="../../../DESIGN.md" class="btn btn-ghost">DESIGN.md</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">UI Kit · Komponen · Laporan Warga</p>
+    <h1 class="display" style="margin-top:14px;">Form pelaporan,<br/>umpan balik masuk,<br/>badge validasi.</h1>
+    <p class="lede">Modul citizen-science sederhana: warga mengetik laporan, sistem menandai validasi otomatis dengan stempel waktu. Tidak ada login, tidak ada CAPTCHA — fokus pada tindakan, bukan friksi.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+
+    <div class="swatch-block" id="report-form">
+      <div class="head"><h4>Citizen report form</h4><code>components/citizen-report.html · #report-form</code></div>
+      <div class="body">
+        <form class="report-card" onsubmit="event.preventDefault(); alert('Demo · laporan terkirim ke pos BBWS terdekat.')">
+          <div class="field">
+            <label for="r-loc">Lokasi pengamatan</label>
+            <input id="r-loc" type="text" placeholder="Cth. Desa Pataruman, Kec. Banjar" />
+          </div>
+          <div class="field">
+            <label for="r-kat">Kategori</label>
+            <select id="r-kat">
+              <option>Air sungai meluap</option>
+              <option>Salinitas air tambak turun</option>
+              <option>Sampah / limbah di sungai</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="r-msg">Catatan lapangan</label>
+            <textarea id="r-msg" placeholder="Cth. TMA naik 30 cm dalam 1 jam, debit deras, ada kayu besar tersangkut."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Kirim Laporan</button>
+        </form>
+<pre class="code">&lt;form class="report-card"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="loc"&gt;Lokasi pengamatan&lt;/label&gt;
+    &lt;input id="loc" type="text" placeholder="Desa, Kecamatan" /&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="kat"&gt;Kategori&lt;/label&gt;
+    &lt;select id="kat"&gt;…&lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="msg"&gt;Catatan lapangan&lt;/label&gt;
+    &lt;textarea id="msg"&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button class="btn btn-primary" type="submit"&gt;Kirim Laporan&lt;/button&gt;
+&lt;/form&gt;</pre>
+      </div>
+    </div>
+
+    <div class="swatch-block" id="feed">
+      <div class="head"><h4>Reports feed</h4><code>components/citizen-report.html · #feed</code></div>
+      <div class="body">
+        <div class="feed">
+          <div class="feed-item">
+            <span class="who">Pak Dede · Banjar</span>
+            <span class="badge ok">DIVALIDASI</span>
+            <div class="when">14:18 WIB · 04 Sep 2026 · SIH3-CIT-014</div>
+            <div class="body-t">Air sungai naik cepat, debit deras, kayu besar tersangkut di jembatan lama.</div>
+          </div>
+          <div class="feed-item">
+            <span class="who">Ibu Ani · Pataruman</span>
+            <span class="badge review">DITINJAU</span>
+            <div class="when">13:54 WIB · 04 Sep 2026</div>
+            <div class="body-t">Tambak vaname mulai stress, salinitas turun dari 18 ppt ke 11 ppt dalam 3 jam.</div>
+          </div>
+          <div class="feed-item">
+            <span class="who">Pak Wahyu · Langensari</span>
+            <span class="badge ok">DIVALIDASI</span>
+            <div class="when">12:30 WIB · 04 Sep 2026 · SIH3-CIT-016</div>
+            <div class="body-t">Sampah rumah tangga menumpuk di gorong-gorong, mohon pengecekan DLH.</div>
+          </div>
+        </div>
+<pre class="code">&lt;div class="feed"&gt;
+  &lt;div class="feed-item"&gt;
+    &lt;span class="who"&gt;Pak Dede · Banjar&lt;/span&gt;
+    &lt;span class="badge ok"&gt;DIVALIDASI&lt;/span&gt;
+    &lt;div class="when"&gt;14:18 WIB · SIH3-CIT-014&lt;/div&gt;
+    &lt;div class="body-t"&gt;Air sungai naik cepat…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit · Komponen · Laporan Warga</small></span>
+        </div>
+      </div>
+      <div><h5>Modul lain</h5><ul>
+        <li><a href="masthead.html">Masthead</a></li>
+        <li><a href="dasbor.html">Dasbor</a></li>
+        <li><a href="aqua-alert.html">AquaAlert</a></li>
+        <li><a href="hydro-amdal.html">Hydro-AMDAL</a></li>
+      </ul></div>
+      <div><h5>Referensi</h5><ul>
+        <li><a href="../../../DESIGN.md">DESIGN.md §6</a></li>
+        <li><a href="../../../examples/dashboard.html">examples/dashboard.html</a></li>
+      </ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

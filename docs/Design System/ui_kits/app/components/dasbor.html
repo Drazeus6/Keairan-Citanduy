@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dasbor Publik · UI Kit · Keairan Citanduy</title>
+<link rel="stylesheet" href="../../../colors_and_type.css" />
+<link rel="stylesheet" href="../../../assets/main.css" />
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .swatch-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+    margin-bottom: 18px;
+  }
+  .swatch-block .head {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  .swatch-block .head h4 { font-family: var(--display); font-size: 18px; margin: 0; }
+  .swatch-block .head code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .swatch-block .body { padding: 20px; }
+  pre.code {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--fg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    overflow: auto;
+    white-space: pre;
+  }
+  /* Module-scoped helpers */
+  .ticker-demo { display:flex; align-items:center; gap:14px; background:var(--paper-dark); color:var(--bg); border-radius:var(--radius); padding:14px 18px; font-family:var(--mono); font-size:13px; }
+  .ticker-demo .live { display:inline-flex; align-items:center; gap:6px; background:var(--status-siaga); color:white; padding:4px 10px; border-radius:4px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
+  .stations-demo { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:12px; }
+  .stations-demo .station { border:1px solid var(--border); border-radius:8px; padding:14px 16px; background:var(--bg); display:flex; flex-direction:column; gap:8px; }
+  .stations-demo .station .top { display:flex; justify-content:space-between; align-items:center; }
+  .stations-demo .station .name { font-weight:600; font-size:14px; }
+  .stations-demo .station .coord { font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .stations-demo .station .badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; padding:3px 8px; border-radius:4px; font-family:var(--mono); font-weight:700; letter-spacing:.1em; }
+  .stations-demo .station .badge.n { background:oklch(94% 0.06 145); color:oklch(35% 0.16 145); }
+  .stations-demo .station .badge.w { background:oklch(96% 0.07 80); color:oklch(40% 0.15 80); }
+  .stations-demo .station .badge.s { background:oklch(94% 0.06 25); color:oklch(40% 0.2 25); }
+  .tabs-demo { display:flex; gap:0; border-bottom:1px solid var(--border); }
+  .tabs-demo button { background:transparent; border:0; padding:12px 18px; font-family:var(--body); font-size:14px; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:2px solid transparent; }
+  .tabs-demo button[aria-selected="true"] { color:var(--fg); border-bottom-color:var(--accent); }
+  .cal-demo { display:grid; grid-template-columns:repeat(7, 1fr); gap:6px; }
+  .cal-demo .cell { min-height:64px; border:1px solid var(--border); border-radius:6px; padding:6px 8px; font-family:var(--mono); font-size:11px; display:flex; flex-direction:column; gap:4px; background:var(--bg); }
+  .cal-demo .cell.dim { opacity:0.4; }
+  .cal-demo .cell .day { color:var(--muted); }
+  .cal-demo .cell .pill { align-self:flex-start; padding:2px 6px; border-radius:3px; font-weight:700; letter-spacing:.06em; }
+  .cal-demo .cell .pill.n { background:oklch(94% 0.06 145); color:oklch(35% 0.16 145); }
+  .cal-demo .cell .pill.w { background:oklch(96% 0.07 80); color:oklch(40% 0.15 80); }
+  .cal-demo .cell .pill.s { background:oklch(94% 0.06 25); color:oklch(40% 0.2 25); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="../index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>UI Kit · Komponen · Dasbor</small></span></a>
+    <nav class="primary"><a href="../index.html">Launcher</a><a href="masthead.html">Masthead</a><a href="dasbor.html" aria-current="page">Dasbor</a></nav>
+    <div class="header-cta"><a href="../../../DESIGN.md" class="btn btn-ghost">DESIGN.md</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">UI Kit · Komponen · Dasbor Publik</p>
+    <h1 class="display" style="margin-top:14px;">Ticker, station card,<br/>tab strip, kalender.</h1>
+    <p class="lede">Empat blok paling banyak dikutip dari modul Dasbor Publik. Disusun dari gaya yang sama dengan <code>examples/dashboard.html</code> dan dirancang agar bisa dipasang ulang tanpa menulis ulang CSS.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+
+    <div class="swatch-block" id="ticker">
+      <div class="head"><h4>Ticker SIAGA</h4><code>components/dasbor.html · #ticker</code></div>
+      <div class="body">
+        <div class="ticker-demo">
+          <span class="live">● SIAGA</span>
+          <span>Pos Banjar · TMA 312 cm · ↑12 cm/jam · Estimasi tiba Pangandaran 6–8 jam</span>
+        </div>
+<pre class="code">&lt;div class="ticker"&gt;
+  &lt;span class="live"&gt;&lt;span class="blink"&gt;&lt;/span&gt; SIAGA&lt;/span&gt;
+  &lt;span&gt;Pos Banjar · TMA 312 cm · ↑12 cm/jam&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="swatch-block" id="station-card">
+      <div class="head"><h4>Station card</h4><code>components/dasbor.html · #station-card</code></div>
+      <div class="body">
+        <div class="stations-demo">
+          <div class="station">
+            <div class="top"><span class="name">Banjar · SIH3-CIT-014</span><span class="badge s">SIAGA</span></div>
+            <div class="coord">7°22′ LS · 108°39′ BT</div>
+            <div class="readings" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-family:var(--mono); font-size:12px; color:var(--muted);">
+              <span>TMA · <strong style="color:var(--fg);">312 cm</strong></span><span>Q · <strong style="color:var(--fg);">24,5 m³/s</strong></span>
+              <span>Siaga · <strong style="color:var(--fg);">250 cm</strong></span><span>Update · <strong style="color:var(--fg);">14:32 WIB</strong></span>
+            </div>
+          </div>
+          <div class="station">
+            <div class="top"><span class="name">Pangandaran · SIH3-CIT-022</span><span class="badge w">WASPADA</span></div>
+            <div class="coord">7°41′ LS · 108°39′ BT</div>
+            <div class="readings" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-family:var(--mono); font-size:12px; color:var(--muted);">
+              <span>TMA · <strong style="color:var(--fg);">198 cm</strong></span><span>Q · <strong style="color:var(--fg);">11,2 m³/s</strong></span>
+              <span>Siaga · <strong style="color:var(--fg);">220 cm</strong></span><span>Update · <strong style="color:var(--fg);">14:30 WIB</strong></span>
+            </div>
+          </div>
+          <div class="station">
+            <div class="top"><span class="name">Ciamis · SIH3-CIT-007</span><span class="badge n">NORMAL</span></div>
+            <div class="coord">7°20′ LS · 108°21′ BT</div>
+            <div class="readings" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-family:var(--mono); font-size:12px; color:var(--muted);">
+              <span>TMA · <strong style="color:var(--fg);">142 cm</strong></span><span>Q · <strong style="color:var(--fg);">5,8 m³/s</strong></span>
+              <span>Siaga · <strong style="color:var(--fg);">200 cm</strong></span><span>Update · <strong style="color:var(--fg);">14:28 WIB</strong></span>
+            </div>
+          </div>
+        </div>
+<pre class="code">&lt;div class="station"&gt;
+  &lt;div class="top"&gt;
+    &lt;span class="name"&gt;Banjar · SIH3-CIT-014&lt;/span&gt;
+    &lt;span class="badge s"&gt;SIAGA&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="coord"&gt;7°22′ LS · 108°39′ BT&lt;/div&gt;
+  &lt;div class="readings"&gt;
+    &lt;span&gt;TMA · &lt;strong&gt;312 cm&lt;/strong&gt;&lt;/span&gt;
+    &lt;span&gt;Q · &lt;strong&gt;24,5 m³/s&lt;/strong&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="swatch-block" id="tabs">
+      <div class="head"><h4>Tab strip dasbor</h4><code>components/dasbor.html · #tabs</code></div>
+      <div class="body">
+        <div class="tabs-demo" role="tablist">
+          <button class="tab" aria-selected="true"><span style="font-family:var(--mono); font-size:11px; margin-right:8px;">01</span>Peta Pantau Banjir</button>
+          <button class="tab" aria-selected="false"><span style="font-family:var(--mono); font-size:11px; margin-right:8px;">02</span>Kalender Cuaca Tani</button>
+          <button class="tab" aria-selected="false"><span style="font-family:var(--mono); font-size:11px; margin-right:8px;">03</span>Kanal Pelaporan Warga</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-block" id="calendar">
+      <div class="head"><h4>Calendar cell · 7 kolom</h4><code>components/dasbor.html · #calendar</code></div>
+      <div class="body">
+        <div class="cal-demo">
+          <div class="cell dim"><span class="day">25 Agu</span></div>
+          <div class="cell"><span class="day">26</span><span class="pill n">NORMAL</span></div>
+          <div class="cell"><span class="day">27</span><span class="pill n">NORMAL</span></div>
+          <div class="cell"><span class="day">28</span><span class="pill w">WASPADA</span></div>
+          <div class="cell"><span class="day">29</span><span class="pill w">WASPADA</span></div>
+          <div class="cell"><span class="day">30</span><span class="pill s">SIAGA</span></div>
+          <div class="cell"><span class="day">31</span><span class="pill s">SIAGA</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit · Komponen · Dasbor</small></span>
+        </div>
+      </div>
+      <div><h5>Modul lain</h5><ul>
+        <li><a href="masthead.html">Masthead</a></li>
+        <li><a href="aqua-alert.html">AquaAlert</a></li>
+        <li><a href="hydro-amdal.html">Hydro-AMDAL</a></li>
+        <li><a href="citizen-report.html">Laporan Warga</a></li>
+      </ul></div>
+      <div><h5>Referensi</h5><ul>
+        <li><a href="../../../DESIGN.md">DESIGN.md §6</a></li>
+        <li><a href="../../../examples/dashboard.html">examples/dashboard.html</a></li>
+      </ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

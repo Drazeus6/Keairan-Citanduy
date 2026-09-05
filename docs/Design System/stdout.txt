@@ -1,0 +1,15 @@
+Usage:
+  od tools connectors list [--use-case personal_daily_digest] [--format compact]
+  od tools connectors execute --connector <id> --tool <name> --input input.json
+  od tools connectors github-design-context --repo owner/repo [--ref main] [--output context/github/owner-repo.md] [--max-files 48] [--require-connector]
+  od tools connectors local-design-context --path /path/to/project [--output context/local-code/project.md] [--max-files 48]
+  od tools connectors design-system-package-audit --path /path/to/project [--reference-package] [--fail-on-warnings]
+
+Environment:
+  OD_NODE_BIN     Node-compatible runtime for agent wrapper invocations
+  OD_BIN          Open Design CLI script for agent wrapper invocations
+  OD_DAEMON_URL   Daemon base URL injected into agent runs
+  OD_TOOL_TOKEN   Bearer token injected into agent runs
+
+Agent runtime invocation:
+  "$OD_NODE_BIN" "$OD_BIN" tools connectors list --use-case personal_daily_digest --format compact

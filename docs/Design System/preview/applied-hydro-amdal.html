@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hydro-AMDAL · Pratinjau terapan · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .amdal-intro { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 32px; position: relative; overflow: hidden; }
+  .amdal-intro::before { content: ""; position: absolute; left: -60px; bottom: -80px; width: 240px; height: 240px; border-radius: 50%; background: oklch(82% 0.18 95 / 0.5); }
+  .amdal-intro::after { content: ""; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; background: oklch(96% 0.04 250 / 0.4); }
+  .doc-stamp { display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; border: 1.5px solid var(--fg); border-radius: 4px; font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; }
+  .doc-stamp::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--fg); }
+  .doc-card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+  .doc-card .num { font-family: var(--display); font-size: 48px; line-height: 1; color: oklch(82% 0.18 95); }
+  .doc-card h3 { font-family: var(--display); font-size: 22px; line-height: 1.2; margin: 0; }
+  .doc-card .desc { color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .doc-card .meta { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-top: 14px; border-top: 1px dashed var(--border); display: flex; justify-content: space-between; }
+  .chart-cell { height: 280px; padding: 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: end; gap: 6px; }
+  .chart-cell .bar { flex: 1; background: var(--fg); position: relative; border-radius: 3px 3px 0 0; min-height: 8px; transition: opacity .2s ease; }
+  .chart-cell .bar:hover { background: var(--accent); }
+  .chart-cell .bar::after { content: attr(data-y); position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .chart-cell .bar .lbl { position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 10px; color: var(--muted); white-space: nowrap; }
+  .chart-cell .line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--status-siaga); pointer-events: none; }
+  .chart-cell .line .lbl { position: absolute; right: 4px; top: -8px; font-family: var(--mono); font-size: 10px; color: var(--status-siaga); background: var(--bg); padding: 0 4px; }
+  .milestone { position: relative; padding-left: 28px; padding-bottom: 18px; border-left: 2px solid var(--border); margin-left: 8px; }
+  .milestone::before { content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 3px solid var(--fg); }
+  .milestone.done::before { background: var(--status-normal); border-color: var(--status-normal); }
+  .milestone.active::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px oklch(82% 0.18 95 / 0.35); }
+  .milestone .meta { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .milestone .title { font-family: var(--display); font-size: 18px; margin: 4px 0 6px; }
+  .milestone .body { color: var(--muted); font-size: 13px; }
+  .signoff { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; padding-top: 24px; border-top: 1px dashed var(--border); margin-top: 24px; }
+  .signoff .sig { text-align: center; }
+  .signoff .sig .line { border-top: 1.5px solid var(--fg); margin-top: 64px; padding-top: 8px; font-family: var(--display); font-weight: 600; font-size: 15px; }
+  .signoff .sig .role { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  @media (max-width: 700px) { .signoff { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Pratinjau terapan · Hydro-AMDAL</small></span></a>
+    <nav class="primary"><a href="colors.html">Warna</a><a href="typography.html">Tipografi</a><a href="components.html">Komponen</a><a href="applied-hydro-amdal.html" aria-current="page">Terapan</a></nav>
+    <div class="header-cta"><a href="applied-aqua-alert.html" class="btn btn-ghost">AquaAlert</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">Laporan AMDAL · kompilasi triwulan</p>
+    <h1 class="display" style="font-size:clamp(40px, 5.5vw, 72px); margin:14px 0;">Hydro-AMDAL.<br/>Dokumen yang bisa dibaca.</h1>
+    <p style="color:var(--muted); max-width:60ch; font-size:18px;">Delapan dokumen Andalalin, ANDAL, RKL, RPL, dan tiga lampiran hidrologi—ditata ulang ke format yang sama-sama dipahami: bahasa, regulator, dan warga.</p>
+    <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+      <a class="btn btn-primary" href="#">Unduh kompilasi PDF</a>
+      <a class="btn btn-ghost" href="#">Komentar publik</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="amdal-intro">
+      <span class="doc-stamp">Dokumen resmi · tervalidasi</span>
+      <h2 class="display" style="font-size:clamp(24px,2.6vw,36px); margin:14px 0 12px;">Surat pengantar LPPLH · 14 Mei 2026.</h2>
+      <p style="max-width:64ch;">Lembaga Pengembangan Penelitian Lingkungan Hidup (LPPLH) Universitas Gadjah Mada, bekerja sama dengan BBWS Citanduy, memeriksa rencana pengoperasian Bendungan Leuwi dan dampaknya terhadap debit rendah DAS Citanduy segmen hilir (Pangandaran–Cilacap).</p>
+      <p style="max-width:64ch;">Kajian ini merangkum 5.900 baris data otomatis dari 27 pos duga air periode Oktober 2024 hingga April 2026, dan memperhitungkan ekspektasi pengelolaan waduk selama musim kemarau serta transisi hujan 2025/2026.</p>
+      <div style="display:flex; gap:32px; margin-top:20px; flex-wrap:wrap; position:relative; z-index:2;">
+        <div><div style="font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Nomor laporan</div><div style="font-family:var(--display); font-weight:700; font-size:22px; margin-top:4px;">AMDAL-2026-CTD-014</div></div>
+        <div><div style="font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Periode</div><div style="font-family:var(--display); font-weight:700; font-size:22px; margin-top:4px;">Okt 2024 – Apr 2026</div></div>
+        <div><div style="font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Status</div><div style="font-family:var(--display); font-weight:700; font-size:22px; margin-top:4px; color:var(--status-normal);">Tervalidasi</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:36px 0;">
+  <div class="wrap">
+    <div class="grid-3">
+      <div class="doc-card"><div class="num">I</div><h3>Kerangka acuan analitis</h3><p class="desc">Mandat pengkajian, ruang lingkup, dan pertanyaan hidrologis yang dijawab: mengapa debit minimum hilir turun dalam dua musim kemarau terakhir?</p><div class="meta"><span>KA-AMDAL</span><span>42 hal</span></div></div>
+      <div class="doc-card"><div class="num">II</div><h3>Deskripsi rencana usaha</h3><p class="desc">Karakteristik Bendungan Leuwi, pola operasi waduk, dan rencana alih-guna 124 ha lahan sempadan DAS Citanduy segmen hilir.</p><div class="meta"><span>DRU</span><span>64 hal</span></div></div>
+      <div class="doc-card"><div class="num">III</div><h3>Analisis dampak lingkungan</h3><p class="desc">Pemodelan debit Q90, Q70, dan debit andalan selama musim kemarau—disertai pemetaan 14 desa penerima dampak.</p><div class="meta"><span>ANDAL</span><span>118 hal</span></div></div>
+      <div class="doc-card"><div class="num">IV</div><h3>Rencana pengelolaan lingkungan</h3><p class="desc">Mitigasi debit rendah dengan menambahkan 320 m³/jam pada jam-jam kritis (06.00–10.00) selama musim kemarau 2026.</p><div class="meta"><span>RKL</span><span>56 hal</span></div></div>
+      <div class="doc-card"><div class="num">V</div><h3>Rencana pemantauan lingkungan</h3><p class="desc">15 pos pantau baru, 4 variabel hidrologi, dan pelibatan 6 sekolah vokasi pertanian untuk memantau dampak jangka panjang.</p><div class="meta"><span>RPL</span><span>72 hal</span></div></div>
+      <div class="doc-card"><div class="num">VI</div><h3>Ringkasan eksekutif</h3><p class="desc">Dua halaman yang menjawab langsung: apakah operasi Bendungan Leuwi akan memperburuk debit rendah DAS Citanduy? Jawaban singkat: ya, kecuali mitigasi diterapkan.</p><div class="meta"><span>EXSUM</span><span>2 hal</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:end;">
+      <div>
+        <p class="eyebrow">Bukti kuantitatif</p>
+        <h2 class="display" style="font-size:clamp(28px,3vw,42px); margin-top:12px;">Debit andalan Q90 DAS Citanduy segmen hilir.</h2>
+        <p style="color:var(--muted); max-width:46ch;">Grafik 6 tahun di bawah ini menunjukkan debit Q90 pada Pos Cilacap Estuari (S05). Garis merah putus-putus adalah ambang debit ekologis minimum 5,5 m³/s untuk mempertahankan ekosistem mangrove.</p>
+      </div>
+      <div style="font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.14em; text-transform:uppercase;">Sumber · SIH3 BBWS Citanduy 2020–2026</div>
+    </div>
+
+    <div class="chart-cell" style="margin-top:32px;">
+      <div class="bar" style="height:78%;" data-y="6.1"><span class="lbl">2020</span></div>
+      <div class="bar" style="height:64%;" data-y="5.8"><span class="lbl">2021</span></div>
+      <div class="bar" style="height:54%;" data-y="5.4"><span class="lbl">2022</span></div>
+      <div class="bar" style="height:46%;" data-y="5.1"><span class="lbl">2023</span></div>
+      <div class="bar" style="height:38%;" data-y="4.8"><span class="lbl">2024</span></div>
+      <div class="bar" style="height:32%; background: var(--status-siaga);" data-y="4.4"><span class="lbl">2025</span></div>
+      <div class="bar" style="height:28%; background: var(--status-siaga); opacity:.6;" data-y="4.1"><span class="lbl">2026*</span></div>
+      <div class="line" style="bottom:46%;"><span class="lbl">Ambang ekologis 5,5 m³/s</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:48px 0;">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <p class="eyebrow">Proses konsultasi publik</p>
+        <h2 class="display" style="font-size:clamp(28px,3vw,42px); margin-top:12px;">Empat tahap, 14 desa, dua bahasa.</h2>
+        <p style="color:var(--muted); max-width:46ch;">Konsultasi publik dilakukan dua kali—pertama untuk penetapan kerangka acuan, kedua untuk memvalidasi temuan andal. Setiap sesi berdurasi 90 menit, dipimpin langsung oleh penanggung jawab AMDAL.</p>
+      </div>
+      <div>
+        <div class="milestone done"><div class="meta">30 Okt 2024 · Selesai</div><div class="title">Sosialisasi kerangka acuan</div><div class="body">14 desa undangan, 11 hadir, 47 komentar tertulis—mayoritas mempertanyakan rencana pengoperasian Bendungan Leuwi pada musim kemarau.</div></div>
+        <div class="milestone done"><div class="meta">12 Mar 2025 · Selesai</div><div class="title">Konsultasi publik ANDAL</div><div class="body">Desa Pangandaran, Sindangsari, dan Pagergunung mengeluhkan penurunan debit sungai—tiga di antaranya menjadi fokus utama analisis dampak.</div></div>
+        <div class="milestone active"><div class="meta">14 Mei 2026 · Aktif</div><div class="title">Konsultasi RKL–RPL</div><div class="body">Sedang berlangsung. Empat sesi desa rencananya dihelat antara 14–28 Mei 2026, dengan fokus mitigasi debit rendah dan rencana 15 pos pantau baru.</div></div>
+        <div class="milestone"><div class="meta">Q3 2026 · Akan datang</div><div class="title">Penetapan rekomendasi</div><div class="body">Penanggung jawab AMDAL menandatangani berita acara penetapan rekomendasi—diteruskan ke Kementerian LHK dan BBWS Citanduy untuk keputusan akhir.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:48px 0;">
+  <div class="wrap">
+    <div class="band-dark">
+      <div class="grid-2" style="align-items:end;">
+        <div class="col" style="gap:14px;">
+          <span class="accent-tag">Rekomendasi inti</span>
+          <h2 class="display" style="color:var(--bg);">Operasikan Leuwi,<br/>tapi tambah air.</h2>
+          <p style="color:oklch(85% 0.02 95); max-width:54ch;">Mitigasi wajib: debit tambahan 320 m³/jam pada jam-jam kritis (06.00–10.00) selama musim kemarau. Penambahan debit dipenuhi dari pelimpasan berkala Bendungan Leuwi yang tidak menambah risiko banjir di segmen tengah.</p>
+          <ul style="list-style:none; padding:0; margin:8px 0 0; color:oklch(85% 0.02 95);">
+            <li style="padding:6px 0; border-bottom:1px solid oklch(28% 0.01 250);">Mitigasi debit rendah 320 m³/jam · Q90 tetap di atas 5,5 m³/s</li>
+            <li style="padding:6px 0; border-bottom:1px solid oklch(28% 0.01 250);">15 pos pantau hidrologi baru · refresentasi spasial lebih baik</li>
+            <li style="padding:6px 0;">Forum warga dua tahunan · pemutakhiran rekomendasi triwulan</li>
+          </ul>
+        </div>
+        <div>
+          <div style="background:var(--paper-dark-2); color:var(--bg); padding:24px; border-radius:8px;">
+            <p class="eyebrow" style="color:oklch(82% 0.18 95);">Penandatanganan</p>
+            <div class="signoff" style="border-top-color: oklch(28% 0.01 250);">
+              <div class="sig"><div style="font-family:var(--display); font-style:italic; font-size:30px; color:oklch(82% 0.18 95);">LPPLH</div><div class="line">Dr. S. Hartono</div><div class="role">Penanggung jawab AMDAL</div></div>
+              <div class="sig"><div style="font-family:var(--display); font-style:italic; font-size:30px; color:oklch(82% 0.18 95);">BBWS</div><div class="line">Ir. R. Wibawa</div><div class="role">Kepala BBWS Citanduy</div></div>
+              <div class="sig"><div style="font-family:var(--display); font-style:italic; font-size:30px; color:oklch(82% 0.18 95);">KLHK</div><div class="line">Dra. M. Sari</div><div class="role">Direktur PPKL</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div><div class="brand" style="color:var(--bg); margin-bottom:14px;"><span class="brand-mark">K</span><span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau terapan · Hydro-AMDAL</small></span></div></div>
+      <div><h5>Pratinjau</h5><ul><li><a href="applied-public-dashboard.html">Dasbor Publik</a></li><li><a href="applied-aqua-alert.html">AquaAlert</a></li></ul></div>
+      <div><h5>Token</h5><ul><li><a href="../colors_and_type.css">colors_and_type.css</a></li><li><a href="../DESIGN.md">DESIGN.md</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aset Merek · Pratinjau · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .asset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 900px) { .asset-grid { grid-template-columns: 1fr; } }
+  .asset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .asset .frame {
+    aspect-ratio: 16/9;
+    border-radius: var(--radius);
+    display: grid; place-items: center;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .asset .frame.dark { background: var(--paper-dark); }
+  .asset h3 { font-family: var(--display); font-size: 18px; margin: 0; }
+  .asset .k { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .asset code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .marker-row { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Sistem Desain · 05 · Merek</small></span></a>
+    <nav class="primary"><a href="colors.html">Warna</a><a href="typography.html">Tipografi</a><a href="spacing.html">Spasi</a><a href="components.html">Komponen</a><a href="brand-assets.html" aria-current="page">Merek</a></nav>
+    <div class="header-cta"><a href="index.html" class="btn btn-ghost">Semua Kartu</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">05 · Aset merek</p>
+    <h1 class="display" style="margin-top:14px;">Logo, penanda,<br/>pola, dan ikon.</h1>
+    <p class="lede">Aset disimpan di <code>assets/</code> dan <code>build/</code> sebagai SVG. Semua aset mewarisi token merek dari <code>colors_and_type.css</code>.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="asset-grid">
+      <div class="asset">
+        <span class="k">Brand mark · logo-mark.svg</span>
+        <div class="frame"><img src="../assets/logo-mark.svg" alt="Logo mark" style="height:72px;" /></div>
+        <p class="small" style="margin:0;">Kotak kuning 4px radius dengan huruf <strong>K</strong> Bodoni Moda 800. Digunakan pada favicon, OG, dan brand-lockup.</p>
+      </div>
+      <div class="asset">
+        <span class="k">Wordmark · wordmark.svg</span>
+        <div class="frame" style="background: oklch(98% 0.005 95);"><img src="../assets/wordmark.svg" alt="Wordmark" style="width:80%;" /></div>
+        <p class="small" style="margin:0;">Lockup horizontal. Pantau spasi 0.02em untuk menjaga kesan <em>editorial tight</em>.</p>
+      </div>
+      <div class="asset">
+        <span class="k">Favicon · favicon.svg</span>
+        <div class="frame dark" style="grid-template-columns:repeat(4,1fr); gap:0; padding:0;">
+          <div style="display:grid; place-items:center; height:100%;"><img src="../assets/favicon.svg" alt="" style="height:48px;" /></div>
+          <div style="display:grid; place-items:center; height:100%; background:#fff;"><img src="../assets/favicon.svg" alt="" style="height:48px;" /></div>
+          <div style="display:grid; place-items:center; height:100%; background:#000;"><img src="../assets/favicon.svg" alt="" style="height:48px;" /></div>
+          <div style="display:grid; place-items:center; height:100%; background:oklch(82% 0.18 95);"><img src="../assets/favicon.svg" alt="" style="height:48px;" /></div>
+        </div>
+        <p class="small" style="margin:0;">Kontras dipertahankan di atas empat latar paling umum — kertas, putih, hitam, aksen.</p>
+      </div>
+      <div class="asset">
+        <span class="k">OG cover · build/og-cover.svg</span>
+        <div class="frame"><img src="../build/og-cover.svg" alt="OG cover" style="width:100%;" /></div>
+        <p class="small" style="margin:0;">1920×480. Dipakai untuk share social dan preview notifikasi.</p>
+      </div>
+      <div class="asset">
+        <span class="k">Pola topografi · pattern-topo.svg</span>
+        <div class="frame" style="background:#fff;"><img src="../assets/pattern-topo.svg" alt="" style="width:60%; opacity:0.6;" /></div>
+        <p class="small" style="margin:0;">Lapisan opsional pada peta dasbor; gunakan <code>opacity: 0.5</code> agar tidak mendominasi.</p>
+      </div>
+      <div class="asset">
+        <span class="k">Peta dasar DAS · map-das-citanduy.svg</span>
+        <div class="frame"><img src="../assets/map-das-citanduy.svg" alt="Peta DAS" style="width:90%;" /></div>
+        <p class="small" style="margin:0;">Bentang sungai, poligon DAS, dan gradien sungai. Lapisan dinamis (status, laporan) ditambahkan di atas SVG ini.</p>
+      </div>
+      <div class="asset">
+        <span class="k">Penanda status sungai</span>
+        <div class="frame" style="background: oklch(86% 0.02 160);">
+          <div class="marker-row">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:4px;"><img src="../assets/marker-status-normal.svg" alt="" style="width:36px;" /><span style="font-family:var(--mono); font-size:11px; color:oklch(20% 0.02 250);">NORMAL</span></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:4px;"><img src="../assets/marker-status-waspada.svg" alt="" style="width:36px;" /><span style="font-family:var(--mono); font-size:11px; color:oklch(20% 0.02 250);">WASPADA</span></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:4px;"><img src="../assets/marker-status-siaga.svg" alt="" style="width:36px;" /><span style="font-family:var(--mono); font-size:11px; color:oklch(20% 0.02 250);">SIAGA</span></div>
+          </div>
+        </div>
+        <p class="small" style="margin:0;">Siaga memiliki denyut animasi 2s pada radius 14→26 untuk menandai status kritis.</p>
+      </div>
+      <div class="asset">
+        <span class="k">Ikon peringatan</span>
+        <div class="frame"><img src="../assets/icon-warning.svg" alt="" style="height:64px;" /></div>
+        <p class="small" style="margin:0;">Segitiga kuning dengan border tinta. Hanya untuk label bahaya aktif.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0 64px;">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Konstanta data</span><h2 class="display">8 pos pantau sebagai JSON</h2><p class="lede">Susunan koordinat disimpan di <code>assets/sih3-stations.json</code> untuk dipakai ulang oleh dasbor.</p></div>
+    <pre style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:18px; font-family:var(--mono); font-size:12px; line-height:1.6; overflow:auto;">{
+  "system": "WS Citanduy SIH3 BBWS",
+  "version": "2026-09",
+  "stations": [
+    { "id": "S01", "name": "Ciamis Hulu",   "x": 200, "y": 110, "status": "n", "tma": 182 },
+    { "id": "S02", "name": "Tasik Tengah",  "x": 320, "y": 170, "status": "w", "tma": 248 },
+    { "id": "S03", "name": "Banjar Kota",   "x": 480, "y": 230, "status": "s", "tma": 312 },
+    { "id": "S04", "name": "Pangandaran",   "x": 560, "y": 330, "status": "n", "tma": 165 },
+    { "id": "S05", "name": "Cilacap Estuari","x": 620, "y": 430, "status": "n", "tma": 120 },
+    { "id": "S06", "name": "Sukaresik",     "x": 380, "y": 140, "status": "n", "tma": 198 },
+    { "id": "S07", "name": "Cisadane Hilir","x": 280, "y": 200, "status": "w", "tma": 234 },
+    { "id": "S08", "name": "Pataruman",     "x": 430, "y": 260, "status": "w", "tma": 265 }
+  ]
+}</pre>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div><div class="brand" style="color:var(--bg); margin-bottom:14px;"><span class="brand-mark">K</span><span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau · 05 · Merek</small></span></div></div>
+      <div><h5>Aset</h5><ul><li><a href="../assets/wordmark.svg">wordmark.svg</a></li><li><a href="../assets/logo-mark.svg">logo-mark.svg</a></li><li><a href="../build/og-cover.svg">og-cover.svg</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

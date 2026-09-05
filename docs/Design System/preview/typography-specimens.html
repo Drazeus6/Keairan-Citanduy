@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tipografi · Pratinjau Spesimen · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .specimen {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    padding: 28px 32px;
+    margin-bottom: 18px;
+  }
+  .specimen .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .specimen-stack { display: flex; flex-direction: column; gap: 24px; }
+  .pair-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 820px) { .pair-row { grid-template-columns: 1fr; } }
+  .specimen.dark { background: var(--paper-dark); color: var(--bg); border-color: var(--paper-dark); }
+  .specimen.dark .label { color: oklch(75% 0.02 95); }
+  .scale-grid { display: grid; grid-template-columns: 64px 1fr; gap: 8px 16px; align-items: baseline; }
+  .scale-grid code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Sistem Desain · 02a · Spesimen Tipografi</small></span></a>
+    <nav class="primary"><a href="typography.html">Tipe Ringkas</a><a href="typography-specimens.html" aria-current="page">Spesimen</a><a href="../DESIGN.md">DESIGN.md</a></nav>
+    <div class="header-cta"><a href="index.html" class="btn btn-ghost">Semua Kartu</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">02a · Tipografi · spesimen</p>
+    <h1 class="display" style="margin-top:14px;">Tiga keluarga,<br/>tiga tugas,<br/>tidak ada tumpang tindih.</h1>
+    <p class="lede">Bodoni Moda untuk display. Inter untuk body. JetBrains Mono untuk angka dan kode. Setiap keputusan penempatannya diambil dari pola di <code>assets/main.css</code> dan contoh di <code>index.html</code> serta <code>aqua-alert.html</code>.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="specimen-stack">
+
+      <div class="specimen" data-od-id="type-display">
+        <div class="label">Display · Bodoni Moda 800 · --h1-size 34 → 68 px</div>
+        <h1 class="display">Sungai yang<br/><em>bicara</em>,<br/>kini punya<br/>penerjemah.</h1>
+      </div>
+
+      <div class="specimen" data-od-id="type-h2">
+        <div class="label">Heading 2 · Bodoni Moda 700 · --h2-size 28 → 56 px</div>
+        <h2 class="display">Sebelum AquaAlert,<br/>Anda bereaksi.<br/>Sesudahnya, Anda<br/>bersiap.</h2>
+      </div>
+
+      <div class="specimen" data-od-id="type-h3">
+        <div class="label">Heading 3 · Bodoni Moda 700 · --h3-size 22 → 36 px</div>
+        <h3 class="display">AquaAlert · peringatan dini untuk petambak udang vaname di muara Citanduy.</h3>
+      </div>
+
+      <div class="pair-row">
+        <div class="specimen" data-od-id="type-lede">
+          <div class="label">Lede · Inter 17 → 21 px · line-height 1.55 · max-width 60ch</div>
+          <p class="lede" style="margin:0;">AquaAlert menggabungkan tiga parameter utama ke dalam model prediksi yang sudah dilatih pada data historis 5–10 tahun SIH3 BBWS Citanduy. Model ini menerjemahkan debit sungai menjadi saran yang dapat ditindaklanjuti oleh petambak — dalam bahasa yang sama dengan手册 lapangan.</p>
+        </div>
+
+        <div class="specimen" data-od-id="type-body">
+          <div class="label">Body · Inter 16 → 17 px</div>
+          <p style="margin:0;">Pesan AquaAlert dirancang singkat, berisi tiga informasi yang dapat ditindaklanjuti: ambang batas terlampaui, estimasi waktu dampak, dan rekomendasi teknis. Setiap bulletin membawa stempel waktu dan pos pelapor sehingga dapat diaudit kembali oleh BBWS.</p>
+        </div>
+      </div>
+
+      <div class="specimen" data-od-id="type-mono">
+        <div class="label">Mono · JetBrains Mono · angka, koordinat, ID</div>
+        <div class="scale-grid">
+          <code>Rp</code><div class="display" style="font-family:var(--mono); font-weight:500; font-size:24px;">500rb<small style="font-size:12px; color:var(--muted); margin-left:6px;">/bulan/kolam</small></div>
+          <code>TMA</code><div class="display" style="font-family:var(--mono); font-weight:500; font-size:24px;">312 cm</div>
+          <code>Q</code><div class="display" style="font-family:var(--mono); font-weight:500; font-size:24px;">24,5 m³/s</div>
+          <code>ID</code><div class="display" style="font-family:var(--mono); font-weight:500; font-size:24px;">SIH3-CIT-014</div>
+          <code>coord</code><div class="display" style="font-family:var(--mono); font-weight:500; font-size:24px;">7°22′ LS · 108°39′ BT</div>
+        </div>
+      </div>
+
+      <div class="specimen" data-od-id="type-eyebrow">
+        <div class="label">Eyebrow · Inter 11 px · 0.18em letter-spacing · uppercase</div>
+        <p class="eyebrow" style="margin:8px 0 0;">Edisi September 2026 · Wilayah Sungai Citanduy</p>
+      </div>
+
+      <div class="specimen dark" data-od-id="type-quote">
+        <div class="label">Quote · display 500 · 3 px yellow left border · italic cite</div>
+        <div class="quote" style="font-family:var(--display); font-weight:500; font-size:clamp(22px, 2vw, 36px); line-height:1.2; border-left:3px solid var(--accent); padding-left:18px;">
+          “Air tidak pernah menunggu izin bicara. Tugas kami hanya menerjemahkan apa yang ia katakan.”
+        </div>
+        <p style="font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:0.18em; color:oklch(75% 0.02 95); margin:14px 0 0; font-style:italic;">— Hidrolog BBWS Citanduy · 14:32 WIB</p>
+      </div>
+
+      <div class="specimen" data-od-id="type-scale">
+        <div class="label">Skala · clamp() fluid · mobile-first</div>
+        <div class="scale-grid">
+          <code>H1</code><div style="font-family:var(--display); font-weight:800; font-size:var(--h1-size); letter-spacing:-0.025em; line-height:1;">Sungai Citanduy</div>
+          <code>H2</code><div style="font-family:var(--display); font-weight:700; font-size:var(--h2-size); line-height:1.05;">Peringatan AquaAlert</div>
+          <code>H3</code><div style="font-family:var(--display); font-weight:700; font-size:var(--h3-size); line-height:1.1;">Hydro-AMDAL · IDF</div>
+          <code>H4</code><div style="font-family:var(--display); font-weight:700; font-size:var(--h4-size); line-height:1.15;">Dokumen BAB III</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau · 02a · Spesimen Tipografi</small></span>
+        </div>
+      </div>
+      <div><h5>Referensi</h5><ul><li><a href="../DESIGN.md">DESIGN.md §3</a></li><li><a href="../colors_and_type.css">colors_and_type.css</a></li></ul></div>
+      <div><h5>Bukti sumber</h5><ul><li><a href="../examples/index.html">examples/index.html</a></li><li><a href="../examples/aqua-alert.html">examples/aqua-alert.html</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

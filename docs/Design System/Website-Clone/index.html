@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keairan Citanduy · Platform Intelijen Hidrologi WS Citanduy</title>
+<meta name="description" content="Platform intelijen hidrologi terpadu untuk Wilayah Sungai Citanduy. Layanan publik gratis, AquaAlert untuk petambak, dan Hydro-AMDAL untuk konsultan." />
+<link rel="stylesheet" href="assets/main.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ffcc00'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Bodoni Moda, serif' font-weight='800' font-size='18' fill='%231a1a1a'%3EK%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand" aria-label="Keairan Citanduy">
+      <span class="brand-mark">K</span>
+      <span>
+        KEAIRAN CITANDUY
+        <small>Intelijen Hidrologi · WS Citanduy</small>
+      </span>
+    </a>
+
+    <nav class="primary" id="primary-nav" aria-label="Navigasi utama">
+      <a href="index.html" aria-current="page">Beranda</a>
+      <a href="dashboard.html">Peta &amp; Dasbor Publik</a>
+      <a href="aqua-alert.html">AquaAlert</a>
+      <a href="hydro-amdal.html">Hydro-AMDAL</a>
+      <a href="methodology.html">Metodologi</a>
+    </nav>
+
+    <div class="header-cta">
+      <a href="dashboard.html" class="btn btn-primary">Buka Dasbor →</a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" onclick="document.getElementById('primary-nav').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');">Menu</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="deck">
+        <span class="kicker">Edisi September 2026 · Wilayah Sungai Citanduy</span>
+        <h1 class="display">Sungai yang<br/><em>bicara</em>,<br/><span class="br-only">kini punya<br/></span>penerjemah.</h1>
+        <p class="lede">
+          Keairan Citanduy menerjemahkan data hidrologi mentah dari pos duga SIH3 BBWS Citanduy menjadi
+          peringatan dini, rekomendasi tani, dan intelijen korporat — sebuah model hibrida yang
+          menopang layanan publik gratis lewat pendapatan sektor akuakultur dan konsultan.
+        </p>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+          <a class="btn btn-primary" href="dashboard.html">Lihat Peta Banjir</a>
+          <a class="btn btn-ghost" href="methodology.html">Baca Metodologi</a>
+        </div>
+
+        <dl class="hero-meta">
+          <div>
+            <dt>WS Citanduy</dt>
+            <dd>±3.500 km²</dd>
+          </div>
+          <div>
+            <dt>Pos Pantau</dt>
+            <dd>27 aktif</dd>
+          </div>
+          <div>
+            <dt>Parameter</dt>
+            <dd>5 utama</dd>
+          </div>
+          <div>
+            <dt>Wilayah</dt>
+            <dd>Jabar · Jateng</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="hero-photo" data-od-id="hero-photo">
+        <img alt="Sungai Citanduy mengalir di antara perbukitan Priangan Timur" src="https://images.unsplash.com/photo-1564574687-65e2f2f65c44?auto=format&fit=crop&w=1400&q=80" />
+        <span class="pin">7°22′ LS · 108°39′ BT</span>
+        <figcaption class="caption">Hulu Sungai Citanduy, DAS Priangan Timur — pos duga air SIH3.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDITORIAL LEDE ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <p class="eyebrow">Lapor utama</p>
+        <h2 class="display" style="margin-top:14px;">Data yang tidak<br/>dimiliki publik<span class="br-only"><br/></span>—kini mereka yang<br/>memilikinya.</h2>
+      </div>
+      <div class="col" style="gap:18px;">
+        <p class="lede">
+          Bagi warga Ciamis, Cilacap, dan Pangandaran, angka debit dan tinggi muka air adalah bahasa
+          asing. Namun bagi petambak udang vaname dan konsultan AMDAL, deret waktu itu bernilai
+          ratusan juta rupiah per kejadian. <strong>Keairan Citanduy</strong> menutup jurang itu: satu
+          pipa data terpusat, tiga pilar penggunaan.
+        </p>
+        <blockquote class="quote">
+          “Air tidak pernah menunggu izin bicara. Tugas kami hanya menerjemahkan apa yang ia katakan.”
+          <cite>Dokumen cetak biru · 4 September 2026</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT STRIP ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="stat-strip">
+      <div>
+        <div class="v">12<small>jam sebelumnya</small></div>
+        <div class="k">Peringatan salinitas AquaAlert</div>
+      </div>
+      <div>
+        <div class="v">5</div>
+        <div class="k">Parameter SIH3 terintegrasi</div>
+      </div>
+      <div>
+        <div class="v">27</div>
+        <div class="k">Pos duga air di DAS</div>
+      </div>
+      <div>
+        <div class="v">0<small>biaya</small></div>
+        <div class="k">Untuk dasbor publik</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIGA PILAR ============ -->
+<section data-od-id="pillars">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Arsitektur bisnis</span><span class="line"></span></div>
+      <h2 class="display">Tiga pilar, satu sungai.</h2>
+      <p class="lede">Pendapatan komersial bernilai tinggi menanggung seluruh biaya operasional server, basis data, dan komputasi kecerdasan buatan—sehingga warga dapat mengakses informasi publik secara cuma-cuma.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="pillar dark" data-od-id="pillar-aquaalert">
+        <div class="top">
+          <span class="tag">Pilar 1 · Komersial</span>
+          <h3 class="display" style="color:var(--bg);">AquaAlert</h3>
+          <p style="color:oklch(85% 0.02 95);">Sistem peringatan dini berbasis WhatsApp &amp; SMS gateway untuk petambak udang vaname dan bandeng intensif di muara Citanduy (Kabupaten Cilacap dan Pangandaran).</p>
+        </div>
+        <ul class="body-list">
+          <li>Notifikasi 12–24 jam sebelum penurunan salinitas.</li>
+          <li>Prediksi debit sungai &amp; salinitas muara berbasis ML.</li>
+          <li>Berlangganan SaaS per lokasi kolam.</li>
+        </ul>
+        <div class="price">
+          <div style="font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:oklch(75% 0.02 95);">Langganan</div>
+          <strong>Rp500rb–1,5jt<small style="font-size:14px; font-family:var(--body);"> /bulan/kolam</small></strong>
+        </div>
+      </article>
+
+      <article class="pillar dark" data-od-id="pillar-hydroamdal">
+        <div class="top">
+          <span class="tag">Pilar 2 · Komersial</span>
+          <h3 class="display" style="color:var(--bg);">Hydro-AMDAL Engine</h3>
+          <p style="color:oklch(85% 0.02 95);">Otomatisasi analisis hidrologi untuk konsultan lingkungan hidup, konsultan rekayasa sipil, dan divisi HSE kawasan industri.</p>
+        </div>
+        <ul class="body-list">
+          <li>Uji konsistensi data, analisis frekuensi (Gumbel, Log-Pearson III).</li>
+          <li>Kurva IDF dan neraca air terstandarisasi siap ekspor.</li>
+          <li>Lisensi tahunan atau bayar per laporan.</li>
+        </ul>
+        <div class="price">
+          <div style="font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:oklch(75% 0.02 95);">Lisensi / laporan</div>
+          <strong>Rp20–50jt<small style="font-size:14px; font-family:var(--body);"> /tahun</small></strong>
+        </div>
+      </article>
+
+      <article class="pillar" data-od-id="pillar-public">
+        <div class="top">
+          <span class="tag" style="background:var(--paper-dark); color:var(--accent);">Pilar 3 · Publik</span>
+          <h3 class="display">Layanan 3-in-1</h3>
+          <p>Mobile-first, tanpa registrasi, konsumsi data ringan—dirancang untuk perangkat ponsel di kawasan pedesaan DAS Citanduy.</p>
+        </div>
+        <ul class="body-list">
+          <li>Peta pantau banjir &amp; jalur rawan genangan.</li>
+          <li>Kalender cuaca tani mikro mingguan.</li>
+          <li>Kanal pelaporan warga (Citizen Science).</li>
+        </ul>
+        <div class="price">
+          <div style="font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);">Akses</div>
+          <strong>Gratis<small style="font-size:14px; font-family:var(--body);"> selamanya</small></strong>
+        </div>
+      </article>
+    </div>
+
+    <div style="margin-top:36px;">
+      <a class="btn-link" href="methodology.html">Lihat cetak biru lengkap</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DARK BAND: DASBOR PREVIEW ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="band-dark" data-od-id="dashboard-preview">
+      <div class="grid-2" style="align-items:end;">
+        <div class="col" style="gap:18px;">
+          <span class="accent-tag">Layanan publik · bebas biaya</span>
+          <h2 class="display" style="color:var(--bg);">Peta Citanduy,<br/><span class="br-only">dibaca ulang setiap<br/></span>jam.</h2>
+          <p style="color:oklch(85% 0.02 95); max-width:50ch;">
+            Visualisasi kode warna Normal, Waspada, dan Siaga untuk 27 pos duga air. Peringatan dini
+            penjalaran air dari hulu ke hilir—dengan estimasi waktu tiba banjir ke pemukiman warga.
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:6px;">
+            <a class="btn btn-primary" href="dashboard.html">Buka Dasbor</a>
+            <a class="btn btn-ghost" href="dashboard.html#calendar">Lihat Kalender Tani</a>
+          </div>
+        </div>
+
+        <div style="border-radius:var(--radius); overflow:hidden; border:1px solid oklch(28% 0.01 250);">
+          <!-- Mini-map preview -->
+          <svg viewBox="0 0 600 400" style="width:100%; height:auto; display:block;" role="img" aria-label="Pratinjau dasbor publik">
+            <defs>
+              <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#1d2e2a"/>
+                <stop offset="100%" stop-color="#0e1a18"/>
+              </linearGradient>
+              <linearGradient id="river" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="#5fb6c9"/>
+                <stop offset="100%" stop-color="#3a8aa0"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="400" fill="url(#bg)"/>
+            <!-- Subtle terrain shapes -->
+            <path d="M0,80 C150,30 320,140 600,90 L600,0 L0,0 Z" fill="#1f2e2a"/>
+            <path d="M0,400 C200,330 380,360 600,310 L600,400 Z" fill="#1a2a26"/>
+
+            <!-- River -->
+            <path d="M30,140 C160,120 240,220 320,180 S 470,260 580,210" fill="none" stroke="url(#river)" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
+
+            <!-- Tributaries -->
+            <path d="M180,160 C220,200 260,180 310,190" fill="none" stroke="#7fc6d4" stroke-width="3" opacity="0.5"/>
+            <path d="M360,200 C400,240 450,250 480,260" fill="none" stroke="#7fc6d4" stroke-width="3" opacity="0.5"/>
+
+            <!-- Stations -->
+            <g>
+              <circle cx="80" cy="142" r="9" fill="#ffcc00"/>
+              <text x="98" y="138" fill="#fff" font-family="JetBrains Mono" font-size="10">Ciamis</text>
+              <text x="98" y="150" fill="#ffcc00" font-family="JetBrains Mono" font-size="9">NORMAL</text>
+            </g>
+            <g>
+              <circle cx="240" cy="200" r="9" fill="#f0c95c"/>
+              <text x="258" y="196" fill="#fff" font-family="JetBrains Mono" font-size="10">Tasik</text>
+              <text x="258" y="208" fill="#f0c95c" font-family="JetBrains Mono" font-size="9">WASPADA</text>
+            </g>
+            <g>
+              <circle cx="380" cy="220" r="9" fill="#e85a3c"/>
+              <text x="398" y="216" fill="#fff" font-family="JetBrains Mono" font-size="10">Banjar</text>
+              <text x="398" y="228" fill="#e85a3c" font-family="JetBrains Mono" font-size="9">SIAGA</text>
+            </g>
+            <g>
+              <circle cx="500" cy="240" r="9" fill="#7fc970"/>
+              <text x="518" y="236" fill="#fff" font-family="JetBrains Mono" font-size="10">Cilacap</text>
+              <text x="518" y="248" fill="#7fc970" font-family="JetBrains Mono" font-size="9">NORMAL</text>
+            </g>
+
+            <!-- Flood overlay -->
+            <ellipse cx="380" cy="220" rx="60" ry="38" fill="#e85a3c" opacity="0.18"/>
+            <ellipse cx="380" cy="220" rx="120" ry="74" fill="#e85a3c" opacity="0.08"/>
+
+            <!-- Compass -->
+            <g transform="translate(540,50)">
+              <circle r="22" fill="none" stroke="#ffcc00" stroke-width="1"/>
+              <text y="-8" text-anchor="middle" fill="#ffcc00" font-family="JetBrains Mono" font-size="10">N</text>
+              <line x1="0" y1="-22" x2="0" y2="22" stroke="#ffcc00" stroke-width="0.5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY CARDS ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Liputan kawasan</span><span class="line"></span></div>
+      <h2 class="display">Tiga masalah,<span class="br-only"><br/></span>satu pipa data.</h2>
+    </div>
+
+    <div class="grid-3">
+      <article class="card" data-od-id="story-salinity">
+        <div class="photo"><img alt="Tambak udang di pesisir Pangandaran saat senja" src="https://images.unsplash.com/photo-1505063366573-38928ae5567e?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="body">
+          <div class="meta"><span class="pill">Akuakultur</span><span>4 menit baca</span></div>
+          <h3>Saat air tawar hulu menerjang tambak.</h3>
+          <p>Hujan lebat di Priangan Timur menurunkan salinitas muara dalam hitungan jam—risiko kematian massal udang vaname yang kerugiannya bisa melampaui ratusan juta rupiah per kolam.</p>
+          <a class="btn-link" href="aqua-alert.html">Telusuri AquaAlert</a>
+        </div>
+      </article>
+
+      <article class="card" data-od-id="story-amdal">
+        <div class="photo"><img alt="Teknisi konsultan lingkungan menganalisis data" src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="body">
+          <div class="meta"><span class="pill">Rekayasa</span><span>6 menit baca</span></div>
+          <h3>Analisis frekuensi, dari 30 jam menjadi 30 menit.</h3>
+          <p>Konsultan AMDAL dan kawasan industri mengolah seri data historis SIH3 secara manual untuk uji konsistensi, Gumbel, dan kurva IDF. Hydro-AMDAL mengotomasi semuanya.</p>
+          <a class="btn-link" href="hydro-amdal.html">Telusuri Hydro-AMDAL</a>
+        </div>
+      </article>
+
+      <article class="card" data-od-id="story-farmer">
+        <div class="photo"><img alt="Petani di sawah tepi sungai saat pagi" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="body">
+          <div class="meta"><span class="pill">Pertanian</span><span>5 menit baca</span></div>
+          <h3>Kalender tani yang memahami bahasa wereng.</h3>
+          <p>Kelembapan relatif di atas 85% ditambah fluktuasi temperatur memicu ledakan hama. Dasbor publik menerjemahkan parameter teknis menjadi saran tebar benih dan penjemuran gabah.</p>
+          <a class="btn-link" href="dashboard.html#calendar">Buka Kalender Tani</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATA TABLE ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Katalog data SIH3</span><span class="line"></span></div>
+      <h2 class="display">Lima parameter,<span class="br-only"><br/></span>lima cerita berbeda.</h2>
+      <p class="lede">Sumber data utama adalah portal SIH3 BBWS Citanduy—dirilis berkala, terbuka untuk umum, dan kami olah ulang sebelum disajikan.</p>
+    </div>
+
+    <div class="table-wrap" style="border:1px solid var(--border); border-radius:var(--radius);">
+      <table class="spec">
+        <thead>
+          <tr><th>Parameter</th><th>Karakteristik teknis</th><th>Peluang nilai</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Curah Hujan</td><td>Pos penakar presipitasi harian dan <em>real-time</em> di sub-DAS.</td><td>Prediksi debit puncak hulu, analisis frekuensi hujan rancangan (IDF), jadwal tani mikro.</td></tr>
+          <tr><td>Tinggi Muka Air (TMA)</td><td>Fluktuasi elevasi air sungai di pos duga air utama.</td><td>Peringatan dini luapan bantaran sungai dan kalibrasi model penjalaran banjir hilir.</td></tr>
+          <tr><td>Debit Aliran Sungai</td><td>Volume aliran volumetrik (m³/s) pada periode waktu tertentu.</td><td>Estimasi daya serap limbah cair industri dan ketersediaan suplai air baku irigasi.</td></tr>
+          <tr><td>Klimatologi</td><td>Suhu, kelembapan relatif, radiasi matahari, kecepatan angin.</td><td>Perhitungan evapotranspirasi potensial (Penman-Monteith) dan model risiko hama/jamur.</td></tr>
+          <tr><td>Kualitas Air</td><td>pH, kekeruhan, TDS, DO, dan baku mutu badan air.</td><td>Rekomendasi penyedotan air tambak estuari dan kepatuhan baku mutu lingkungan (AMDAL).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row-label"><span class="eyebrow">Peta jalan MVP</span><span class="line"></span></div>
+      <h2 class="display">Enam bulan, tiga fase.</h2>
+      <p class="lede">Pelaksanaan proyek dibagi tiga tahapan terstruktur untuk mitigasi risiko teknis dan akselerasi arus kas positif.</p>
+    </div>
+
+    <div class="timeline">
+      <article class="step">
+        <span class="badge">Fase 1 · Bulan 1–2</span>
+        <h4 class="display" style="margin:14px 0 8px;">Rekayasa Data &amp; Validasi Rumus</h4>
+        <p style="color:var(--muted); font-size:14px;">Pengumpulan 5–10 tahun data historis SIH3, pembangunan skema PostGIS, dan pustaka komputasi Python untuk analisis frekuensi dan uji distribusi.</p>
+      </article>
+      <article class="step">
+        <span class="badge">Fase 2 · Bulan 3–4</span>
+        <h4 class="display" style="margin:14px 0 8px;">Rilis Dasbor &amp; Pilot Tambak</h4>
+        <p style="color:var(--muted); font-size:14px;">Peluncuran peta terpadu 3-in-1 gratis dan pilot WhatsApp ke 5–10 petambak intensif pesisir Cilacap &amp; Pangandaran.</p>
+      </article>
+      <article class="step">
+        <span class="badge">Fase 3 · Bulan 5–6</span>
+        <h4 class="display" style="margin:14px 0 8px;">Portal Korporat &amp; Skalabilitas</h4>
+        <p style="color:var(--muted); font-size:14px;">Integrasi gerbang pembayaran Hydro-AMDAL, pemasaran ke konsultan &amp; kawasan industri, koordinasi resmi dengan BBWS &amp; BPBD.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="grid-2" style="background:var(--surface); border-radius:var(--radius); padding:48px;">
+      <div>
+        <p class="eyebrow">Untuk warga</p>
+        <h3 class="display" style="margin-top:14px;">Cek status sungai di dekat Anda hari ini.</h3>
+        <p style="color:var(--muted); margin-top:14px;">Tanpa registrasi. Buka dasbor publik, lihat peta, dan laporkan genangan dari ponsel Anda.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; justify-content:flex-end;">
+        <a class="btn btn-primary" href="dashboard.html">Buka Dasbor Publik</a>
+        <a class="btn btn-ghost" href="dashboard.html#report">Kirim Laporan Warga</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>Intelijen Hidrologi · WS Citanduy</small></span>
+        </div>
+        <p style="color:oklch(80% 0.02 95); max-width:36ch; font-size:14px;">
+          Cetak biru platform intelijen hidrologi terpadu untuk Wilayah Sungai Citanduy—solusi
+          hibrida untuk mitigasi risiko korporat dan layanan ketahanan masyarakat.
+        </p>
+      </div>
+      <div>
+        <h5>Layanan</h5>
+        <ul>
+          <li><a href="dashboard.html">Dasbor Publik</a></li>
+          <li><a href="aqua-alert.html">AquaAlert</a></li>
+          <li><a href="hydro-amdal.html">Hydro-AMDAL</a></li>
+          <li><a href="dashboard.html#report">Pelaporan Warga</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Sumber Data</h5>
+        <ul>
+          <li>SIH3 BBWS Citanduy</li>
+          <li>Pos Duga Air DAS</li>
+          <li>BMKG (klimatologi)</li>
+          <li>BPBD setempat</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Cetak Biru</h5>
+        <ul>
+          <li><a href="methodology.html">Metodologi</a></li>
+          <li><a href="methodology.html#stack">Tumpukan Teknologi</a></li>
+          <li><a href="methodology.html#roadmap">Peta Jalan</a></li>
+          <li><a href="Blueprint-Platform-Keairan-Citanduy.pdf">Dokumen PDF</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <div>© 2026 Keairan Citanduy · Cetak biru pengembangan sistem · 4 September 2026</div>
+      <div>WS Citanduy · ±3.500 km² · 27 pos pantau</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

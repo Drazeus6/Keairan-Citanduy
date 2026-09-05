@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UI Kit · Keairan Citanduy · App Launcher</title>
+<meta name="description" content="Applied interface kit untuk Keairan Citanduy: launcher, modul Dasbor, AquaAlert, Hydro-AMDAL, dan pelaporan warga." />
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<link rel="stylesheet" href="../../assets/main.css" />
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  body { background: var(--bg); }
+  .kit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .kit-card {
+    display: grid;
+    grid-template-rows: 140px 1fr;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .kit-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -22px oklch(10% 0.01 250 / 0.4);
+    border-color: var(--fg);
+  }
+  .kit-card .thumb { background: var(--surface); border-bottom: 1px solid var(--border); display: grid; place-items: center; }
+  .kit-card .thumb svg { width: 100%; height: 100%; display: block; }
+  .kit-card .meta { padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+  .kit-card h3 { font-family: var(--display); font-size: 18px; line-height: 1.15; margin: 0; }
+  .kit-card p { color: var(--muted); font-size: 13px; margin: 0; }
+  .kit-card .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent-ink);
+    background: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+  .kit-section-head {
+    display: flex; align-items: center; gap: 12px;
+    margin: 36px 0 14px;
+  }
+  .kit-section-head h2 { margin: 0; font-family: var(--display); font-size: 26px; }
+  .kit-section-head .line { flex: 1; height: 1px; background: var(--border); }
+  .module-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    background: var(--bg);
+  }
+  .module-list a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: var(--surface);
+    font-family: var(--mono); font-size: 13px; color: var(--fg);
+  }
+  .module-list a:hover { background: var(--accent); color: var(--accent-ink); }
+  .module-list .role { color: var(--muted); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand" aria-label="UI Kit Keairan Citanduy">
+      <span class="brand-mark">K</span>
+      <span>KEAIRAN CITANDUY<small>UI Kit · App Launcher</small></span>
+    </a>
+    <nav class="primary" aria-label="Navigasi kit">
+      <a href="index.html" aria-current="page">Launcher</a>
+      <a href="components/masthead.html">Masthead</a>
+      <a href="components/dasbor.html">Dasbor</a>
+      <a href="components/aqua-alert.html">AquaAlert</a>
+    </nav>
+    <div class="header-cta">
+      <a href="../../DESIGN.md" class="btn btn-primary">DESIGN.md</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">UI Kit · Edisi September 2026</p>
+    <h1 class="display" style="margin-top:14px;">Launcher kit,<br/>empat modul jadi,<br/>satu paket jadi.</h1>
+    <p class="lede">Kit terapan untuk <strong>Keairan Citanduy</strong>. Setiap kartu di bawah membuka satu modul aplikasi dengan markup yang siap pakai — disusun dari komponen di <code>ui_kits/app/components/</code>, token di <code>colors_and_type.css</code>, dan gaya dasar di <code>assets/main.css</code>.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="kit-section-head">
+      <span class="eyebrow">01 · Modul produk</span>
+      <span class="line"></span>
+    </div>
+
+    <div class="kit-grid">
+
+      <a class="kit-card" href="components/dasbor.html" data-od-id="kit-card-dasbor">
+        <div class="thumb">
+          <svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="140" fill="oklch(86% 0.02 160)"/>
+            <path d="M20,90 C90,60 200,110 300,70" fill="none" stroke="oklch(45% 0.09 220)" stroke-width="6"/>
+            <circle cx="80" cy="80" r="6" fill="oklch(60% 0.16 145)" stroke="white" stroke-width="1.5"/>
+            <circle cx="160" cy="85" r="6" fill="oklch(78% 0.16 80)" stroke="white" stroke-width="1.5"/>
+            <circle cx="240" cy="76" r="6" fill="oklch(55% 0.22 25)" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">01</span>
+          <h3>Dasbor Publik</h3>
+          <p>Peta 27 pos pantau + ticker SIAGA + kalender tani + laporan warga.</p>
+        </div>
+      </a>
+
+      <a class="kit-card" href="components/aqua-alert.html" data-od-id="kit-card-aqua-alert">
+        <div class="thumb">
+          <svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="140" fill="oklch(98% 0.005 95)"/>
+            <rect x="110" y="20" width="180" height="100" rx="14" fill="oklch(8% 0.01 250)"/>
+            <rect x="122" y="56" width="156" height="32" rx="10" fill="oklch(18% 0.01 250)"/>
+            <text x="132" y="76" font-family="Inter" font-size="10" fill="oklch(82% 0.18 95)" font-weight="700">⚠ PERINGATAN DINI</text>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">02</span>
+          <h3>AquaAlert</h3>
+          <p>Pesan WhatsApp + perbandingan sebelum/sesudah + harga berlangganan.</p>
+        </div>
+      </a>
+
+      <a class="kit-card" href="components/hydro-amdal.html" data-od-id="kit-card-hydro-amdal">
+        <div class="thumb">
+          <svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="140" fill="oklch(98% 0.005 95)"/>
+            <rect x="40" y="20" width="240" height="100" fill="white" stroke="oklch(86% 0.01 90)"/>
+            <text x="160" y="38" text-anchor="middle" font-family="Bodoni Moda" font-weight="700" font-size="10" fill="oklch(16% 0.01 250)">BAB III · ANALISIS HIDROLOGI</text>
+            <line x1="60" y1="90" x2="260" y2="50" stroke="oklch(78% 0.16 80)" stroke-width="2"/>
+            <line x1="60" y1="95" x2="260" y2="55" stroke="oklch(55% 0.22 25)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">03</span>
+          <h3>Hydro-AMDAL</h3>
+          <p>Pratinjau draf otomatis + kurva IDF + paket harga korporat.</p>
+        </div>
+      </a>
+
+      <a class="kit-card" href="components/citizen-report.html" data-od-id="kit-card-citizen-report">
+        <div class="thumb">
+          <svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="140" fill="oklch(98% 0.005 95)"/>
+            <rect x="40" y="22" width="240" height="100" rx="8" fill="white" stroke="oklch(86% 0.01 90)"/>
+            <rect x="56" y="36" width="100" height="10" rx="3" fill="oklch(94% 0.012 90)"/>
+            <rect x="56" y="56" width="208" height="32" rx="4" fill="oklch(98% 0.005 95)" stroke="oklch(86% 0.01 90)"/>
+            <rect x="56" y="96" width="120" height="20" rx="999" fill="oklch(82% 0.18 95)"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">04</span>
+          <h3>Laporan Warga</h3>
+          <p>Form citizen-science + feed laporan masuk + badge validasi.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="kit-section-head">
+      <span class="eyebrow">02 · Komponen</span>
+      <span class="line"></span>
+    </div>
+    <p class="lede" style="margin-bottom:14px;">Markup siap pakai untuk komponen yang berulang di semua modul produk. Tempel ke artefak baru dan token akan otomatis terikat.</p>
+    <div class="module-list">
+      <a href="components/masthead.html"><span class="role">shell</span>Masthead sticky</a>
+      <a href="components/masthead.html#hero-photo"><span class="role">hero</span>Hero 4:5 photo</a>
+      <a href="components/dasbor.html#station-card"><span class="role">data</span>Station card</a>
+      <a href="components/dasbor.html#ticker"><span class="role">data</span>Ticker SIAGA</a>
+      <a href="components/dasbor.html#tabs"><span class="role">nav</span>Tab strip</a>
+      <a href="components/dasbor.html#calendar"><span class="role">data</span>Calendar cell</a>
+      <a href="components/aqua-alert.html#whatsapp"><span class="role">msg</span>WhatsApp bubble</a>
+      <a href="components/aqua-alert.html#comparison"><span class="role">data</span>Comparison table</a>
+      <a href="components/hydro-amdal.html#doc-preview"><span class="role">doc</span>Doc preview card</a>
+      <a href="components/hydro-amdal.html#idf-curve"><span class="role">chart</span>IDF curve SVG</a>
+      <a href="components/citizen-report.html#report-form"><span class="role">form</span>Citizen report form</a>
+      <a href="components/citizen-report.html#feed"><span class="role">feed</span>Reports feed</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0 64px;">
+  <div class="wrap">
+    <div class="kit-section-head">
+      <span class="eyebrow">03 · Cara pakai ulang</span>
+      <span class="line"></span>
+    </div>
+    <ol class="lede" style="line-height:1.7;">
+      <li>Salin <code>colors_and_type.css</code> ke dalam blok <code>&lt;style&gt;</code> pertama artefak baru.</li>
+      <li>Sertakan <code>assets/main.css</code> setelahnya untuk kelas komponen siap pakai.</li>
+      <li>Tempel markup <code>masthead</code> dari <code>components/masthead.html</code>, lalu isi setiap bagian halaman dengan blok dari modul di atas.</li>
+      <li>Pastikan satu primary CTA per viewport, satu <code>band-dark</code> per halaman panjang, dan tidak ada emoji sebagai ikon.</li>
+      <li>Jalankan audit: <code style="font-size:14px;">"${OD_NODE_BIN}" "${OD_BIN}" tools connectors design-system-package-audit --path . --fail-on-warnings</code></li>
+    </ol>
+    <p style="margin-top:18px;"><a href="README.md" class="btn-link">Baca README.md kit →</a></p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>UI Kit · App Launcher</small></span>
+        </div>
+        <p style="color:oklch(80% 0.02 95); max-width:36ch; font-size:14px;">Paket modul produk jadi untuk cetak biru platform intelijen hidrologi terpadu WS Citanduy.</p>
+      </div>
+      <div><h5>Modul</h5>
+        <ul>
+          <li><a href="components/dasbor.html">Dasbor Publik</a></li>
+          <li><a href="components/aqua-alert.html">AquaAlert</a></li>
+          <li><a href="components/hydro-amdal.html">Hydro-AMDAL</a></li>
+          <li><a href="components/citizen-report.html">Laporan Warga</a></li>
+        </ul>
+      </div>
+      <div><h5>Referensi</h5>
+        <ul>
+          <li><a href="../../DESIGN.md">DESIGN.md</a></li>
+          <li><a href="../../colors_and_type.css">colors_and_type.css</a></li>
+          <li><a href="../../assets/main.css">assets/main.css</a></li>
+          <li><a href="README.md">README.md kit</a></li>
+        </ul>
+      </div>
+      <div><h5>Sumber</h5>
+        <ul>
+          <li><a href="../../examples/index.html">examples/index.html</a></li>
+          <li><a href="../../examples/dashboard.html">examples/dashboard.html</a></li>
+          <li><a href="../../examples/aqua-alert.html">examples/aqua-alert.html</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <div>© 2026 Keairan Citanduy · UI Kit</div>
+      <div>WS Citanduy · ±3.500 km² · 27 pos pantau</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

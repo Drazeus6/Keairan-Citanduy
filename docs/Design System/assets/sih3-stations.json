@@ -1,0 +1,14 @@
+{
+  "system": "WS Citanduy SIH3 BBWS",
+  "version": "2026-09",
+  "stations": [
+    { "id": "S01", "name": "Ciamis Hulu",   "x": 200, "y": 110, "status": "n", "tma": 182, "debit": 24.5,  "trend": "stabil",     "pred": "Naik pelan",      "koord": "−7.34, 108.39", "sungai": "Citanduy Hulu" },
+    { "id": "S02", "name": "Tasik Tengah",  "x": 320, "y": 170, "status": "w", "tma": 248, "debit": 42.1,  "trend": "naik",       "pred": "Waspada 6 jam",   "koord": "−7.36, 108.23", "sungai": "Citanduy Tengah" },
+    { "id": "S03", "name": "Banjar Kota",   "x": 480, "y": 230, "status": "s", "tma": 312, "debit": 78.6,  "trend": "naik cepat", "pred": "Siaga 4–8 jam",   "koord": "−7.37, 108.54", "sungai": "Citanduy Tengah" },
+    { "id": "S04", "name": "Pangandaran",   "x": 560, "y": 330, "status": "n", "tma": 165, "debit": 81.2,  "trend": "naik",       "pred": "Tiba 6–8 jam",    "koord": "−7.69, 108.66", "sungai": "Muara Citanduy" },
+    { "id": "S05", "name": "Cilacap Estuari","x": 620, "y": 430, "status": "n", "tma": 120, "debit": 88.4,  "trend": "naik",       "pred": "Tiba 10–12 jam",  "koord": "−7.71, 109.02", "sungai": "Muara Citanduy" },
+    { "id": "S06", "name": "Sukaresik",     "x": 380, "y": 140, "status": "n", "tma": 198, "debit": 32.8,  "trend": "stabil",     "pred": "Aman 12 jam",     "koord": "−7.41, 108.20", "sungai": "Citanduy Hulu" },
+    { "id": "S07", "name": "Cisadane Hilir","x": 280, "y": 200, "status": "w", "tma": 234, "debit": 48.9,  "trend": "naik",       "pred": "Waspada 8 jam",   "koord": "−7.50, 108.27", "sungai": "Anak Citanduy" },
+    { "id": "S08", "name": "Pataruman",     "x": 430, "y": 260, "status": "w", "tma": 265, "debit": 55.3,  "trend": "naik",       "pred": "Waspada 6 jam",   "koord": "−7.40, 108.50", "sungai": "Citanduy Tengah" }
+  ]
+}

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dasbor Publik · Pratinjau terapan · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .ticker { display: flex; align-items: center; gap: 14px; background: var(--paper-dark); color: var(--bg); border-radius: var(--radius); padding: 14px 18px; font-family: var(--mono); font-size: 13px; overflow: hidden; }
+  .ticker .live { display: inline-flex; align-items: center; gap: 6px; background: var(--status-siaga); color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; flex-shrink: 0; }
+  .ticker .live .blink { width: 8px; height: 8px; border-radius: 50%; background: white; animation: blink 1.2s infinite; }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .flood-toast { position: absolute; right: 16px; bottom: 16px; background: var(--status-siaga); color: white; padding: 12px 16px; border-radius: 8px; font-size: 13px; display: flex; gap: 10px; align-items: center; box-shadow: 0 8px 24px -10px oklch(40% 0.2 25 / 0.6); z-index: 6; }
+  .flood-toast::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: white; animation: blink 1.2s infinite; }
+  .station { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: var(--bg); cursor: pointer; display: flex; flex-direction: column; gap: 8px; transition: border-color .15s ease; }
+  .station:hover { border-color: var(--fg); }
+  .station .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .station .name { font-weight: 600; font-size: 14px; }
+  .station .coord { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .station .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-family: var(--mono); font-weight: 700; letter-spacing: 0.1em; }
+  .badge.n { background: oklch(94% 0.06 145); color: oklch(35% 0.16 145); }
+  .badge.w { background: oklch(96% 0.07 80); color: oklch(40% 0.15 80); }
+  .badge.s { background: oklch(94% 0.06 25); color: oklch(40% 0.2 25); }
+  .station .readings { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .station .readings strong { color: var(--fg); font-weight: 600; }
+  .stations { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .stations { grid-template-columns: 1fr; } }
+  .legend-bar { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); margin-top: 8px; }
+  .legend-bar .grad { flex: 1; height: 8px; border-radius: 999px; background: linear-gradient(to right, var(--status-normal), var(--status-waspada), var(--status-siaga)); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Pratinjau terapan · Dasbor Publik</small></span></a>
+    <nav class="primary"><a href="colors.html">Warna</a><a href="typography.html">Tipografi</a><a href="components.html">Komponen</a><a href="applied-public-dashboard.html" aria-current="page">Terapan</a></nav>
+    <div class="header-cta"><a href="index.html" class="btn btn-ghost">Kartu Pratinjau</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">Antarmuka terapan · Dasbor Publik</p>
+    <div style="display:flex; align-items:end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-top:14px;">
+      <h1 class="display" style="font-size:clamp(40px, 5.5vw, 72px); margin:0;">Dasbor Citanduy.<br/>Tiga modul, satu layar.</h1>
+      <div style="text-align:right; max-width:380px;">
+        <p class="lede" style="margin:0;">Pantau banjir DAS Citanduy, jadwalkan kerja tani, dan laporkan genangan dari ponsel Anda—tanpa registrasi.</p>
+        <div class="legend-bar"><span>Aman</span><div class="grad"></div><span>Siaga</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 24px;">
+  <div class="wrap">
+    <div class="ticker" aria-live="polite">
+      <span class="live"><span class="blink"></span>SIAGA</span>
+      <span>Pos Banjar · TMA 312 cm · ↑12 cm/jam · Estimasi tiba Pangandaran 6–8 jam</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab" aria-selected="true"><span class="num" style="font-family:var(--mono); font-size:11px; margin-right:8px;">01</span>Peta Pantau Banjir</button>
+      <button class="tab" aria-selected="false"><span class="num" style="font-family:var(--mono); font-size:11px; margin-right:8px;">02</span>Kalender Cuaca Tani</button>
+      <button class="tab" aria-selected="false"><span class="num" style="font-family:var(--mono); font-size:11px; margin-right:8px;">03</span>Kanal Pelaporan Warga</button>
+    </div>
+
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <p class="eyebrow">Visualisasi spasial</p>
+        <h2 class="display" style="margin-top:14px; font-size:clamp(28px,3vw,42px);">27 pos duga, satu sungai.</h2>
+        <p style="color:var(--muted); max-width:46ch;">Klik pos di peta atau di daftar untuk melihat TMA, debit, dan prediksi 12 jam ke depan. Warna mengikuti standar BBWS: hijau (Normal), kuning (Waspada), merah (Siaga).</p>
+
+        <div class="map-shell" style="margin-top:24px; position:relative; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:#d6e3df;">
+          <svg viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice" style="display:block; width:100%; height:auto;" aria-label="Peta DAS Citanduy interaktif">
+            <defs>
+              <linearGradient id="mapBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#dce6e0"/><stop offset="100%" stop-color="#c4d2cb"/>
+              </linearGradient>
+              <pattern id="topo" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M0 30 Q15 10 30 30 T60 30" stroke="#a4b8b0" stroke-width="0.5" fill="none" opacity="0.5"/>
+              </pattern>
+              <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#3a8aa0"/><stop offset="100%" stop-color="#5fb6c9"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="520" fill="url(#mapBg)"/>
+            <rect width="800" height="520" fill="url(#topo)"/>
+            <path d="M120,80 L260,40 L420,90 L560,70 L680,160 L660,300 L560,420 L420,460 L260,440 L160,360 L120,220 Z" fill="#b8cdc4" stroke="#7a948a" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+            <path id="riverMain" d="M260,90 C300,140 360,180 400,210 S 480,260 540,290 S 640,330 680,310" fill="none" stroke="url(#riverGrad)" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+            <path d="M400,210 C440,240 460,260 480,260" fill="none" stroke="#5fb6c9" stroke-width="4" opacity="0.6"/>
+            <ellipse cx="540" cy="290" rx="160" ry="100" fill="#e85a3c" opacity="0.07"/>
+
+            <!-- Stations -->
+            <g>
+              <g><circle cx="200" cy="110" r="9" fill="oklch(60% 0.16 145)" stroke="white" stroke-width="2"/></g>
+              <g><circle cx="320" cy="170" r="9" fill="oklch(78% 0.16 80)" stroke="white" stroke-width="2"/></g>
+              <g>
+                <circle cx="480" cy="230" r="22" fill="oklch(55% 0.22 25)" opacity="0.15"><animate attributeName="r" values="14;26;14" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.25;0;0.25" dur="2s" repeatCount="indefinite"/></circle>
+                <circle cx="480" cy="230" r="14" fill="oklch(55% 0.22 25)" opacity="0.3"/>
+                <circle cx="480" cy="230" r="9" fill="oklch(55% 0.22 25)" stroke="white" stroke-width="2"/>
+              </g>
+              <g><circle cx="560" cy="330" r="9" fill="oklch(60% 0.16 145)" stroke="white" stroke-width="2"/></g>
+              <g><circle cx="620" cy="430" r="9" fill="oklch(60% 0.16 145)" stroke="white" stroke-width="2"/></g>
+              <g><circle cx="380" cy="140" r="9" fill="oklch(60% 0.16 145)" stroke="white" stroke-width="2"/></g>
+              <g><circle cx="280" cy="200" r="9" fill="oklch(78% 0.16 80)" stroke="white" stroke-width="2"/></g>
+              <g><circle cx="430" cy="260" r="9" fill="oklch(78% 0.16 80)" stroke="white" stroke-width="2"/></g>
+            </g>
+
+            <g>
+              <circle cx="200" cy="100" r="4" fill="#1a1a1a"/><text x="210" y="103" font-family="Bodoni Moda" font-size="14" fill="#1a1a1a" font-weight="700">Ciamis</text>
+              <circle cx="340" cy="180" r="3" fill="#1a1a1a"/><text x="350" y="183" font-family="Bodoni Moda" font-size="13" fill="#1a1a1a" font-weight="600">Tasikmalaya</text>
+              <circle cx="540" cy="290" r="4" fill="#1a1a1a"/><text x="552" y="293" font-family="Bodoni Moda" font-size="14" fill="#1a1a1a" font-weight="700">Banjar</text>
+              <circle cx="660" cy="350" r="3" fill="#1a1a1a"/><text x="670" y="353" font-family="Bodoni Moda" font-size="13" fill="#1a1a1a" font-weight="600">Pangandaran</text>
+              <circle cx="700" cy="430" r="4" fill="#1a1a1a"/><text x="640" y="445" font-family="Bodoni Moda" font-size="14" fill="#1a1a1a" font-weight="700">Cilacap</text>
+            </g>
+            <g transform="translate(740,60)">
+              <circle r="20" fill="white" stroke="#1a1a1a" stroke-width="1" opacity="0.95"/>
+              <text y="-4" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#1a1a1a" font-weight="700">N</text>
+            </g>
+            <g transform="translate(40,490)">
+              <line x1="0" y1="0" x2="100" y2="0" stroke="#1a1a1a" stroke-width="2"/>
+              <line x1="0" y1="-4" x2="0" y2="4" stroke="#1a1a1a" stroke-width="2"/>
+              <line x1="50" y1="-4" x2="50" y2="4" stroke="#1a1a1a" stroke-width="2"/>
+              <line x1="100" y1="-4" x2="100" y2="4" stroke="#1a1a1a" stroke-width="2"/>
+              <text y="-8" font-family="JetBrains Mono" font-size="9" fill="#1a1a1a">10 km</text>
+            </g>
+          </svg>
+          <div class="flood-toast">Banjar · Siaga · TMA 312 cm</div>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow">Daftar pos pantau</p>
+        <h3 class="display" style="margin-top:10px; font-size:22px;">Pilih pos untuk detail</h3>
+        <div class="stations" style="margin-top:16px;">
+          <article class="station"><div class="top"><div><div class="name">Ciamis Hulu</div><div class="coord">S01 · −7,34 108,39</div></div><span class="badge n">NORMAL</span></div><div class="readings"><span>TMA · <strong>182 cm</strong></span><span>Q · <strong>24,5 m³/s</strong></span><span>Tren · <strong>stabil</strong></span><span>Sungai · <strong>Citanduy Hulu</strong></span></div></article>
+          <article class="station"><div class="top"><div><div class="name">Tasik Tengah</div><div class="coord">S02 · −7,36 108,23</div></div><span class="badge w">WASPADA</span></div><div class="readings"><span>TMA · <strong>248 cm</strong></span><span>Q · <strong>42,1 m³/s</strong></span><span>Tren · <strong>naik</strong></span><span>Sungai · <strong>Citanduy Tengah</strong></span></div></article>
+          <article class="station" style="border-color: var(--accent); box-shadow: 0 0 0 3px oklch(82% 0.18 95 / 0.35);"><div class="top"><div><div class="name">Banjar Kota</div><div class="coord">S03 · −7,37 108,54</div></div><span class="badge s">SIAGA</span></div><div class="readings"><span>TMA · <strong>312 cm</strong></span><span>Q · <strong>78,6 m³/s</strong></span><span>Tren · <strong>naik cepat</strong></span><span>Sungai · <strong>Citanduy Tengah</strong></span></div></article>
+          <article class="station"><div class="top"><div><div class="name">Pangandaran</div><div class="coord">S04 · −7,69 108,66</div></div><span class="badge n">NORMAL</span></div><div class="readings"><span>TMA · <strong>165 cm</strong></span><span>Q · <strong>81,2 m³/s</strong></span><span>Tren · <strong>naik</strong></span><span>Sungai · <strong>Muara Citanduy</strong></span></div></article>
+          <article class="station"><div class="top"><div><div class="name">Cilacap Estuari</div><div class="coord">S05 · −7,71 109,02</div></div><span class="badge n">NORMAL</span></div><div class="readings"><span>TMA · <strong>120 cm</strong></span><span>Q · <strong>88,4 m³/s</strong></span><span>Tren · <strong>naik</strong></span><span>Sungai · <strong>Muara Citanduy</strong></span></div></article>
+          <article class="station"><div class="top"><div><div class="name">Pataruman</div><div class="coord">S08 · −7,40 108,50</div></div><span class="badge w">WASPADA</span></div><div class="readings"><span>TMA · <strong>265 cm</strong></span><span>Q · <strong>55,3 m³/s</strong></span><span>Tren · <strong>naik</strong></span><span>Sungai · <strong>Citanduy Tengah</strong></span></div></article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0 64px;">
+  <div class="wrap">
+    <div class="band-dark">
+      <div class="grid-2" style="align-items:end;">
+        <div class="col" style="gap:14px;">
+          <span class="accent-tag">Layanan publik · bebas biaya</span>
+          <h2 class="display" style="color:var(--bg);">Peta Citanduy,<br/>dibaca ulang setiap jam.</h2>
+          <p style="color:oklch(85% 0.02 95); max-width:50ch;">Visualisasi kode warna Normal, Waspada, dan Siaga untuk 27 pos duga air. Peringatan dini penjalaran air dari hulu ke hilir—dengan estimasi waktu tiba banjir ke pemukiman warga.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:6px;">
+            <a class="btn btn-primary" href="#">Buka Dasbor</a>
+            <a class="btn btn-ghost" href="#">Lihat Kalender Tani</a>
+          </div>
+        </div>
+        <div>
+          <div class="stat-strip" style="grid-template-columns: repeat(2, 1fr); background:var(--paper-dark-2); border-radius:8px; color:var(--bg);">
+            <div style="padding:18px; border-right:1px solid oklch(28% 0.01 250); border-bottom:1px solid oklch(28% 0.01 250);"><div class="v" style="font-family:var(--display); font-weight:700; font-size:36px;">12<small style="font-family:var(--body); font-size:13px; margin-left:6px; color:oklch(75% 0.02 95);">jam</small></div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:oklch(75% 0.02 95); margin-top:8px;">Jendela peringatan AquaAlert</div></div>
+            <div style="padding:18px; border-bottom:1px solid oklch(28% 0.01 250);"><div class="v" style="font-family:var(--display); font-weight:700; font-size:36px;">5</div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:oklch(75% 0.02 95); margin-top:8px;">Parameter SIH3</div></div>
+            <div style="padding:18px; border-right:1px solid oklch(28% 0.01 250);"><div class="v" style="font-family:var(--display); font-weight:700; font-size:36px;">27</div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:oklch(75% 0.02 95); margin-top:8px;">Pos pantau aktif</div></div>
+            <div style="padding:18px;"><div class="v" style="font-family:var(--display); font-weight:700; font-size:36px;">0<small style="font-family:var(--body); font-size:13px; margin-left:6px; color:oklch(75% 0.02 95);">biaya</small></div><div class="k" style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:oklch(75% 0.02 95); margin-top:8px;">Untuk dasbor publik</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div><div class="brand" style="color:var(--bg); margin-bottom:14px;"><span class="brand-mark">K</span><span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau terapan · Dasbor Publik</small></span></div></div>
+      <div><h5>Pratinjau</h5><ul><li><a href="applied-aqua-alert.html">AquaAlert</a></li><li><a href="applied-hydro-amdal.html">Hydro-AMDAL</a></li></ul></div>
+      <div><h5>Token</h5><ul><li><a href="../colors_and_type.css">colors_and_type.css</a></li><li><a href="../DESIGN.md">DESIGN.md</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

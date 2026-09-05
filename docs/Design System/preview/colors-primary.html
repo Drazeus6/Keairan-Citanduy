@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Warna Utama · Pratinjau · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .primary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 720px) { .primary-grid { grid-template-columns: 1fr; } }
+  .tile {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+    display: grid;
+    grid-template-rows: 220px auto;
+  }
+  .tile .chip { padding: 22px; display: grid; align-content: end; gap: 4px; }
+  .tile .meta { padding: 16px 20px; display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--border); }
+  .tile h3 { font-family: var(--display); font-size: 20px; line-height: 1.15; margin: 0; }
+  .tile code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .tile .role { font-size: 12px; color: var(--muted); }
+  .contrast-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px; margin-top: 20px;
+  }
+  @media (max-width: 720px) { .contrast-row { grid-template-columns: 1fr; } }
+  .pair {
+    display: grid; grid-template-columns: 56px 1fr; gap: 12px;
+    border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .pair .swatch { min-height: 88px; }
+  .pair .meta { padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+  .pair .meta .ratio { font-family: var(--mono); font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand" aria-label="Kembali ke pratinjau">
+      <span class="brand-mark">K</span>
+      <span>KEAIRAN CITANDUY<small>Sistem Desain · 01a · Warna Utama</small></span>
+    </a>
+    <nav class="primary" aria-label="Navigasi pratinjau">
+      <a href="colors.html">Semua Warna</a>
+      <a href="colors-primary.html" aria-current="page">Warna Utama</a>
+      <a href="../DESIGN.md">DESIGN.md</a>
+    </nav>
+    <div class="header-cta">
+      <a href="index.html" class="btn btn-ghost">Semua Kartu</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">01a · Token · warna utama</p>
+    <h1 class="display" style="margin-top:14px;">Enam warna yang<br/>mendefinisikan<br/>seluruh platform.</h1>
+    <p class="lede">Setiap komponen UI pada akhirnya menurunkan dirinya ke satu dari enam token ini. Kuning aksen hanya dipakai untuk CTA, label kecil, dan angka mata uang — tidak lebih dari dua kali per viewport.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="primary-grid" data-od-id="primary-colors">
+
+      <article class="tile">
+        <div class="chip" style="background:var(--bg);">
+          <span class="eyebrow" style="color:var(--muted);">01 · kertas</span>
+          <span style="font-family:var(--display); font-weight:800; color:var(--fg); font-size:36px; line-height:1;">--bg</span>
+        </div>
+        <div class="meta">
+          <h3>Background kertas hangat</h3>
+          <code>oklch(98% 0.005 95) · #FBF9F3</code>
+          <span class="role">Latar seluruh halaman, body artikel, kartu.</span>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="chip" style="background:var(--surface);">
+          <span class="eyebrow" style="color:var(--muted);">02 · panel</span>
+          <span style="font-family:var(--display); font-weight:800; color:var(--fg); font-size:36px; line-height:1;">--surface</span>
+        </div>
+        <div class="meta">
+          <h3>Surface editorial</h3>
+          <code>oklch(94% 0.012 90) · #F2EAD8</code>
+          <span class="role">Panel tabel, station detail, kartu harga.</span>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="chip" style="background:var(--fg);">
+          <span class="eyebrow" style="color:var(--bg);">03 · tinta</span>
+          <span style="font-family:var(--display); font-weight:800; color:var(--bg); font-size:36px; line-height:1;">--fg</span>
+        </div>
+        <div class="meta">
+          <h3>Tinta pekat</h3>
+          <code>oklch(16% 0.01 250) · #1F222D</code>
+          <span class="role">Display heading, body, label form.</span>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="chip" style="background:var(--muted);">
+          <span class="eyebrow" style="color:var(--bg);">04 · sunyi</span>
+          <span style="font-family:var(--display); font-weight:800; color:var(--bg); font-size:36px; line-height:1;">--muted</span>
+        </div>
+        <div class="meta">
+          <h3>Teks sekunder</h3>
+          <code>oklch(45% 0.015 250) · #6A6E83</code>
+          <span class="role">Caption, eyebrow, label tabel. Tidak untuk hover.</span>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="chip" style="background:var(--border);">
+          <span class="eyebrow" style="color:var(--muted);">05 · garis</span>
+          <span style="font-family:var(--display); font-weight:800; color:var(--fg); font-size:36px; line-height:1;">--border</span>
+        </div>
+        <div class="meta">
+          <h3>Garis editorial</h3>
+          <code>oklch(86% 0.01 90) · #DED4C1</code>
+          <span class="role">Hairline card, pemisah tabel, underline nav.</span>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="chip" style="background:var(--accent); color:var(--accent-ink);">
+          <span class="eyebrow" style="color:var(--accent-ink);">06 · aksen</span>
+          <span style="font-family:var(--display); font-weight:800; color:var(--accent-ink); font-size:36px; line-height:1;">--accent</span>
+        </div>
+        <div class="meta">
+          <h3>Kuning NatGeo</h3>
+          <code>oklch(82% 0.18 95) · #F5C842</code>
+          <span class="role">CTA primer, kicker kuning, currency Rp.</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0 64px;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pasangan kontras · minimum 4.5:1</span>
+      <h2 class="display">Empat pasangan yang<br/>tidak boleh dibalik.</h2>
+      <p class="lede">Teks di atas latar tidak pernah lebih pucat saat di-hover. Pasangan ini yang menjaga agar kaliber "editorial serius" tidak rusak.</p>
+    </div>
+
+    <div class="contrast-row">
+      <div class="pair">
+        <div class="swatch" style="background:var(--accent);"></div>
+        <div class="meta">
+          <span class="ratio">8.4:1</span>
+          <span class="role">--accent-ink di atas --accent</span>
+          <code>color: var(--accent-ink)</code>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="swatch" style="background:var(--paper-dark);"></div>
+        <div class="meta">
+          <span class="ratio">14.1:1</span>
+          <span class="role">--bg di atas --paper-dark</span>
+          <code>color: var(--bg)</code>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="swatch" style="background:var(--fg);"></div>
+        <div class="meta">
+          <span class="ratio">16.4:1</span>
+          <span class="role">--bg di atas --fg (ghost hover)</span>
+          <code>hover: invert</code>
+        </div>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:24px;">Sumber: <a href="../DESIGN.md">DESIGN.md §2</a> · <a href="../colors_and_type.css">colors_and_type.css</a> · evidence: <code>assets/main.css</code>, <code>brand-spec.md</code>.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau · 01a · Warna Utama</small></span>
+        </div>
+      </div>
+      <div><h5>Lihat juga</h5><ul><li><a href="colors.html">Semua Warna</a></li><li><a href="../DESIGN.md">DESIGN.md</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

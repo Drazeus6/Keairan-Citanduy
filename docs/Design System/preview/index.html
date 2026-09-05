@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pratinjau Sistem Desain · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .preview-card {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  }
+  .preview-card:hover {
+    border-color: var(--fg);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -22px oklch(10% 0.01 250 / 0.4);
+  }
+  .preview-card .thumb {
+    aspect-ratio: 16/9;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .preview-card .thumb svg { width: 100%; height: 100%; display: block; }
+  .preview-card .meta {
+    padding: 16px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .preview-card h3 {
+    font-family: var(--display);
+    font-size: 20px;
+    line-height: 1.15;
+    margin: 0;
+  }
+  .preview-card p { color: var(--muted); font-size: 13px; margin: 0; }
+  .preview-card .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent-ink);
+    background: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+  .group-head {
+    display: flex; align-items: center; gap: 12px;
+    margin: 28px 0 14px;
+  }
+  .group-head h2 { margin: 0; font-family: var(--display); font-size: 28px; }
+  .group-head .line { flex: 1; height: 1px; background: var(--border); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand" aria-label="Keairan Citanduy · Design System">
+      <span class="brand-mark">K</span>
+      <span>KEAIRAN CITANDUY<small>Sistem Desain · Pratinjau</small></span>
+    </a>
+    <nav class="primary" aria-label="Navigasi pratinjau">
+      <a href="#tokens">Token</a>
+      <a href="#applied">Antarmuka</a>
+      <a href="../DESIGN.md">DESIGN.md</a>
+    </nav>
+    <div class="header-cta">
+      <a href="../DESIGN.md" class="btn btn-primary">Buka DESIGN.md</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">Sistem Desain · Edisi September 2026</p>
+    <h1 class="display" style="margin-top:14px;">Tujuh kartu pratinjau,<br/>satu sistem desain.</h1>
+    <p class="lede">Setiap kartu di bawah adalah jendela kecil ke satu aspek sistem. Mulailah dari <strong>token</strong>, berjalan ke <strong>komponen</strong>, lalu ke <strong>antarmuka terapan</strong>.</p>
+  </div>
+</section>
+
+<section id="tokens" style="padding:24px 0;">
+  <div class="wrap">
+    <div class="group-head">
+      <span class="eyebrow">01 · Token</span>
+      <span class="line"></span>
+    </div>
+    <div class="preview-grid">
+      <a class="preview-card" href="colors.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect x="0"   y="0" width="80" height="180" fill="oklch(98% 0.005 95)"/>
+            <rect x="80"  y="0" width="80" height="180" fill="oklch(94% 0.012 90)"/>
+            <rect x="160" y="0" width="80" height="180" fill="oklch(16% 0.01 250)"/>
+            <rect x="240" y="0" width="80" height="180" fill="oklch(82% 0.18 95)"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">01</span>
+          <h3>Warna</h3>
+          <p>Token merek OKLch + status Normal · Waspada · Siaga.</p>
+        </div>
+      </a>
+
+      <a class="preview-card" href="typography.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="180" fill="oklch(98% 0.005 95)"/>
+            <text x="22" y="80" font-family="Bodoni Moda, serif" font-weight="800" font-size="56" fill="oklch(16% 0.01 250)">Aa</text>
+            <text x="120" y="70" font-family="Inter, sans-serif" font-weight="400" font-size="22" fill="oklch(16% 0.01 250)">Aa</text>
+            <text x="120" y="110" font-family="JetBrains Mono, monospace" font-size="20" fill="oklch(45% 0.015 250)">312 cm</text>
+            <text x="22" y="150" font-family="Bodoni Moda, serif" font-style="italic" font-size="18" fill="oklch(45% 0.015 250)">bicara</text>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">02</span>
+          <h3>Tipografi</h3>
+          <p>Display · Body · Mono. Skala fluid dan pasangan editorial.</p>
+        </div>
+      </a>
+
+      <a class="preview-card" href="spacing.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="180" fill="oklch(98% 0.005 95)"/>
+            <rect x="40"  y="50" width="60" height="80" rx="4" fill="oklch(94% 0.012 90)" stroke="oklch(86% 0.01 90)"/>
+            <rect x="120" y="40" width="60" height="100" rx="10" fill="oklch(94% 0.012 90)" stroke="oklch(86% 0.01 90)"/>
+            <circle cx="220" cy="90" r="30" fill="oklch(82% 0.18 95)"/>
+            <ellipse cx="280" cy="92" rx="22" ry="6" fill="oklch(16% 0.01 250)" opacity="0.15"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">03</span>
+          <h3>Spasi &amp; Bentuk</h3>
+          <p>Gutter, radius, bayangan, dan ritme grid.</p>
+        </div>
+      </a>
+
+      <a class="preview-card" href="components.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="180" fill="oklch(98% 0.005 95)"/>
+            <rect x="22" y="60" width="120" height="32" rx="999" fill="oklch(82% 0.18 95)"/>
+            <text x="82" y="82" text-anchor="middle" font-family="Inter" font-size="13" font-weight="600" fill="oklch(20% 0.02 250)">Buka Dasbor →</text>
+            <rect x="160" y="60" width="120" height="32" rx="999" fill="none" stroke="oklch(16% 0.01 250)"/>
+            <text x="220" y="82" text-anchor="middle" font-family="Inter" font-size="13" font-weight="600" fill="oklch(16% 0.01 250)">Baca Metodologi</text>
+            <rect x="22" y="110" width="260" height="50" rx="10" fill="oklch(94% 0.012 90)" stroke="oklch(86% 0.01 90)"/>
+            <rect x="32" y="120" width="40" height="30" fill="oklch(82% 0.18 95)"/>
+            <text x="82" y="140" font-family="Bodoni Moda, serif" font-weight="700" font-size="14" fill="oklch(16% 0.01 250)">Kartu cerita pendek</text>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">04</span>
+          <h3>Komponen</h3>
+          <p>Tombol, kartu, pillar, band-dark, kutipan, tabel, tab.</p>
+        </div>
+      </a>
+
+      <a class="preview-card" href="brand-assets.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="180" fill="oklch(98% 0.005 95)"/>
+            <rect x="22" y="50" width="80" height="80" rx="14" fill="oklch(82% 0.18 95)"/>
+            <text x="62" y="106" text-anchor="middle" font-family="Bodoni Moda, serif" font-weight="800" font-size="56" fill="oklch(20% 0.02 250)">K</text>
+            <text x="120" y="86" font-family="Bodoni Moda, serif" font-weight="800" font-size="22" fill="oklch(16% 0.01 250)">KEAIRAN</text>
+            <text x="120" y="108" font-family="Inter" font-size="9" letter-spacing="3" fill="oklch(45% 0.015 250)">CITANDUY · WS</text>
+            <circle cx="180" cy="150" r="6" fill="oklch(60% 0.16 145)"/>
+            <circle cx="200" cy="150" r="6" fill="oklch(78% 0.16 80)"/>
+            <circle cx="220" cy="150" r="6" fill="oklch(55% 0.22 25)"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">05</span>
+          <h3>Aset Merek</h3>
+          <p>Logo, wordmark, favicon, penanda peta, ikon peringatan.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="applied" style="padding:24px 0 64px;">
+  <div class="wrap">
+    <div class="group-head">
+      <span class="eyebrow">02 · Antarmuka terapan</span>
+      <span class="line"></span>
+    </div>
+    <p class="lede" style="margin-bottom:18px;">Tiga permukaan produk jadi, masing-masing peka terhadap domain: publik (dasbor gratis), petambak (AquaAlert), konsultan (Hydro-AMDAL).</p>
+    <div class="preview-grid">
+
+      <a class="preview-card" href="applied-public-dashboard.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="180" fill="oklch(86% 0.02 160)"/>
+            <path d="M30,80 C100,40 200,120 290,70 L290,180 L30,180 Z" fill="oklch(75% 0.04 160)" opacity="0.7"/>
+            <path d="M50,110 C140,80 220,130 280,100" fill="none" stroke="oklch(45% 0.09 220)" stroke-width="6" opacity="0.9"/>
+            <circle cx="80" cy="100" r="7" fill="oklch(60% 0.16 145)" stroke="white" stroke-width="1.5"/>
+            <circle cx="160" cy="110" r="7" fill="oklch(78% 0.16 80)" stroke="white" stroke-width="1.5"/>
+            <circle cx="240" cy="98"  r="9" fill="oklch(55% 0.22 25)" fill-opacity="0.35"/>
+            <circle cx="240" cy="98"  r="6" fill="oklch(55% 0.22 25)" stroke="white" stroke-width="1.5"/>
+            <rect x="180" y="138" width="120" height="20" rx="4" fill="oklch(55% 0.22 25)"/>
+            <text x="190" y="152" font-family="Inter" font-size="10" font-weight="700" fill="white">SIAGA · Banjar</text>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">06</span>
+          <h3>Dasbor Publik · terapan</h3>
+          <p>Peta interaktif + ticker SIAGA + daftar pos.</p>
+        </div>
+      </a>
+
+      <a class="preview-card" href="applied-aqua-alert.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="180" fill="oklch(98% 0.005 95)"/>
+            <rect x="120" y="22" width="180" height="136" rx="14" fill="oklch(8% 0.01 250)"/>
+            <rect x="132" y="60" width="156" height="36" rx="10" fill="oklch(18% 0.01 250)"/>
+            <rect x="132" y="104" width="156" height="36" rx="10" fill="oklch(18% 0.01 250)"/>
+            <rect x="138" y="66" width="40" height="6" rx="2" fill="oklch(82% 0.18 95)"/>
+            <text x="138" y="86" font-family="Inter" font-size="9" fill="white">⚠ PERINGATAN DINI</text>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">07</span>
+          <h3>AquaAlert · terapan</h3>
+          <p>Hero + pesan WhatsApp + perbandingan sebelum/sesudah.</p>
+        </div>
+      </a>
+
+      <a class="preview-card" href="applied-hydro-amdal.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="180" fill="white"/>
+            <rect x="0" y="0" width="320" height="180" fill="oklch(98% 0.005 95)"/>
+            <g transform="translate(40,30)">
+              <rect x="0" y="0" width="240" height="120" fill="white" stroke="oklch(86% 0.01 90)"/>
+              <text x="120" y="22" text-anchor="middle" font-family="Times New Roman" font-weight="700" font-size="12" fill="oklch(16% 0.01 250)">BAB III · ANALISIS HIDROLOGI</text>
+              <line x1="20" y1="100" x2="220" y2="50" stroke="oklch(78% 0.16 80)" stroke-width="2"/>
+              <line x1="20" y1="105" x2="220" y2="55" stroke="oklch(55% 0.22 25)" stroke-width="2"/>
+              <line x1="20" y1="100" x2="220" y2="100" stroke="oklch(86% 0.01 90)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="meta">
+          <span class="num">08</span>
+          <h3>Hydro-AMDAL · terapan</h3>
+          <p>Pratinjau draf otomatis + kurva IDF + paket harga.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>Sistem Desain · September 2026</small></span>
+        </div>
+        <p style="color:oklch(80% 0.02 95); max-width:36ch; font-size:14px;">
+          Pratinjau sistem desain untuk cetak biru "Platform Intelijen Hidrologi Terpadu WS Citanduy".
+        </p>
+      </div>
+      <div>
+        <h5>Token</h5>
+        <ul>
+          <li><a href="colors.html">Warna</a></li>
+          <li><a href="typography.html">Tipografi</a></li>
+          <li><a href="spacing.html">Spasi &amp; Bentuk</a></li>
+          <li><a href="components.html">Komponen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Merek</h5>
+        <ul>
+          <li><a href="brand-assets.html">Aset Merek</a></li>
+          <li><a href="../DESIGN.md">DESIGN.md</a></li>
+          <li><a href="../colors_and_type.css">colors_and_type.css</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Terapan</h5>
+        <ul>
+          <li><a href="applied-public-dashboard.html">Dasbor Publik</a></li>
+          <li><a href="applied-aqua-alert.html">AquaAlert</a></li>
+          <li><a href="applied-hydro-amdal.html">Hydro-AMDAL</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <div>© 2026 Keairan Citanduy · Sistem Desain</div>
+      <div>WS Citanduy · ±3.500 km² · 27 pos pantau</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

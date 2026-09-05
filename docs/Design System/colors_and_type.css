@@ -1,0 +1,98 @@
+/* =========================================================
+   KEAIRAN CITANDUY — Colors & Type tokens
+   Source of truth: assets/main.css (Website Clone project)
+   Use: paste into the first <style> block of any artifact
+        built from this design system.
+
+   Concrete color values: OKLch is the perceptual primary;
+   hex fallbacks follow so older renderers and the package
+   audit can resolve every named token.
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ---- Brand tokens (OKLch primary) ---- */
+  --bg:           oklch(98% 0.005 95);
+  --surface:      oklch(94% 0.012 90);
+  --fg:           oklch(16% 0.01 250);
+  --muted:        oklch(45% 0.015 250);
+  --border:       oklch(86% 0.01 90);
+  --accent:       oklch(82% 0.18 95);
+  --accent-ink:   oklch(20% 0.02 250);
+  --water:        oklch(45% 0.09 220);
+  --water-soft:   oklch(80% 0.05 220);
+  --paper-dark:   oklch(18% 0.01 250);
+  --paper-dark-2: oklch(24% 0.012 250);
+
+  /* ---- Status (BBWS standard) ---- */
+  --status-normal:  oklch(60% 0.16 145);
+  --status-waspada: oklch(78% 0.16 80);
+  --status-siaga:   oklch(55% 0.22 25);
+
+  /* ---- Concrete hex fallbacks (derived from OKLch above) ---- */
+  /* Brand */
+  --bg-hex:           #FBF9F3;  /* warm paper */
+  --surface-hex:      #F2EAD8;  /* editorial panel */
+  --fg-hex:           #1F222D;  /* primary ink */
+  --muted-hex:        #6A6E83;  /* secondary text */
+  --border-hex:       #DED4C1;  /* hairline rules */
+  --accent-hex:       #F5C842;  /* NatGeo yellow (CTA, kicker) */
+  --accent-ink-hex:   #2B2E39;  /* text on accent */
+  --water-hex:        #386683;  /* map river fill */
+  --water-soft-hex:   #B6CCDA;  /* coastal fill */
+  --paper-dark-hex:   #22252E;  /* dark editorial band */
+  --paper-dark-2-hex: #33363F;  /* dark band inner panel */
+
+  /* Status */
+  --status-normal-hex:  #45B36E; /* Normal */
+  --status-waspada-hex: #F1C055; /* Waspada */
+  --status-siaga-hex:   #D8472C; /* Siaga */
+
+  /* ---- Type ---- */
+  --display: "Bodoni Moda", "Playfair Display", "Times New Roman", serif;
+  --body:    "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono:    "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+
+  /* ---- Rhythm ---- */
+  --gutter:   clamp(16px, 3vw, 40px);
+  --maxw:     1320px;
+  --radius-sm: 4px;
+  --radius:    10px;
+
+  /* ---- Fluid type — mobile-first ---- */
+  --h1-size: clamp(34px, 5.2vw + 12px, 68px);
+  --h2-size: clamp(28px, 3.4vw + 12px, 56px);
+  --h3-size: clamp(22px, 1.6vw + 14px, 36px);
+  --h4-size: clamp(18px, 1vw + 14px, 24px);
+}
+
+/* ---------- Selection ---------- */
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+/* ---------- Quick helpers ---------- */
+.mono { font-family: var(--mono); }
+.display {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--fg);
+  line-height: 1.05;
+  margin: 0;
+}
+.eyebrow {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.lede {
+  font-family: var(--body);
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.55;
+  color: var(--fg);
+  font-weight: 400;
+  max-width: 60ch;
+}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spasi &amp; Bentuk · Pratinjau · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .shape { background: var(--surface); border: 1px solid var(--border); display: grid; place-items: center; min-height: 110px; color: var(--muted); font-family: var(--mono); font-size: 12px; }
+  .gutter-demo { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .gutter-demo .rail { background: oklch(82% 0.18 95 / 0.4); border: 1px dashed oklch(82% 0.18 95); padding: 4px 8px; font-family: var(--mono); font-size: 12px; color: oklch(20% 0.02 250); }
+  .card-anatomy { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .card-anatomy .card-real { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
+  .card-anatomy .card-real:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -22px oklch(10% 0.01 250 / 0.4); border-color: var(--fg); }
+  .card-anatomy .card-real .photo { aspect-ratio: 4/3; background: linear-gradient(135deg, oklch(45% 0.09 220) 0%, oklch(80% 0.05 220) 100%); }
+  .card-anatomy .card-real .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .shadow-cell { aspect-ratio: 1.4/1; background: var(--bg); border-radius: var(--radius); display: grid; place-items: center; font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--border); }
+  .grid-demo {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .grid-demo > div { background: var(--surface); padding: 16px; text-align: center; font-family: var(--mono); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">K</span><span>KEAIRAN CITANDUY<small>Sistem Desain · 03 · Spasi</small></span></a>
+    <nav class="primary"><a href="colors.html">Warna</a><a href="typography.html">Tipografi</a><a href="spacing.html" aria-current="page">Spasi</a><a href="components.html">Komponen</a><a href="brand-assets.html">Merek</a></nav>
+    <div class="header-cta"><a href="index.html" class="btn btn-ghost">Semua Kartu</a></div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">03 · Spasi &amp; bentuk</p>
+    <h1 class="display" style="margin-top:14px;">Ritme editorial,<br/>bukan kepadatan SaaS.</h1>
+    <p class="lede">Gutter mobile-first, radius dua nilai, dua bayangan lembut, dan kartu yang mengangkat dirinya sendiri saat disentuh.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Gutter</span><h2 class="display">Padding halaman</h2></div>
+    <div class="gutter-demo">
+      <div class="rail">--gutter: clamp(16px, 3vw, 40px)</div>
+      <p class="small" style="margin:0;">Gunakan di <code>.wrap</code> dan elemen <code>section</code>. Section vertical pad mengikuti <code>clamp(48px, 7vw, 112px)</code>.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Radius</span><h2 class="display">Dua radius, satu pill</h2></div>
+    <div class="grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); gap:16px;">
+      <div class="shape" style="border-radius: var(--radius-sm);">--radius-sm · 4px<br/>(brand mark, tag)</div>
+      <div class="shape" style="border-radius: var(--radius);">--radius · 10px<br/>(kartu, panel)</div>
+      <div class="shape" style="border-radius: 999px;">999px<br/>(tombol, kicker, chip)</div>
+      <div class="shape" style="border-radius: 0;">0<br/>(footer band — edge to edge)</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Bayangan</span><h2 class="display">Dua bayangan, rendah &amp; lembut</h2></div>
+    <div class="grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:16px;">
+      <div class="shadow-cell" style="box-shadow: 0 18px 40px -22px oklch(10% 0.01 250 / 0.4);">Card hover<br/><code>0 18px 40px −22px / 0.4</code></div>
+      <div class="shadow-cell" style="box-shadow: 0 30px 80px -30px oklch(10% 0.01 250 / 0.45);">Hero photo<br/><code>0 30px 80px −30px / 0.45</code></div>
+      <div class="shadow-cell" style="box-shadow: 0 8px 24px -10px oklch(40% 0.2 25 / 0.6);">Flood toast<br/><code>0 8px 24px −10px / 0.6</code></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0 64px;">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Anatomi kartu</span><h2 class="display">Kartu adalah unit berpikir</h2></div>
+
+    <div class="card-anatomy" style="grid-template-columns: 1fr 1fr;">
+      <article class="card-real">
+        <div class="photo"></div>
+        <div class="body">
+          <span class="pill" style="background:var(--surface); padding:4px 8px; border-radius:999px; font-weight:600; color:var(--fg); align-self:flex-start; font-size:12px;">Padi Sawah</span>
+          <h3 style="font-family:var(--display); font-size:22px; margin:0;">Risiko wereng turun, waktu tebar benih.</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">Aturan inferensi menerjemahkan kelembapan &gt; 85% menjadi saran praktis untuk petani DAS Citanduy.</p>
+        </div>
+      </article>
+
+      <div>
+        <ol style="padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
+          <li><strong style="color:var(--fg);">photo</strong> — aspect-ratio 4/3, 1px border, scale 1.04 saat hover</li>
+          <li><strong style="color:var(--fg);">pill</strong> — 4px radius, 12px font, surface fill, di kiri atas body</li>
+          <li><strong style="color:var(--fg);">body</strong> — clamp(20px, 2.4vw, 28px) padding, gap 10–12px</li>
+          <li><strong style="color:var(--fg);">headline</strong> — Bodoni 22px line-height 1.15</li>
+          <li><strong style="color:var(--fg);">dek</strong> — Inter muted, 14px, 1.55</li>
+          <li><strong style="color:var(--fg);">hover</strong> — translateY(-2px) + soft shadow + border → fg</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div><div class="brand" style="color:var(--bg); margin-bottom:14px;"><span class="brand-mark">K</span><span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau · 03 · Spasi</small></span></div></div>
+      <div><h5>Lihat juga</h5><ul><li><a href="components.html">Komponen</a></li><li><a href="brand-assets.html">Merek</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

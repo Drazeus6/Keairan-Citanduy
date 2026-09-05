@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ikon peringatan segitiga">
+  <path d="M32 8 L60 56 L4 56 Z" fill="oklch(82% 0.18 95)" stroke="oklch(20% 0.02 250)" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="30" y="24" width="4" height="16" rx="1" fill="oklch(20% 0.02 250)"/>
+  <circle cx="32" cy="46" r="2.4" fill="oklch(20% 0.02 250)"/>
+</svg>

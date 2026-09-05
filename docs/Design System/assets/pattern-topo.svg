@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="presentation">
+  <defs>
+    <pattern id="topo" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M0 30 Q15 10 30 30 T60 30" stroke="oklch(70% 0.02 250)" stroke-width="0.6" fill="none" opacity="0.5"/>
+      <path d="M0 50 Q15 30 30 50 T60 50" stroke="oklch(70% 0.02 250)" stroke-width="0.4" fill="none" opacity="0.4"/>
+      <path d="M0 12 Q15 -2 30 12 T60 12" stroke="oklch(70% 0.02 250)" stroke-width="0.4" fill="none" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" fill="url(#topo)"/>
+</svg>

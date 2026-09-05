@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Warna · Pratinjau · Keairan Citanduy</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+  .swatch {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .swatch .chip { min-height: 110px; }
+  .swatch .meta { padding: 14px 18px; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+  .swatch .meta h3 { font-family: var(--display); font-size: 18px; margin: 0; }
+  .swatch .meta code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .swatch .meta .role { font-size: 12px; color: var(--muted); }
+  .grid-tokens { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 720px) { .grid-tokens { grid-template-columns: 1fr; } }
+  .ok-pair {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 12px;
+    padding: 6px 10px; border-radius: 4px;
+  }
+  .ratio-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; font-family: var(--mono); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="index.html" class="brand" aria-label="Kembali ke pratinjau">
+      <span class="brand-mark">K</span>
+      <span>KEAIRAN CITANDUY<small>Sistem Desain · 01 · Warna</small></span>
+    </a>
+    <nav class="primary" aria-label="Navigasi pratinjau">
+      <a href="colors.html" aria-current="page">Warna</a>
+      <a href="typography.html">Tipografi</a>
+      <a href="spacing.html">Spasi</a>
+      <a href="components.html">Komponen</a>
+      <a href="brand-assets.html">Merek</a>
+    </nav>
+    <div class="header-cta">
+      <a href="index.html" class="btn btn-ghost">Semua Kartu</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 24px;">
+  <div class="wrap">
+    <p class="eyebrow">01 · Token warna</p>
+    <h1 class="display" style="margin-top:14px;">Kertas hangat,<br/>tinta pekat,<br/>satu aksen kuning.</h1>
+    <p class="lede">Seluruh palet diturunkan dalam OKLch agar kecerahan tetap stabil saat status berubah. Kuning hanya untuk CTA, label kecil, dan tanda kutipan — muncul tidak lebih dari dua kali per viewport.</p>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Merek</span>
+      <h2 class="display">Enam token merek</h2>
+    </div>
+    <div class="grid-tokens">
+      <article class="swatch"><div class="chip" style="background:var(--bg); border-right:1px solid var(--border);"></div><div class="meta"><h3>bg</h3><code>oklch(98% 0.005 95)</code><span class="role">Kertas hangat — latar halaman</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--surface); border-right:1px solid var(--border);"></div><div class="meta"><h3>surface</h3><code>oklch(94% 0.012 90)</code><span class="role">Panel editorial, header tabel</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--fg); border-right:1px solid var(--border);"></div><div class="meta"><h3>fg</h3><code>oklch(16% 0.01 250)</code><span class="role">Tinta pekat — display &amp; body</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--muted); border-right:1px solid var(--border);"></div><div class="meta"><h3>muted</h3><code>oklch(45% 0.015 250)</code><span class="role">Teks sekunder, caption</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--border); border-right:1px solid var(--border);"></div><div class="meta"><h3>border</h3><code>oklch(86% 0.01 90)</code><span class="role">Garis editorial, pembagi tabel</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--accent); border-right:1px solid var(--border);"></div><div class="meta"><h3>accent</h3><code>oklch(82% 0.18 95)</code><span class="role">Kuning NatGeo — CTA, kicker</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Aksen domain</span>
+      <h2 class="display">Warna untuk konteks hidrologi</h2>
+    </div>
+    <div class="grid-tokens">
+      <article class="swatch"><div class="chip" style="background:var(--accent-ink); border-right:1px solid var(--border);"></div><div class="meta"><h3>accent-ink</h3><code>oklch(20% 0.02 250)</code><span class="role">Tinta pada aksen — di atas kuning</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--water); border-right:1px solid var(--border);"></div><div class="meta"><h3>water</h3><code>oklch(45% 0.09 220)</code><span class="role">Biru sungai dalam — peta &amp; peta dasbor</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--paper-dark); border-right:1px solid var(--border);"></div><div class="meta"><h3>paper-dark</h3><code>oklch(18% 0.01 250)</code><span class="role">Latar band editorial, footer</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--paper-dark-2); border-right:1px solid var(--border);"></div><div class="meta"><h3>paper-dark-2</h3><code>oklch(24% 0.012 250)</code><span class="role">Lapisan dalam band gelap</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Status · standar BBWS</span>
+      <h2 class="display">Tiga warna, satu makna</h2>
+      <p class="lede">Hijau untuk normal, kuning untuk waspada, merah untuk siaga. Dipakai pada peta, dasbor, kalender, dan laporan warga.</p>
+    </div>
+
+    <div class="grid-tokens">
+      <article class="swatch"><div class="chip" style="background:var(--status-normal); border-right:1px solid var(--border);"></div><div class="meta"><h3>status-normal</h3><code>oklch(60% 0.16 145)</code><span class="role">Hijau stabil · badge, titik peta, sel kalender</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--status-waspada); border-right:1px solid var(--border);"></div><div class="meta"><h3>status-waspada</h3><code>oklch(78% 0.16 80)</code><span class="role">Kuning waspada · batas elevasi menengah</span></div></article>
+      <article class="swatch"><div class="chip" style="background:var(--status-siaga); border-right:1px solid var(--border);"></div><div class="meta"><h3>status-siaga</h3><code>oklch(55% 0.22 25)</code><span class="role">Merah siaga · memicu denyut &amp; ticker</span></div></article>
+      <article class="swatch">
+        <div class="chip" style="background:linear-gradient(to right, var(--status-normal), var(--status-waspada), var(--status-siaga)); border-right:1px solid var(--border);"></div>
+        <div class="meta">
+          <h3>gradien status</h3>
+          <code>linear-gradient(to right, n → w → s)</code>
+          <span class="role">Hanya untuk legend bar dasbor — bukan untuk elemen UI</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="padding:24px 0 64px;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pasangan kontras</span>
+      <h2 class="display">Hover, fokus, dan aturan inversi</h2>
+      <p class="lede">Teks pada latar tidak pernah menjadi lebih pucat saat di-hover. Hover dapat memindahkan latar, membalik tombol, atau mengangkat kartu — bukan memudar.</p>
+    </div>
+
+    <div class="grid-tokens">
+      <article class="swatch">
+        <div class="chip" style="background:var(--accent); border-right:1px solid var(--border); display:grid; place-items:center;">
+          <span style="font-family:var(--display); font-weight:800; color:var(--accent-ink); font-size:28px;">A</span>
+        </div>
+        <div class="meta">
+          <h3>aksen di atas latar</h3>
+          <div class="ok-pair" style="background:var(--accent); color:var(--accent-ink);">Aks di aksen — 8.4:1</div>
+          <code>color: var(--accent-ink); background: var(--accent);</code>
+        </div>
+      </article>
+
+      <article class="swatch">
+        <div class="chip" style="background:var(--paper-dark); border-right:1px solid var(--border); display:grid; place-items:center;">
+          <span style="font-family:var(--display); font-weight:800; color:var(--bg); font-size:28px;">A</span>
+        </div>
+        <div class="meta">
+          <h3>bg di atas dark</h3>
+          <div class="ok-pair" style="background:var(--paper-dark); color:var(--bg);">Tinta di gelap — 14.1:1</div>
+          <code>color: var(--bg); background: var(--paper-dark);</code>
+        </div>
+      </article>
+
+      <article class="swatch">
+        <div class="chip" style="background:var(--fg); border-right:1px solid var(--border); display:grid; place-items:center;">
+          <span style="font-family:var(--display); font-weight:800; color:var(--bg); font-size:28px;">A</span>
+        </div>
+        <div class="meta">
+          <h3>ghost hover</h3>
+          <div class="ok-pair" style="background:var(--fg); color:var(--bg);">Terbalik saat hover</div>
+          <code>hover: bg=fg, color=bg</code>
+        </div>
+      </article>
+
+      <article class="swatch">
+        <div class="chip" style="background:var(--bg); border-right:1px solid var(--border); display:grid; place-items:center; outline: 3px solid var(--accent); outline-offset: 3px;">
+          <span style="font-family:var(--display); font-weight:800; color:var(--fg); font-size:28px;">A</span>
+        </div>
+        <div class="meta">
+          <h3>:focus-visible</h3>
+          <div class="ok-pair" style="background:var(--bg); color:var(--accent-ink); outline: 2px solid var(--accent); outline-offset: 3px;">Cincin 2px aksen</div>
+          <code>outline: 2px solid var(--accent); outline-offset: 3px;</code>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="col-foot">
+      <div>
+        <div class="brand" style="color:var(--bg); margin-bottom:14px;">
+          <span class="brand-mark">K</span>
+          <span style="color:var(--bg);">KEAIRAN CITANDUY<small>Pratinjau · 01 · Warna</small></span>
+        </div>
+        <p style="color:oklch(80% 0.02 95); max-width:36ch; font-size:14px;">Sistem warna untuk cetak biru platform intelijen hidrologi terpadu WS Citanduy.</p>
+      </div>
+      <div><h5>Lihat juga</h5><ul><li><a href="typography.html">Tipografi</a></li><li><a href="components.html">Komponen</a></li></ul></div>
+      <div><h5>Token</h5><ul><li><a href="../colors_and_type.css">colors_and_type.css</a></li><li><a href="../DESIGN.md">DESIGN.md</a></li></ul></div>
+      <div><h5>Pratinjau</h5><ul><li><a href="index.html">Semua kartu</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
