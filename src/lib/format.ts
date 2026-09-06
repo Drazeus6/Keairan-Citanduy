@@ -40,10 +40,12 @@ export function formatId(value: number): string {
  * 12.5 -> "12,5"
  */
 export function formatIdDecimal(value: number): string {
-  return value
-    .toFixed(1)
-    .replace(".", ",")
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const str = value.toFixed(1);
+  const parts = str.split(".");
+  const intPart = parts[0];
+  const decPart = parts[1];
+  const formattedInt = intPart.replace(/\\B(?=(\\d{3})+(?!\\d))/g, ".");
+  return `${formattedInt},${decPart}`;
 }
 
 /**

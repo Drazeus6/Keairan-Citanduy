@@ -12,7 +12,7 @@ const pricingTiers = [
     subtitle: "1–2 Kolam",
     price: "Rp 500rb",
     priceUnit: "/bulan",
-    desc: "Untuk petambak kecil dengan 1–2 kolam produksi di satu lokasi.",
+    desc: "Untuk pembudidaya kecil dengan 1–2 kolam/keramba di satu lokasi — tambak udang-bandeng maupun kolam ikan air tawar.",
     features: ["1 nomor WhatsApp", "Notifikasi Waspada & Siaga", "Laporan mingguan via email", "Akses dashboard publik gratis"],
     featured: false,
     cta: "Mulai",
@@ -22,7 +22,7 @@ const pricingTiers = [
     subtitle: "3–8 Kolam",
     price: "Rp 950rb",
     priceUnit: "/bulan",
-    desc: "Untuk petambak sedang dengan beberapa kolam di lokasi yang sama.",
+    desc: "Untuk pembudidaya sedang dengan beberapa kolam/keramba di lokasi yang sama.",
     features: [
       "3 nomor WhatsApp",
       "Notifikasi Waspada & Siaga + prakiraan 24 jam",
@@ -38,7 +38,7 @@ const pricingTiers = [
     subtitle: "Multi-lokasi",
     price: "Rp 1,5jt",
     priceUnit: "/bulan",
-    desc: "Untuk koperasi, eksportir, atau perusahaan tambak dengan beberapa lokasi produksi.",
+    desc: "Untuk koperasi, eksportir, atau perusahaan akuakultur dengan beberapa lokasi produksi, baik tambak maupun kolam air tawar.",
     features: [
       "Nomor WhatsApp tak terbatas",
       "Notifikasi semua level + prakiraan 48 jam",
@@ -78,11 +78,12 @@ const pilotStats = [
   { num: "5–10", label: "Lokasi pilot" },
   { num: "3 bln", label: "Gratis uji coba" },
   { num: "12–24 jam", label: "Jendela peringatan" },
-  { num: "2 kabupaten", label: "Cilacap · Pangandaran" },
+  { num: "Lintas DAS", label: "Muara hingga hulu" },
 ];
 
 export default function AquaAlertPage() {
   const [onboardingStep, setOnboardingStep] = useState(0); // 0 = none, 1 = form, 2 = otp
+  const [messageSegment, setMessageSegment] = useState<"muara" | "airtawar">("muara"); // "muara" | "airtawar"
 
   const handleStartOnboarding = () => setOnboardingStep(1);
   const handleOtpRequest = () => setOnboardingStep(2);
@@ -94,21 +95,48 @@ export default function AquaAlertPage() {
         <div className="wrap">
           <div className="hero-grid">
             <div>
-              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8, flexWrap: "wrap" }}>
                 <span className="kicker">Pilar 1 · Komersial</span>
-                <DemoBadge />
+                <span
+                  className="mono"
+                  aria-label="Status pengembangan"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    fontSize: 10,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "var(--accent-ink)",
+                    background: "var(--accent)",
+                    padding: "4px 10px",
+                    borderRadius: 999,
+                    fontWeight: 700,
+                  }}
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: 999,
+                      background: "var(--accent-ink)",
+                      display: "inline-block",
+                    }}
+                  />
+                  Dalam Pengembangan
+                </span>
               </div>
               <h1 className="display" style={{ fontSize: "clamp(36px, 5vw, 64px)" }}>
-                Sebelum air tawar<br />
-                hulu menerjang<br />
-                <em>kolam Anda</em>,<br />
-                AquaAlert<br />
-                sudah bicara.
+                Sebelum air sungai berubah drastis, AquaAlert sudah bicara — untuk <em>tambak maupun
+                kolam Anda</em>.
               </h1>
               <p className="lede" style={{ marginTop: 16 }}>
-                Sistem peringatan dini berbasis WhatsApp & SMS gateway untuk petambak udang vaname dan
-                bandeng intensif di muara Citanduy—Kabupaten Cilacap dan Pangandaran. Notifikasi 12–24
-                jam sebelum penurunan salinitas dan lonjakan debit terjadi.
+                Sistem peringatan dini berbasis WhatsApp & SMS gateway untuk pembudidaya di sepanjang DAS
+                Citanduy — dari tambak udang dan bandeng di muara, hingga kolam dan keramba jaring apung
+                ikan air tawar di hulu-tengah. Notifikasi terkirim 12–24 jam sebelum lonjakan debit sungai
+                berdampak pada usaha Anda, baik berupa penurunan salinitas, risiko luapan, maupun
+                penurunan kualitas air.
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
                 <button onClick={handleStartOnboarding} className="btn btn-primary">
@@ -132,10 +160,13 @@ export default function AquaAlertPage() {
                       <div className="field">
                         <label>Lokasi Kolam</label>
                         <select>
-                          <option>Muara Cilacap, Kab. Cilacap</option>
-                          <option>Pesisir Pangandaran, Kab. Pangandaran</option>
-                          <option>Kalipucang, Kab. Pangandaran</option>
-                          <option>Kampung Laut, Kab. Cilacap</option>
+                          <option>Muara Cilacap, Kab. Cilacap (tambak)</option>
+                          <option>Pesisir Pangandaran, Kab. Pangandaran (tambak)</option>
+                          <option>Kalipucang, Kab. Pangandaran (tambak)</option>
+                          <option>Kampung Laut, Kab. Cilacap (tambak)</option>
+                          <option>Ciamis, hulu DAS (kolam air tawar)</option>
+                          <option>Tasikmalaya, tengah DAS (keramba/KJA)</option>
+                          <option>Manonjaya, hulu DAS (kolam nila/gurame)</option>
                         </select>
                       </div>
                       <div className="field">
@@ -193,23 +224,16 @@ export default function AquaAlertPage() {
                 </div>
               )}
 
-              <dl style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                gap: "14px 16px",
-                marginTop: 28,
-                paddingTop: 20,
-                borderTop: "1px solid var(--border)",
-              }}>
+              <dl className="meta-dl">
                 {[
                   { dt: "Jendela peringatan", dd: "12–24 jam" },
                   { dt: "Saluran", dd: "WhatsApp · SMS" },
-                  { dt: "Wilayah", dd: "Cilacap · Pangandaran" },
+                  { dt: "Wilayah", dd: "Sepanjang DAS Citanduy" },
                   { dt: "Status", dd: "Pilot aktif" },
                 ].map((item) => (
                   <div key={item.dt}>
-                    <dt className="eyebrow" style={{ fontSize: 10 }}>{item.dt}</dt>
-                    <dd className="mono" style={{ fontSize: 13, fontWeight: 600, color: "var(--fg)", marginTop: 2 }}>{item.dd}</dd>
+                    <dt className="eyebrow">{item.dt}</dt>
+                    <dd>{item.dd}</dd>
                   </div>
                 ))}
               </dl>
@@ -227,7 +251,8 @@ export default function AquaAlertPage() {
               />
               <span className="pin">Pesisir Cilacap · 7°43′ LS</span>
               <figcaption className="caption">
-                Tambak udang vaname dan bandeng di pesisir — kawasan dengan fluktuasi salinitas musiman tertinggi di DAS Citanduy. Foto: Wikimedia Commons.
+                Tambak udang di muara Citanduy — satu dari dua segmen yang dilayani AquaAlert, bersama
+                kolam dan keramba ikan air tawar di wilayah hulu-tengah. Foto: Wikimedia Commons.
               </figcaption>
             </figure>
           </div>
@@ -241,22 +266,146 @@ export default function AquaAlertPage() {
             <div>
               <span className="eyebrow">Masalah kritis</span>
               <h2 className="display" style={{ marginTop: 14 }}>
-                Salinitas runtuh<br />dalam hitungan<br />jam. Kerugian<br />diukur ratusan juta.
+                Air sungai berubah drastis dalam hitungan jam. Kerugian diukur ratusan juta — dari muara
+                hingga hulu.
               </h2>
             </div>
             <div className="col" style={{ gap: 18 }}>
               <p className="lede">
                 Hujan lebat di Priangan Timur mengirim air tawar dalam volume besar ke muara. Salinitas
-                tambak yang biasanya 15–25 ppt bisa anjlok ke bawah 5 ppt dalam 6–12 jam. Udang
-                vaname yang sudah di atas 30 hari rentan mati massal—kerugian rata-rata satu kolam
+                tambak yang biasanya 15–25 ppt bisa anjlok ke bawah 5 ppt dalam 6–12 jam — udang vaname
+                yang sudah di atas 30 hari rentan mati massal, dengan kerugian rata-rata satu kolam
                 produksi bisa melampaui <strong className="mono">Rp 200 juta per kejadian</strong>.
               </p>
-              <blockquote className="quote">
-                <p className="quote-text">
-                  „Air tawar hulu tidak pernah memberi surat peringatan. Ia hanya tiba."
-                </p>
-                <span className="quote-cite">Petambak · Cilacap</span>
-              </blockquote>
+              <p className="lede">
+                Di wilayah hulu-tengah, kejadian hujan yang sama membawa risiko berbeda bagi kolam dan
+                keramba jaring apung: luapan yang menghanyutkan jaring, atau penurunan oksigen terlarut
+                mendadak yang memicu kematian massal ikan nila, gurame, dan jenis air tawar lainnya.
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: 20,
+                  marginTop: 12,
+                  alignItems: "stretch",
+                }}
+              >
+                {/* Quote 1 — Petambak Cilacap */}
+                <blockquote
+                  style={{
+                    margin: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    background: "var(--surface)",
+                    border: "1px solid var(--border)",
+                    borderLeft: "3px solid var(--accent)",
+                    borderRadius: "var(--radius)",
+                    padding: "22px 24px",
+                    minHeight: 180,
+                  }}
+                >
+                  <p
+                    className="display"
+                    style={{
+                      fontSize: "clamp(15px, 1.4vw, 18px)",
+                      lineHeight: 1.45,
+                      fontWeight: 500,
+                      color: "var(--fg)",
+                      margin: 0,
+                      quotes: '"„" """',
+                    }}
+                  >
+                    <span aria-hidden="true" style={{ color: "var(--accent)", fontFamily: "var(--display)", marginRight: 4 }}>„</span>
+                    Air tawar hulu tidak pernah memberi surat peringatan. Ia hanya tiba.
+                    <span aria-hidden="true" style={{ color: "var(--accent)", fontFamily: "var(--display)", marginLeft: 2 }}>“</span>
+                  </p>
+                  <footer
+                    className="mono"
+                    style={{
+                      marginTop: 18,
+                      paddingTop: 14,
+                      borderTop: "1px solid var(--border)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      fontSize: 11,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--muted)",
+                    }}
+                  >
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: 24,
+                        height: 1,
+                        background: "var(--accent)",
+                        display: "inline-block",
+                      }}
+                    />
+                    Petambak · Cilacap
+                  </footer>
+                </blockquote>
+
+                {/* Quote 2 — Pembudidaya Keramba Tasikmalaya */}
+                <blockquote
+                  style={{
+                    margin: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    background: "var(--surface)",
+                    border: "1px solid var(--border)",
+                    borderLeft: "3px solid var(--accent)",
+                    borderRadius: "var(--radius)",
+                    padding: "22px 24px",
+                    minHeight: 180,
+                  }}
+                >
+                  <p
+                    className="display"
+                    style={{
+                      fontSize: "clamp(15px, 1.4vw, 18px)",
+                      lineHeight: 1.45,
+                      fontWeight: 500,
+                      color: "var(--fg)",
+                      margin: 0,
+                    }}
+                  >
+                    <span aria-hidden="true" style={{ color: "var(--accent)", fontFamily: "var(--display)", marginRight: 4 }}>„</span>
+                    Ikan tidak sempat kami selamatkan karena hujan besarnya datang malam hari, dan kami baru tahu paginya.
+                    <span aria-hidden="true" style={{ color: "var(--accent)", fontFamily: "var(--display)", marginLeft: 2 }}>“</span>
+                  </p>
+                  <footer
+                    className="mono"
+                    style={{
+                      marginTop: 18,
+                      paddingTop: 14,
+                      borderTop: "1px solid var(--border)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      fontSize: 11,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--muted)",
+                    }}
+                  >
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: 24,
+                        height: 1,
+                        background: "var(--accent)",
+                        display: "inline-block",
+                      }}
+                    />
+                    Pembudidaya Keramba · Tasikmalaya
+                  </footer>
+                </blockquote>
+              </div>
             </div>
           </div>
         </div>
@@ -280,7 +429,7 @@ export default function AquaAlertPage() {
             {[
               { num: "INPUT · 01", title: "Curah Hulu", desc: "Data pos penakar presipitasi harian dan real-time di sub-DAS hulu (Ciamis, Tasikmalaya)." },
               { num: "INPUT · 02", title: "Debit & TMA", desc: "Fluktuasi elevasi air sungai di pos duga Banjar dan Pataruman sebagai proxy penjalaran." },
-              { num: "MODEL · 03", title: "Prediksi Salinitas", desc: "Model machine learning men-segmentasi 12–24 jam ke depan dengan ambang batas kritis 8 ppt di muara." },
+              { num: "MODEL · 03", title: "Peringatan Sesuai Jenis Usaha", desc: "Sistem menerjemahkan data yang sama menjadi peringatan berbeda sesuai jenis usaha Anda: prediksi salinitas untuk tambak muara, atau indikasi risiko luapan dan kualitas air untuk kolam/keramba air tawar." },
             ].map((f) => (
               <div key={f.num} className="card" style={{ padding: 24 }}>
                 <span className="eyebrow" style={{ fontFamily: "var(--mono)", color: "var(--accent)" }}>{f.num}</span>
@@ -308,38 +457,138 @@ export default function AquaAlertPage() {
               </ul>
             </div>
 
-            {/* WhatsApp Bubble */}
-            <div style={{
-              background: "#0e1116", color: "white",
-              borderRadius: 14, padding: 14,
-              maxWidth: 380, width: "100%",
-              margin: "0 auto",
-            }}>
-              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10, fontSize: 11, flexWrap: "wrap" }}>
-                <strong style={{ color: "#fff" }}>AquaAlert · Keairan Citanduy</strong>
-                <span style={{ color: "oklch(75% 0.01 250)" }}>· 14:22 WIB</span>
-              </div>
-              <div style={{ background: "#1f2933", padding: "10px 12px", borderRadius: "10px 10px 4px 4px" }}>
-                <strong style={{ color: "var(--accent)", display: "block", marginBottom: 4, fontFamily: "var(--mono)", fontSize: 12 }}>
-                  ⚠ PERINGATAN DINI · WASPADA
-                </strong>
-                <span style={{ fontSize: 13, lineHeight: 1.6 }}>
-                  Pos Banjar: TMA 312 cm (↑ 12 cm/jam). Estimasi salinitas muara turun ke &lt; 8 ppt dalam 8–10 jam.
-                  <br /><br />
-                  <strong>Saran:</strong> tutup pintu intake, aktifkan pompa sirkulasi, siapkan aerator cadangan.
-                  <br /><br />
-                  <span style={{ color: "oklch(70% 0.01 250)", fontSize: 11 }}>
-                    Sumber: SIH3 BBWS Citanduy · #AQA-4821
-                  </span>
+            {/* WhatsApp Bubble with segment toggle */}
+            <div style={{ maxWidth: 400, width: "100%", margin: "0 auto" }}>
+              {/* Segment Selector aligned with bubble width */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 12,
+                  gap: 12,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    color: "var(--muted)",
+                  }}
+                >
+                  Segmen Layanan:
                 </span>
+                <div
+                  role="tablist"
+                  aria-label="Pilih segmen pembudidaya"
+                  style={{
+                    display: "inline-flex",
+                    background: "var(--surface)",
+                    border: "1px solid var(--border)",
+                    borderRadius: 999,
+                    padding: 3,
+                  }}
+                >
+                  {[
+                    { id: "muara" as const, label: "Tambak Muara" },
+                    { id: "airtawar" as const, label: "Kolam & Keramba" },
+                  ].map((t) => {
+                    const active = messageSegment === t.id;
+                    return (
+                      <button
+                        key={t.id}
+                        type="button"
+                        role="tab"
+                        aria-selected={active}
+                        onClick={() => setMessageSegment(t.id)}
+                        style={{
+                          fontFamily: "var(--mono)",
+                          fontSize: 11,
+                          letterSpacing: "0.04em",
+                          textTransform: "uppercase",
+                          padding: "6px 12px",
+                          border: 0,
+                          borderRadius: 999,
+                          cursor: "pointer",
+                          background: active ? "var(--accent)" : "transparent",
+                          color: active ? "var(--accent-ink)" : "var(--muted)",
+                          fontWeight: active ? 700 : 500,
+                          transition: "background 0.15s, color 0.15s",
+                        }}
+                      >
+                        {t.label}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-              <div style={{ background: "#1f2933", padding: "10px 12px", borderRadius: "10px 10px 4px 4px", marginTop: 8 }}>
-                <strong style={{ color: "#4cc9f0", display: "block", marginBottom: 4, fontFamily: "var(--mono)", fontSize: 12 }}>
-                  ℹ PEMUTAKHIRAN · 18:45 WIB
-                </strong>
-                <span style={{ fontSize: 13, lineHeight: 1.6 }}>
-                  Salinitas terpantau 9,4 ppt. Tren kenaikan debit melambat. Pemantauan lanjutan setiap 2 jam.
-                </span>
+
+              {/* Chat bubble frame */}
+              <div style={{
+                background: "#0e1116", color: "white",
+                borderRadius: 14, padding: 16,
+                width: "100%",
+                boxShadow: "0 12px 30px -10px oklch(20% 0.05 250 / 0.5)",
+                border: "1px solid oklch(25% 0.01 250)",
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, fontSize: 11 }}>
+                  <strong style={{ color: "#fff", letterSpacing: "0.02em" }}>AquaAlert · Keairan Citanduy</strong>
+                  <span style={{ color: "oklch(75% 0.01 250)", fontFamily: "var(--mono)" }}>14:22 WIB</span>
+                </div>
+
+                {messageSegment === "muara" ? (
+                  <>
+                    <div style={{ background: "#1f2933", padding: "12px 14px", borderRadius: "10px 10px 4px 4px" }}>
+                      <strong style={{ color: "var(--accent)", display: "block", marginBottom: 10, fontFamily: "var(--mono)", fontSize: 12 }}>
+                        ⚠ PERINGATAN DINI · WASPADA
+                      </strong>
+                      <p style={{ fontSize: 13, lineHeight: 1.6, margin: 0, marginBottom: 10 }}>
+                        Pos Banjar: TMA 312 cm (↑ 12 cm/jam). Estimasi salinitas muara turun ke &lt; 8 ppt dalam 8–10 jam.
+                      </p>
+                      <p style={{ fontSize: 13, lineHeight: 1.6, margin: 0, marginBottom: 10 }}>
+                        <strong>Saran:</strong> tutup pintu intake, aktifkan pompa sirkulasi, siapkan aerator cadangan.
+                      </p>
+                      <p style={{ color: "oklch(70% 0.01 250)", fontSize: 11, margin: 0 }}>
+                        Sumber: SIH3 BBWS Citanduy · #AQA-4821
+                      </p>
+                    </div>
+                    <div style={{ background: "#1f2933", padding: "12px 14px", borderRadius: "10px 10px 4px 4px", marginTop: 8 }}>
+                      <strong style={{ color: "#4cc9f0", display: "block", marginBottom: 10, fontFamily: "var(--mono)", fontSize: 12 }}>
+                        ℹ PEMUTAKHIRAN · 18:45 WIB
+                      </strong>
+                      <p style={{ fontSize: 13, lineHeight: 1.6, margin: 0 }}>
+                        Salinitas terpantau 9,4 ppt. Tren kenaikan debit melambat. Pemantauan lanjutan setiap 2 jam.
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div style={{ background: "#1f2933", padding: "12px 14px", borderRadius: "10px 10px 4px 4px" }}>
+                      <strong style={{ color: "var(--accent)", display: "block", marginBottom: 10, fontFamily: "var(--mono)", fontSize: 12 }}>
+                        ⚠ PERINGATAN DINI · WASPADA
+                      </strong>
+                      <p style={{ fontSize: 13, lineHeight: 1.6, margin: 0, marginBottom: 10 }}>
+                        Pos Manonjaya: debit naik tajam pasca hujan deras, TMA +38 cm/jam. Berpotensi meluap dalam 6–8 jam. Waspada penurunan oksigen terlarut (DO) untuk keramba nila &amp; gurame.
+                      </p>
+                      <p style={{ fontSize: 13, lineHeight: 1.6, margin: 0, marginBottom: 10 }}>
+                        <strong>Saran:</strong> amankan/naikkan jaring keramba, siapkan aerator cadangan, pertimbangkan panen parsial jika debit masih naik 2 jam ke depan.
+                      </p>
+                      <p style={{ color: "oklch(70% 0.01 250)", fontSize: 11, margin: 0 }}>
+                        Sumber: SIH3 BBWS Citanduy · #AQA-5107
+                      </p>
+                    </div>
+                    <div style={{ background: "#1f2933", padding: "12px 14px", borderRadius: "10px 10px 4px 4px", marginTop: 8 }}>
+                      <strong style={{ color: "#4cc9f0", display: "block", marginBottom: 10, fontFamily: "var(--mono)", fontSize: 12 }}>
+                        ℹ PEMUTAKHIRAN · 19:10 WIB
+                      </strong>
+                      <p style={{ fontSize: 13, lineHeight: 1.6, margin: 0 }}>
+                        Debit terpantau stabil di elevasi waspada. DO permukaan 5,1 mg/L (normal). Pemantauan lanjutan setiap 2 jam.
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -352,13 +601,17 @@ export default function AquaAlertPage() {
           <div style={{ marginBottom: 36 }}>
             <span className="eyebrow">Sebelum &amp; sesudah</span>
             <h2 className="display" style={{ marginTop: 12 }}>
-              Sebelum AquaAlert,<br />Anda bereaksi.<br />
-              Sesudahnya, Anda bersiap.
+              Sebelum AquaAlert, Anda bereaksi. Sesudahnya, Anda bersiap.
             </h2>
+            <p className="lede" style={{ marginTop: 12, color: "var(--muted)" }}>
+              Contoh skenario di bawah menggambarkan tambak muara. Pembudidaya kolam/keramba air tawar
+              mengalami pola serupa — reaksi terlambat berubah menjadi kesiapan lebih awal — dengan
+              risiko banjir dan kualitas air sebagai pemicu utamanya.
+            </p>
           </div>
 
           <div className="table-scroll" style={{ border: "1px solid var(--border)", borderRadius: "var(--radius)" }}>
-            <table className="spec-table" style={{ margin: 0, minWidth: 560 }}>
+            <table className="spec-table" style={{ margin: 0 }}>
               <thead>
                 <tr>
                   {["Skenario", "Sebelum AquaAlert", "Sesudah AquaAlert"].map((h) => (
@@ -369,9 +622,9 @@ export default function AquaAlertPage() {
               <tbody>
                 {comparisonRows.map((row) => (
                   <tr key={row.scenario}>
-                    <td style={{ fontWeight: 600 }}>{row.scenario}</td>
-                    <td style={{ color: "var(--muted)" }}>{row.before}</td>
-                    <td>{row.after}</td>
+                    <td data-label="Skenario" style={{ fontWeight: 600 }}>{row.scenario}</td>
+                    <td data-label="Sebelum AquaAlert" style={{ color: "var(--muted)" }}>{row.before}</td>
+                    <td data-label="Sesudah AquaAlert">{row.after}</td>
                   </tr>
                 ))}
               </tbody>
@@ -452,7 +705,7 @@ export default function AquaAlertPage() {
                     <ul style={{
                       listStyle: "none",
                       margin: 0,
-                      padding: 0,
+                      paddingLeft: 0,
                       display: "flex",
                       flexDirection: "column",
                       gap: 10,
@@ -483,7 +736,15 @@ export default function AquaAlertPage() {
                 <div style={{ paddingTop: 12 }}>
                   <button
                     className={`btn ${tier.featured ? "btn-primary" : "btn-ghost"}`}
-                    onClick={() => tier.name === "Pemula" ? handleStartOnboarding() : alert(`Fitur penuh belum tersedia — ini adalah demonstrasi desain.`)}
+                    onClick={() => {
+                      if (tier.name === "Pemula") {
+                        handleStartOnboarding();
+                      } else if (tier.name === "Usaha") {
+                        window.location.href = "mailto:aqua-alert@keairan.id?subject=Berlangganan%20AquaAlert%20-%20Paket%20Usaha";
+                      } else {
+                        window.location.href = "mailto:sales@keairan.id?subject=Permintaan%20Penawaran%20AquaAlert%20-%20Paket%20Korporat";
+                      }
+                    }}
                     style={{ width: "100%", justifyContent: "center" }}
                   >
                     {tier.cta}
@@ -500,15 +761,12 @@ export default function AquaAlertPage() {
         <div className="wrap">
           <BandDark
             eyebrow="Pilot testing · Fase 2"
-            title={
-              <>
-                5–10 petambak<br />intensif pesisir.
-              </>
-            }
+            title="5–10 pembudidaya percontohan di DAS Citanduy."
             description={
               <>
-                Kami mengundang petambak udang vaname dan bandeng intensif di kawasan pesisir Cilacap dan
-                Pangandaran untuk pilot gratis 3 bulan—termasuk instalasi dan pendampingan teknis.
+                Kami mengundang pembudidaya di sepanjang DAS Citanduy — baik tambak udang dan bandeng di
+                muara, maupun kolam dan keramba jaring apung ikan air tawar di wilayah hulu-tengah — untuk
+                pilot gratis 3 bulan, termasuk instalasi dan pendampingan teknis.
               </>
             }
           >

@@ -24,7 +24,7 @@ export function Footer() {
               <li><Link href="/dashboard">Peta Pantau Banjir</Link></li>
               <li><Link href="/dashboard?tab=tani">Kalender Cuaca Tani</Link></li>
               <li><Link href="/dashboard?tab=lapor">Pelaporan Warga</Link></li>
-              <li><Link href="/methodology">Metodologi & Data</Link></li>
+              <li><Link href="/about">Tentang Kami</Link></li>
             </ul>
           </div>
 

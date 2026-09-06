@@ -22,8 +22,13 @@ const MapboxMap = dynamic(
         color: "var(--bg)",
         fontFamily: "var(--mono)",
         fontSize: 13,
+        flexDirection: "column",
+        gap: 12,
       }}>
         <span>Memuat Peta Satelit Citanduy...</span>
+        <span style={{ fontSize: 11, color: "oklch(75% 0.02 95)", textAlign: "center", maxWidth: 300 }}>
+          Data real-time akan aktif setelah integrasi dengan BBWS Citanduy.
+        </span>
       </div>
     ),
   }
@@ -310,7 +315,7 @@ function DashboardContent() {
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, flexWrap: "wrap", marginTop: 12 }}>
             <div>
               <h1 className="display" style={{ fontSize: "clamp(34px, 4.8vw, 64px)" }}>
-                Dashboard Citanduy.<br />Tiga modul, satu layar.
+                Dashboard Citanduy. Tiga modul, satu layar.
               </h1>
             </div>
             <div style={{ maxWidth: 420 }}>
@@ -459,13 +464,13 @@ function DashboardContent() {
                     <tbody>
                       {filteredStations.map((st) => (
                         <tr key={st.id} onClick={() => setSelectedStation(st)} style={{ cursor: "pointer" }}>
-                          <td><strong>{st.name}</strong></td>
-                          <td>
+                          <td data-label="Pos Pantau"><strong>{st.name}</strong></td>
+                          <td data-label="Status">
                             <span className={`badge badge-${st.status}`}>{st.status}</span>
                           </td>
-                          <td className="mono">{st.tma} cm</td>
-                          <td className="mono">{st.debit} m³/s</td>
-                          <td>{st.kabupaten}</td>
+                          <td data-label="TMA (cm)" className="mono">{st.tma} cm</td>
+                          <td data-label="Debit (m³/s)" className="mono">{st.debit} m³/s</td>
+                          <td data-label="Kecamatan">{st.kabupaten}</td>
                         </tr>
                       ))}
                     </tbody>

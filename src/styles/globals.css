@@ -105,8 +105,9 @@ h1, h2, h3, h4 { hyphens: auto; }
   font-weight: 700;
   letter-spacing: -0.012em;
   color: var(--fg);
-  line-height: 1.05;
+  line-height: 1.08;
   margin: 0;
+  text-wrap: balance;
 }
 h1.display { font-size: var(--h1-size); font-weight: 800; letter-spacing: -0.025em; }
 h2.display { font-size: var(--h2-size); }
@@ -121,6 +122,45 @@ h4.display { font-size: var(--h4-size); }
   text-transform: uppercase;
   color: var(--muted);
   display: inline-block;
+}
+
+/* ---------- Meta Definition List (Hero Stat Strip) ---------- */
+.meta-dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.meta-dl > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.meta-dl .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  color: var(--muted);
+}
+.meta-dl dd {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0;
+  line-height: 1.35;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+@media (min-width: 540px) {
+  .meta-dl {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px 28px;
+  }
 }
 
 .lede {
@@ -606,7 +646,10 @@ nav.primary a[aria-current="page"]::after, nav.primary a.active::after {
   .hero-photo { aspect-ratio: 16/10; max-height: 380px; }
 }
 
-/* ---------- Tables (scrollable on mobile) ---------- */
+/* ---------- Global overflow protection ---------- */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* ---------- Tables ---------- */
 .table-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -618,7 +661,6 @@ nav.primary a[aria-current="page"]::after, nav.primary a.active::after {
   border-collapse: collapse;
   margin: 24px 0;
   font-size: 14px;
-  min-width: 500px; /* ensures table doesn't squash on mobile */
 }
 .spec-table th, .comp-table th {
   text-align: left;
@@ -631,20 +673,73 @@ nav.primary a[aria-current="page"]::after, nav.primary a.active::after {
   color: var(--muted);
   border-bottom: 2px solid var(--border);
   background: var(--surface);
-  white-space: nowrap;
 }
 .spec-table td, .comp-table td {
   padding: 12px 12px;
   border-bottom: 1px solid var(--border);
   font-size: 13px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .spec-table tr:hover td, .comp-table tr:hover td {
   background: var(--surface);
 }
 
-@media (max-width: 480px) {
-  .spec-table, .comp-table { font-size: 12px; min-width: 400px; }
-  .spec-table th, .comp-table th, .spec-table td, .comp-table td { padding: 8px 10px; }
+/* ---------- Stacked Card Layout for Mobile ---------- */
+@media (max-width: 720px) {
+  .table-scroll {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+  /* Hide thead and turn each tr into a stacked card */
+  .spec-table thead, .comp-table thead {
+    display: none;
+  }
+  .spec-table, .comp-table {
+    display: block;
+    margin: 0;
+  }
+  .spec-table tbody, .comp-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .spec-table tr, .comp-table tr {
+    display: block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px -4px rgba(0, 0, 0, 0.06);
+  }
+  .spec-table td, .comp-table td {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13px;
+  }
+  .spec-table td:last-child, .comp-table td:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .spec-table td:first-child, .comp-table td:first-child {
+    padding-top: 0;
+  }
+  /* Inject row label via CSS data attribute (see page-specific styling below) */
+  .spec-table td::before, .comp-table td::before {
+    content: attr(data-label);
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
 }
 
 /* ---------- Forms ---------- */

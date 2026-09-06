@@ -13,7 +13,7 @@ export function Masthead() {
     { href: "/dashboard", label: "Peta & Dashboard" },
     { href: "/aqua-alert", label: "AquaAlert" },
     { href: "/hydro-amdal", label: "Hydro-AMDAL" },
-    { href: "/methodology", label: "Metodologi" },
+    { href: "/about", label: "Tentang Kami" },
   ];
 
   return (

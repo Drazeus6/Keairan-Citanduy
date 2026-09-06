@@ -249,10 +249,12 @@ export function MapboxMap({ selectedStationId, onStationSelect }: MapboxMapProps
 
         // Open editorial popup at click coords
         popupRef.current = new mapboxgl.Popup({
-          offset: 14,
-          closeButton: false,
-          maxWidth: "260px",
+          offset: 12,
+          closeButton: true, // Enable close button for mobile UX (easy to dismiss)
+          closeOnClick: true,
+          maxWidth: "280px", // compact on all screens
           className: "kc-popup",
+          anchor: "bottom",
         })
           .setLngLat(coords)
           .setHTML(`
@@ -278,7 +280,7 @@ export function MapboxMap({ selectedStationId, onStationSelect }: MapboxMapProps
                     <span class="kc-popup-value">${props.ambangSiaga} cm</span>
                   </div>
                 </div>
-                <div class="kc-popup-footer">↓ Detail lengkap di panel bawah</div>
+                <div class="kc-popup-footer kc-popup-footer-desktop">↓ Detail lengkap di panel bawah</div>
               </div>
             </div>
           `)
@@ -742,9 +744,90 @@ export function MapboxMap({ selectedStationId, onStationSelect }: MapboxMapProps
           outline: 1px solid rgba(31, 34, 45, 0.25);
           overflow: hidden;
           font-family: var(--body) !important;
-          width: 250px !important;
+          width: 260px !important;
           max-width: 260px !important;
           animation: kcPopupIn 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        /* === Close button — compact and visible on all themes === */
+        .mapboxgl-popup-close-button {
+          background: rgba(31, 34, 45, 0.08) !important;
+          color: #1F222D !important;
+          font-size: 18px !important;
+          font-weight: 700 !important;
+          padding: 0 !important;
+          width: 24px !important;
+          height: 24px !important;
+          line-height: 20px !important;
+          border-radius: 999px !important;
+          top: 6px !important;
+          right: 6px !important;
+          text-align: center !important;
+          transition: background 0.15s ease;
+        }
+        .mapboxgl-popup-close-button:hover {
+          background: rgba(31, 34, 45, 0.18) !important;
+        }
+
+        /* Responsive Popup for Mobile (Compact Card) */
+        @media (max-width: 640px) {
+          .mapboxgl-popup-content {
+            /* Compact card sizing — not full-screen */
+            width: 230px !important;
+            max-width: 80vw !important;
+            max-height: min(280px, 45vh) !important;
+            border-radius: 12px !important;
+            /* Internal scroll if content overflows */
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            -webkit-overflow-scrolling: touch;
+          }
+          .kc-popup-body {
+            padding: 10px 12px 8px !important;
+          }
+          .kc-popup-status {
+            font-size: 9px !important;
+            padding: 3px 7px !important;
+            margin-bottom: 6px !important;
+          }
+          .kc-popup-title {
+            font-size: 14px !important;
+            line-height: 1.18 !important;
+            margin-bottom: 1px !important;
+            padding-right: 22px !important;
+          }
+          .kc-popup-sub {
+            font-size: 10px !important;
+            margin-bottom: 8px !important;
+            line-height: 1.3 !important;
+            white-space: normal !important;
+          }
+          .kc-popup-data {
+            gap: 3px !important;
+            padding-top: 6px !important;
+          }
+          .kc-popup-row {
+            padding: 4px 6px !important;
+            font-size: 10px !important;
+          }
+          .kc-popup-label {
+            font-size: 8px !important;
+          }
+          .kc-popup-value {
+            font-size: 11px !important;
+          }
+          /* Hide desktop-only footer on mobile to save space */
+          .kc-popup-footer-desktop {
+            display: none !important;
+          }
+          /* Customize scrollbar for popup on mobile */
+          .mapboxgl-popup-content::-webkit-scrollbar {
+            width: 3px;
+          }
+          .mapboxgl-popup-content::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 2px;
+          }
         }
         @keyframes kcPopupIn {
           from { opacity: 0; transform: translateY(-4px) scale(0.97); }
@@ -817,9 +900,8 @@ export function MapboxMap({ selectedStationId, onStationSelect }: MapboxMapProps
           color: #6A6E83;
           margin-bottom: 10px;
           line-height: 1.35;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          word-break: break-word;
+          overflow-wrap: break-word;
         }
 
         /* === Data rows === */

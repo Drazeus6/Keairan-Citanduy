@@ -14,14 +14,14 @@ const pillars = [
   {
     tag: "Pilar 1 · Komersial",
     title: "AquaAlert",
-    desc: "Sistem peringatan dini berbasis WhatsApp & SMS gateway untuk petambak udang vaname dan bandeng intensif di muara Citanduy (Kabupaten Cilacap dan Pangandaran).",
+    desc: "Sistem peringatan dini berbasis WhatsApp & SMS gateway untuk pembudidaya di sepanjang DAS Citanduy (tambak muara hingga kolam & keramba air tawar hulu-tengah).",
     points: [
-      "Notifikasi 12–24 jam sebelum penurunan salinitas.",
-      "Prediksi debit sungai & salinitas muara berbasis ML.",
-      "Berlangganan SaaS per lokasi kolam.",
+      "Notifikasi 12–24 jam sebelum penurunan salinitas & luapan debit.",
+      "Prediksi debit sungai & kualitas air berbasis data hidrologi.",
+      "Berlangganan SaaS per lokasi kolam / keramba.",
     ],
     price: "Rp500rb–1,5jt",
-    priceUnit: "/bulan/kolam",
+    priceUnit: "/bulan/lokasi",
     href: "/aqua-alert",
   },
   {
@@ -70,8 +70,8 @@ const storyCards = [
     body: "Konsultan AMDAL dan kawasan industri mengolah seri data historis SIH3 secara manual untuk uji konsistensi, Gumbel, dan kurva IDF. Hydro-AMDAL mengotomasi semuanya.",
     href: "/hydro-amdal",
     label: "Telusuri Hydro-AMDAL",
-    img: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80",
-    imgAlt: "Konsultan menganalisis data di laptop",
+    img: "/assets/images/tambak-udang-padang-pariaman.webp",
+    imgAlt: "Kawasan pertambakan dengan infrastruktur teknis — landasan untuk analisis hidrologi dan AMDAL.",
   },
   {
     category: "Pertanian",
@@ -80,8 +80,8 @@ const storyCards = [
     body: "Kelembapan relatif di atas 85% ditambah fluktuasi temperatur memicu ledakan hama. Dashboard publik menerjemahkan parameter teknis menjadi saran tebar benih dan penjemuran gabah.",
     href: "/dashboard?tab=tani",
     label: "Buka Kalender Tani",
-    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
-    imgAlt: "Petani di sawah tepi sungai saat pagi",
+    img: "/assets/images/sungai-citanduy-banjar.webp",
+    imgAlt: "Sungai Citanduy di area Banjar — sumber data parameter iklim untuk rekomendasi tani.",
   },
 ];
 
@@ -122,9 +122,7 @@ export default function HomePage() {
             <div>
               <span className="kicker">Edisi September 2026 · Wilayah Sungai Citanduy</span>
               <h1 className="display">
-                Sungai yang<br />
-                <em>bicara</em>,<br />
-                kini punya<br />penerjemah.
+                Sungai yang <em>bicara</em>, kini punya penerjemah.
               </h1>
               <p className="lede" style={{ marginTop: 16 }}>
                 Keairan Citanduy menerjemahkan data hidrologi mentah dari pos duga SIH3 BBWS Citanduy
@@ -133,14 +131,11 @@ export default function HomePage() {
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
                 <Link href="/dashboard" className="btn btn-primary">Lihat Peta Banjir</Link>
-                <Link href="/methodology" className="btn btn-ghost">Baca Metodologi</Link>
+                <Link href="/about" className="btn btn-ghost">Tentang Kami</Link>
               </div>
 
               {/* Meta DL */}
-              <dl style={{
-                display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 20px",
-                marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--border)"
-              }}>
+              <dl className="meta-dl">
                 {[
                   { dt: "WS Citanduy", dd: "±3.500 km²" },
                   { dt: "Pos Pantau", dd: "27 aktif" },
@@ -148,8 +143,8 @@ export default function HomePage() {
                   { dt: "Wilayah", dd: "Jabar · Jateng" },
                 ].map((item) => (
                   <div key={item.dt}>
-                    <dt className="eyebrow" style={{ fontSize: 10, marginBottom: 4 }}>{item.dt}</dt>
-                    <dd className="mono" style={{ fontSize: 15, fontWeight: 600, color: "var(--fg)", margin: 0 }}>{item.dd}</dd>
+                    <dt className="eyebrow">{item.dt}</dt>
+                    <dd>{item.dd}</dd>
                   </div>
                 ))}
               </dl>
@@ -181,15 +176,16 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">Lapor utama</p>
               <h2 className="display" style={{ marginTop: 14 }}>
-                Data yang tidak<br />dimiliki publik<br />—kini mereka yang<br />memilikinya.
+                Data yang tidak dimiliki publik—kini mereka yang memilikinya.
               </h2>
             </div>
             <div className="col" style={{ gap: 18 }}>
               <p className="lede">
                 Bagi warga Ciamis, Cilacap, dan Pangandaran, angka debit dan tinggi muka air adalah
-                bahasa asing. Namun bagi petambak udang vaname dan konsultan AMDAL, deret waktu itu
-                bernilai ratusan juta rupiah per kejadian. <strong>Keairan Citanduy</strong> menutup
-                jurang itu: satu pipa data terpusat, tiga pilar penggunaan.
+                bahasa asing. Namun bagi petambak udang vaname, pembudidaya keramba air tawar, dan
+                konsultan AMDAL, deret waktu itu bernilai ratusan juta rupiah per kejadian.{" "}
+                <strong>Keairan Citanduy</strong> menutup jurang itu: satu pipa data terpusat, tiga pilar
+                penggunaan.
               </p>
               <blockquote className="quote">
                 <p className="quote-text">
@@ -249,12 +245,13 @@ export default function HomePage() {
                 </div>
                 <ul style={{
                   listStyle: "none", margin: 0, padding: 0,
-                  display: "flex", flexDirection: "column", gap: 8,
+                  display: "flex", flexDirection: "column", gap: 10,
                   fontSize: 13, color: p.href === "/dashboard" ? "var(--muted)" : "oklch(75% 0.015 95)"
                 }}>
                   {p.points.map((pt) => (
-                    <li key={pt} style={{ display: "flex", gap: 8 }}>
-                      <span style={{ color: "var(--accent)", flexShrink: 0 }}>—</span>{pt}
+                    <li key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                      <span style={{ color: "var(--accent)", flexShrink: 0, fontWeight: 700 }}>—</span>
+                      <span>{pt}</span>
                     </li>
                   ))}
                 </ul>
@@ -264,7 +261,9 @@ export default function HomePage() {
                   </div>
                   <strong style={{ fontFamily: "var(--display)", fontSize: 20 }}>
                     {p.price}
-                    <small style={{ fontFamily: "var(--body)", fontSize: 13, fontWeight: 400, marginLeft: 4 }}>{p.priceUnit}</small>
+                    <small style={{ fontFamily: "var(--body)", fontSize: 13, fontWeight: 400, marginLeft: 6 }}>
+                      {" "}{p.priceUnit}
+                    </small>
                   </strong>
                 </div>
                 <Link href={p.href} className="btn btn-ghost" style={{ marginTop: 16, fontSize: 13, textAlign: "center", justifyContent: "center" }}>
@@ -279,11 +278,7 @@ export default function HomePage() {
       {/* ====== BAND-DARK: DASBOR PREVIEW ====== */}
       <BandDark
         eyebrow="Layanan publik · bebas biaya"
-        title={
-          <>
-            Peta Citanduy,<br />dibaca ulang setiap<br />jam.
-          </>
-        }
+        title="Peta Citanduy, dibaca ulang setiap jam."
         description={
           <>
             Visualisasi kode warna Normal, Waspada, dan Siaga untuk 27 pos duga air. Peringatan dini
@@ -298,7 +293,7 @@ export default function HomePage() {
 
         {/* Mini-map preview SVG */}
         <div style={{ marginTop: 48, borderRadius: "var(--radius)", overflow: "hidden", border: "1px solid oklch(28% 0.01 250)" }}>
-          <svg viewBox="0 0 600 360" style={{ width: "100%", height: "auto", display: "block" }} role="img" aria-label="Pratinjau dashboard publik WS Citanduy">
+          <svg viewBox="0 0 600 360" style={{ width: "100%", height: "auto", display: "block" }} role="img" aria-label="Pratinjau peta status sungai WS Citanduy (Ciamis: Normal, Tasik: Waspada, Banjar: Siaga, Cilacap: Normal)">
             <defs>
               <linearGradient id="mapBg" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%" stopColor="#1d2e2a" />
@@ -318,19 +313,19 @@ export default function HomePage() {
             <path d="M180,140 C220,180 260,160 300,170" fill="none" stroke="#7fc6d4" strokeWidth="3" opacity="0.5" />
             <path d="M340,190 C380,230 430,240 460,250" fill="none" stroke="#7fc6d4" strokeWidth="3" opacity="0.5" />
             {/* Station Ciamis — Normal */}
-            <g>
+            <g aria-hidden="true">
               <circle cx="80" cy="122" r="9" fill="#ffcc00" />
               <text x="98" y="118" fill="#fff" fontFamily="JetBrains Mono, monospace" fontSize="10">Ciamis</text>
               <text x="98" y="130" fill="#ffcc00" fontFamily="JetBrains Mono, monospace" fontSize="9">NORMAL</text>
             </g>
             {/* Station Tasik — Waspada */}
-            <g>
+            <g aria-hidden="true">
               <circle cx="240" cy="180" r="9" fill="#f0c95c" />
               <text x="258" y="176" fill="#fff" fontFamily="JetBrains Mono, monospace" fontSize="10">Tasik</text>
               <text x="258" y="188" fill="#f0c95c" fontFamily="JetBrains Mono, monospace" fontSize="9">WASPADA</text>
             </g>
             {/* Station Banjar — Siaga + pulse */}
-            <g>
+            <g aria-hidden="true">
               <circle cx="380" cy="210" r="9" fill="#e85a3c" />
               <circle cx="380" cy="210" r="14" fill="none" stroke="#e85a3c" strokeWidth="1.5" opacity="0.4">
                 <animate attributeName="r" values="14;26;14" dur="2s" repeatCount="indefinite" />
@@ -340,7 +335,7 @@ export default function HomePage() {
               <text x="398" y="218" fill="#e85a3c" fontFamily="JetBrains Mono, monospace" fontSize="9">SIAGA</text>
             </g>
             {/* Station Cilacap — Normal */}
-            <g>
+            <g aria-hidden="true">
               <circle cx="500" cy="230" r="9" fill="#7fc970" />
               <text x="518" y="226" fill="#fff" fontFamily="JetBrains Mono, monospace" fontSize="10">Cilacap</text>
               <text x="518" y="238" fill="#7fc970" fontFamily="JetBrains Mono, monospace" fontSize="9">NORMAL</text>
@@ -349,13 +344,30 @@ export default function HomePage() {
             <ellipse cx="380" cy="210" rx="55" ry="35" fill="#e85a3c" opacity="0.15" />
             <ellipse cx="380" cy="210" rx="110" ry="68" fill="#e85a3c" opacity="0.07" />
             {/* Compass */}
-            <g transform="translate(540,45)">
+            <g transform="translate(540,45)" aria-hidden="true">
               <circle r="22" fill="none" stroke="#ffcc00" strokeWidth="1" />
-              <text y="-8" textAnchor="middle" fill="#ffcc00" fontFamily="JetBrains Mono, monospace" fontSize="10">N</text>
+              <text y="-8" textAnchor="middle" fill="#ffcc00" fontFamily="JetBrains Mono, monospace" fontSize="10">U</text>
               <line x1="0" y1="-22" x2="0" y2="22" stroke="#ffcc00" strokeWidth="0.5" />
               <line x1="-22" y1="0" x2="22" y2="0" stroke="#ffcc00" strokeWidth="0.5" />
             </g>
           </svg>
+        </div>
+
+        {/* Legend status chips with flex-wrap */}
+        <div style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px 14px",
+          marginTop: 16,
+          paddingTop: 16,
+          borderTop: "1px solid oklch(28% 0.01 250)",
+          alignItems: "center"
+        }}>
+          <span className="eyebrow" style={{ fontSize: 10, color: "oklch(75% 0.02 95)" }}>Status Pos Pantau:</span>
+          <span className="badge badge-normal" style={{ fontSize: 11 }}>Ciamis: Normal</span>
+          <span className="badge badge-waspada" style={{ fontSize: 11 }}>Tasik: Waspada</span>
+          <span className="badge badge-siaga" style={{ fontSize: 11 }}>Banjar: Siaga (312 cm)</span>
+          <span className="badge badge-normal" style={{ fontSize: 11 }}>Cilacap: Normal</span>
         </div>
       </BandDark>
 
@@ -370,10 +382,12 @@ export default function HomePage() {
           <div className="grid-3">
             {storyCards.map((card) => (
               <article key={card.title} className="card" style={{ padding: 0, overflow: "hidden" }}>
-                <div style={{ aspectRatio: "16/10", overflow: "hidden" }}>
-                  <img
+                <div style={{ aspectRatio: "16/10", overflow: "hidden", position: "relative" }}>
+                  <Image
                     alt={card.imgAlt}
                     src={card.img}
+                    width={800}
+                    height={500}
                     style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.6s ease" }}
                   />
                 </div>
@@ -415,7 +429,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="table-scroll" style={{ border: "1px solid var(--border)", borderRadius: "var(--radius)" }}>
+          <div className="table-scroll" style={{ border: "1px solid var(--border)", borderRadius: "var(--radius)", boxShadow: "0 2px 12px -4px rgba(0,0,0,0.08)", background: "var(--bg)" }}>
             <table className="spec-table" style={{ margin: 0 }}>
               <thead>
                 <tr>
@@ -426,12 +440,12 @@ export default function HomePage() {
               </thead>
               <tbody>
                 {specTableData.map((row) => (
-                  <tr key={row.param}>
-                    <td>
+                  <tr key={row.param} style={{ transition: "background 0.2s ease" }}>
+                    <td data-label="Parameter">
                       <strong className="mono" style={{ fontSize: 13 }}>{row.param}</strong>
                     </td>
-                    <td style={{ fontSize: 13, color: "var(--muted)" }}>{row.tech}</td>
-                    <td style={{ fontSize: 13 }}>{row.nilai}</td>
+                    <td data-label="Karakteristik Teknis" style={{ fontSize: 13, color: "var(--muted)" }}>{row.tech}</td>
+                    <td data-label="Peluang Nilai" style={{ fontSize: 13 }}>{row.nilai}</td>
                   </tr>
                 ))}
               </tbody>

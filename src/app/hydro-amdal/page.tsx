@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { DemoBadge } from "@/components/ui/DemoBadge";
 import { BandDark } from "@/components/chrome/BandDark";
@@ -92,15 +93,40 @@ export default function HydroAmdalPage() {
         <div className="wrap">
           <div className="hero-grid">
             <div>
-              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8, flexWrap: "wrap" }}>
                 <span className="kicker">Pilar 2 · Komersial</span>
-                <DemoBadge />
+                <span
+                  className="mono"
+                  aria-label="Status pengembangan"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    fontSize: 10,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "var(--accent-ink)",
+                    background: "var(--accent)",
+                    padding: "4px 10px",
+                    borderRadius: 999,
+                    fontWeight: 700,
+                  }}
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: 999,
+                      background: "var(--accent-ink)",
+                      display: "inline-block",
+                    }}
+                  />
+                  Dalam Pengembangan
+                </span>
               </div>
               <h1 className="display" style={{ fontSize: "clamp(36px, 5vw, 64px)" }}>
-                30 jam analisis<br />
-                hidrologi menjadi<br />
-                <em>30 menit</em>.<br />
-                Siap ekspor.
+                30 jam analisis hidrologi menjadi <em>30 menit</em>. Siap ekspor.
               </h1>
               <p className="lede" style={{ marginTop: 16 }}>
                 Hydro-AMDAL Engine mengotomasi pengolahan seri data historis SIH3 menjadi draf bab
@@ -113,14 +139,7 @@ export default function HydroAmdalPage() {
                 <a href="#preview" className="btn btn-ghost">Lihat Pratinjau Laporan</a>
               </div>
 
-              <dl style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
-                gap: "14px 16px",
-                marginTop: 28,
-                paddingTop: 20,
-                borderTop: "1px solid var(--border)",
-              }}>
+              <dl className="meta-dl">
                 {[
                   { dt: "Penghematan waktu", dd: "~95%" },
                   { dt: "Distribusi", dd: "Gumbel · LP-III" },
@@ -128,8 +147,8 @@ export default function HydroAmdalPage() {
                   { dt: "Lisensi", dd: "Tahunan / Proyek" },
                 ].map((item) => (
                   <div key={item.dt}>
-                    <dt className="eyebrow" style={{ fontSize: 10 }}>{item.dt}</dt>
-                    <dd className="mono" style={{ fontSize: 13, fontWeight: 600, color: "var(--fg)", marginTop: 2 }}>{item.dd}</dd>
+                    <dt className="eyebrow">{item.dt}</dt>
+                    <dd>{item.dd}</dd>
                   </div>
                 ))}
               </dl>
@@ -137,9 +156,11 @@ export default function HydroAmdalPage() {
 
             {/* Hero Photo */}
             <figure className="hero-photo" style={{ position: "relative" }}>
-              <img
-                alt="Dokumen teknis hidrologi"
-                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80"
+              <Image
+                src="/assets/images/sungai-citanduy-banjar.webp"
+                alt="Sungai Citanduy di area Banjar — sumber data seri hidrologi SIH3 untuk Hydro-AMDAL."
+                width={1400}
+                height={1050}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
               <span className="pin">DRAFT OTOMATIS · .DOCX</span>
@@ -158,7 +179,7 @@ export default function HydroAmdalPage() {
             <div>
               <span className="eyebrow">Masalah klasik</span>
               <h2 className="display" style={{ marginTop: 14 }}>
-                Uji konsistensi,<br />analisis frekuensi,<br />kurva IDF—<br />semua manual.
+                Uji konsistensi, analisis frekuensi, kurva IDF—semua manual.
               </h2>
             </div>
             <div className="col" style={{ gap: 18 }}>
@@ -299,7 +320,7 @@ export default function HydroAmdalPage() {
                 </p>
 
                 <div className="table-scroll">
-                  <table style={{ width: "100%", borderCollapse: "collapse", margin: "12px 0", fontFamily: "var(--body)", fontSize: 11, minWidth: 380 }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", margin: "12px 0", fontFamily: "var(--body)", fontSize: 11 }}>
                     <thead>
                       <tr style={{ background: "var(--surface)" }}>
                         <th style={{ border: "1px solid var(--border)", padding: "6px 8px" }}>T<sub>r</sub> (th)</th>
@@ -342,88 +363,90 @@ export default function HydroAmdalPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
-                  <button
-                    onClick={() => alert("Fitur ekspor dokumen Word (.docx) akan aktif pada Fase 3 integrasi backend.")}
-                    className="btn btn-ghost"
-                    style={{ fontSize: 12, padding: "8px 14px", width: "100%", justifyContent: "center" }}
-                  >
-                    Unduh Draf .docx (Placeholder)
-                  </button>
+                <button
+                  className="btn btn-ghost"
+                  onClick={() => window.location.href = "mailto:hydro-amd@keairan.id?subject=Pilot%20Hydro-AMDAL%20Engine"}
+                  style={{ fontSize: 12, padding: "8px 14px", width: "100%", justifyContent: "center" }}
+                >
+                  Kirim Permintaan Pilot →
+                </button>
                 </div>
               </div>
             </div>
 
-            {/* IDF Curve SVG */}
-            <div>
-              <span className="eyebrow">Kurva IDF otomatis</span>
-              <h3 className="display" style={{ marginTop: 10, fontSize: 22 }}>Intensity-Duration-Frequency</h3>
-              <p style={{ color: "var(--muted)", fontSize: 14, margin: "8px 0 16px" }}>
-                Kurva IDF untuk berbagai kala ulang (T<sub>r</sub> 2 s/d 100 tahun), siap plot ulang atau ekspor ke gambar resolusi cetak.
-              </p>
+                {/* IDF Curve SVG */}
+                <div>
+                  <span className="eyebrow">Kurva IDF otomatis</span>
+                  <h3 className="display" style={{ marginTop: 10, fontSize: 22 }}>Intensity-Duration-Frequency</h3>
+                  <p style={{ color: "var(--muted)", fontSize: 14, margin: "8px 0 16px" }}>
+                    Kurva IDF untuk berbagai kala ulang (T<sub>r</sub> 2 s/d 100 tahun), siap plot ulang atau ekspor ke gambar resolusi cetak.
+                  </p>
 
-              <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: 16 }}>
-                <svg viewBox="0 0 600 280" style={{ width: "100%", height: "auto", display: "block" }}>
-                  <defs>
-                    <pattern id="idfGrid" width="40" height="20" patternUnits="userSpaceOnUse">
-                      <path d="M 40 0 L 0 0 0 20" fill="none" stroke="#f0ede6" strokeWidth="1" />
-                    </pattern>
-                  </defs>
-                  <rect width="600" height="280" fill="url(#idfGrid)" />
+                  <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: 16 }}>
+                    <svg viewBox="0 0 600 280" style={{ width: "100%", height: "auto", display: "block" }} aria-label="Plot kurva Intensity-Duration-Frequency dengan empat kurva untuk kala ulang 2, 5, 10, dan 100 tahun" role="img">
+                      <title>Kurva Intensity-Duration-Frequency untuk berbagai kala ulang (T</title>
+                      <desc>Plot garis yang menunjukkan intensitas curah hujan yang terkait dengan durasi dan kala ulang. Empat kurva diplot: Tr=2 tahun (biru), Tr=5 tahun (oranye), Tr=10 tahun (coklat), Tr=100 tahun (merah). Sumbu X mewakili durasi (menit), sumbu Y mewakili intensitas (mm/jam).</desc>
+                      <defs>
+                        <pattern id="idfGrid" width="40" height="20" patternUnits="userSpaceOnUse">
+                          <path d="M 40 0 L 0 0 0 20" fill="none" stroke="#f0ede6" strokeWidth="1" />
+                        </pattern>
+                      </defs>
+                      <rect width="600" height="280" fill="url(#idfGrid)" />
 
-                  {/* Axes */}
-                  <line x1="50" y1="240" x2="570" y2="240" stroke="#333" strokeWidth="1.5" />
-                  <line x1="50" y1="20" x2="50" y2="240" stroke="#333" strokeWidth="1.5" />
+                      {/* Axes */}
+                      <line x1="50" y1="240" x2="570" y2="240" stroke="#333" strokeWidth="1.5" />
+                      <line x1="50" y1="20" x2="50" y2="240" stroke="#333" strokeWidth="1.5" />
 
-                  <text x="300" y="265" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#555">Durasi (menit)</text>
-                  <text x="20" y="130" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#555" transform="rotate(-90 20 130)">Intensitas (mm/jam)</text>
+                      <text x="300" y="265" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#555">Durasi (menit)</text>
+                      <text x="20" y="130" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#555" transform="rotate(-90 20 130)">Intensitas (mm/jam)</text>
 
-                  {/* X ticks */}
-                  <g fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#666">
-                    <text x="60" y="255" textAnchor="middle">5</text>
-                    <text x="140" y="255" textAnchor="middle">15</text>
-                    <text x="220" y="255" textAnchor="middle">30</text>
-                    <text x="300" y="255" textAnchor="middle">60</text>
-                    <text x="380" y="255" textAnchor="middle">120</text>
-                    <text x="460" y="255" textAnchor="middle">240</text>
-                    <text x="540" y="255" textAnchor="middle">480</text>
-                  </g>
+                      {/* X ticks */}
+                      <g fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#666">
+                        <text x="60" y="255" textAnchor="middle">5</text>
+                        <text x="140" y="255" textAnchor="middle">15</text>
+                        <text x="220" y="255" textAnchor="middle">30</text>
+                        <text x="300" y="255" textAnchor="middle">60</text>
+                        <text x="380" y="255" textAnchor="middle">120</text>
+                        <text x="460" y="255" textAnchor="middle">240</text>
+                        <text x="540" y="255" textAnchor="middle">480</text>
+                      </g>
 
-                  {/* Y ticks */}
-                  <g fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#666" textAnchor="end">
-                    <text x="46" y="244">0</text>
-                    <text x="46" y="195">50</text>
-                    <text x="46" y="145">100</text>
-                    <text x="46" y="95">150</text>
-                    <text x="46" y="45">200</text>
-                  </g>
+                      {/* Y ticks */}
+                      <g fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#666" textAnchor="end">
+                        <text x="46" y="244">0</text>
+                        <text x="46" y="195">50</text>
+                        <text x="46" y="145">100</text>
+                        <text x="46" y="95">150</text>
+                        <text x="46" y="45">200</text>
+                      </g>
 
-                  {/* Curves */}
-                  <path d="M60,30 C100,40 140,55 220,80 C300,110 380,150 460,180 C500,195 540,210 570,215" fill="none" stroke="#999" strokeWidth="1.5" strokeDasharray="2 3" />
-                  <path d="M60,40 C100,52 140,72 220,100 C300,135 380,170 460,200 C500,212 540,222 570,225" fill="none" stroke="#cba135" strokeWidth="1.5" strokeDasharray="2 3" />
-                  <path d="M60,55 C100,68 140,90 220,125 C300,160 380,190 460,215 C500,222 540,228 570,232" fill="none" stroke="#e89338" strokeWidth="2" />
-                  <path d="M60,75 C100,90 140,115 220,150 C300,180 380,205 460,225 C500,230 540,234 570,236" fill="none" stroke="#e85a3c" strokeWidth="2.5" />
-                  <path d="M60,90 C100,108 140,135 220,170 C300,195 380,215 460,230 C500,234 540,237 570,238" fill="none" stroke="#c73e1d" strokeWidth="2.5" />
-                  <path d="M60,105 C100,125 140,150 220,185 C300,205 380,222 460,233 C500,236 540,238 570,239" fill="none" stroke="#9c2e15" strokeWidth="3" />
+                      {/* Curves */}
+                      <path d="M60,30 C100,40 140,55 220,80 C300,110 380,150 460,180 C500,195 540,210 570,215" fill="none" stroke="#999" strokeWidth="1.5" strokeDasharray="2 3" />
+                      <path d="M60,40 C100,52 140,72 220,100 C300,135 380,170 460,200 C500,212 540,222 570,225" fill="none" stroke="#cba135" strokeWidth="1.5" strokeDasharray="2 3" />
+                      <path d="M60,55 C100,68 140,90 220,125 C300,160 380,190 460,215 C500,222 540,228 570,232" fill="none" stroke="#e89338" strokeWidth="2" />
+                      <path d="M60,75 C100,90 140,115 220,150 C300,180 380,205 460,225 C500,230 540,234 570,236" fill="none" stroke="#e85a3c" strokeWidth="2.5" />
+                      <path d="M60,90 C100,108 140,135 220,170 C300,195 380,215 460,230 C500,234 540,237 570,238" fill="none" stroke="#c73e1d" strokeWidth="2.5" />
+                      <path d="M60,105 C100,125 140,150 220,185 C300,205 380,222 460,233 C500,236 540,238 570,239" fill="none" stroke="#9c2e15" strokeWidth="3" />
 
-                  {/* Legend */}
-                  <g transform="translate(360,30)" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#333">
-                    <text fontWeight="700">Kala ulang (tahun)</text>
-                    <line x1="0" y1="14" x2="20" y2="14" stroke="#999" strokeWidth="1.5" strokeDasharray="2 3" />
-                    <text x="26" y="17">Tr = 2</text>
-                    <line x1="0" y1="28" x2="20" y2="28" stroke="#cba135" strokeWidth="1.5" strokeDasharray="2 3" />
-                    <text x="26" y="31">Tr = 5</text>
-                    <line x1="0" y1="42" x2="20" y2="42" stroke="#e89338" strokeWidth="2" />
-                    <text x="26" y="45">Tr = 10</text>
-                    <line x1="0" y1="56" x2="20" y2="56" stroke="#e85a3c" strokeWidth="2.5" />
-                    <text x="26" y="59">Tr = 25</text>
-                    <line x1="0" y1="70" x2="20" y2="70" stroke="#c73e1d" strokeWidth="2.5" />
-                    <text x="26" y="73">Tr = 50</text>
-                    <line x1="0" y1="84" x2="20" y2="84" stroke="#9c2e15" strokeWidth="3" />
-                    <text x="26" y="87">Tr = 100</text>
-                  </g>
-                </svg>
-              </div>
-            </div>
+                      {/* Legend */}
+                      <g transform="translate(360,30)" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#333">
+                        <text fontWeight="700">Kala ulang (tahun)</text>
+                        <line x1="0" y1="14" x2="20" y2="14" stroke="#999" strokeWidth="1.5" strokeDasharray="2 3" />
+                        <text x="26" y="17">Tr = 2</text>
+                        <line x1="0" y1="28" x2="20" y2="28" stroke="#cba135" strokeWidth="1.5" strokeDasharray="2 3" />
+                        <text x="26" y="31">Tr = 5</text>
+                        <line x1="0" y1="42" x2="20" y2="42" stroke="#e89338" strokeWidth="2" />
+                        <text x="26" y="45">Tr = 10</text>
+                        <line x1="0" y1="56" x2="20" y2="56" stroke="#e85a3c" strokeWidth="2.5" />
+                        <text x="26" y="59">Tr = 25</text>
+                        <line x1="0" y1="70" x2="20" y2="70" stroke="#c73e1d" strokeWidth="2.5" />
+                        <text x="26" y="73">Tr = 50</text>
+                        <line x1="0" y1="84" x2="20" y2="84" stroke="#9c2e15" strokeWidth="3" />
+                        <text x="26" y="87">Tr = 100</text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
           </div>
         </div>
       </section>
@@ -496,11 +519,11 @@ export default function HydroAmdalPage() {
                   {pkg.desc}
                 </p>
 
-                <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+                <ul style={{ listStyle: "none", margin: 0, paddingLeft: 0, display: "flex", flexDirection: "column", gap: 10 }}>
                   {pkg.features.map((f) => (
-                    <li key={f} style={{ display: "flex", gap: 8, fontSize: 14, color: "var(--muted)" }}>
-                      <span style={{ color: "var(--status-normal)", flexShrink: 0 }}>✓</span>
-                      {f}
+                    <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 14, color: "var(--muted)" }}>
+                      <span style={{ color: "var(--status-normal)", fontWeight: 700, lineHeight: 1, marginTop: 2, flexShrink: 0 }}>✓</span>
+                      <span style={{ overflowWrap: "break-word", wordBreak: "break-word" }}>{f}</span>
                     </li>
                   ))}
                 </ul>

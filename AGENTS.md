@@ -133,7 +133,7 @@ vercel --prod
 |---|---|
 | `docs/Design System/assets/` | Verbatim source assets (do not edit) â€” also copied to `public/assets/` for runtime |
 | `docs/Design System/examples/` | Verbatim source pages (do not edit) |
-| `src/app/` | Next.js App Router pages (`/`, `/dashboard`, `/aqua-alert`, `/hydro-amdal`, `/methodology`) |
+| `src/app/` | Next.js App Router pages (`/`, `/dashboard`, `/aqua-alert`, `/hydro-amdal`, `/about`) |
 | `src/components/chrome/` | Masthead, Footer, BandDark |
 | `src/components/ui/` | Ticker, StatStrip, DemoBadge, MSWProvider |
 | `src/components/dashboard/` | (reserved for dashboard-specific component extraction if it grows) |
